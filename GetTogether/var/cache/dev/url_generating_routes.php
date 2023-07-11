@@ -4,6 +4,12 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
+    'app_authentication' => [[], ['_controller' => 'App\\Controller\\AuthenticationController::index'], [], [['text', '/authentication']], [], [], []],
+    'app_chat' => [[], ['_controller' => 'App\\Controller\\ChatController::index'], [], [['text', '/chat']], [], [], []],
     'app_event' => [[], ['_controller' => 'App\\Controller\\EventController::index'], [], [['text', '/event/']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/home/']], [], [], []],
+    'app_index' => [[], ['_controller' => 'App\\Controller\\IndexController::index'], [], [['text', '/index']], [], [], []],
+    'app_registration' => [[], ['_controller' => 'App\\Controller\\RegistrationController::index'], [], [['text', '/registration']], [], [], []],
+    'app_reset_password' => [[], ['_controller' => 'App\\Controller\\ResetPasswordController::index'], [], [['text', '/reset/password']], [], [], []],
+    'app_user' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/user']], [], [], []],
 ];
