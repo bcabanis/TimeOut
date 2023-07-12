@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ResetPasswordController extends AbstractController
+class LoginController extends AbstractController
 {
-    #[Route('/reset/password', name: 'app_reset_password')]
+    #[Route('/login', name: 'app_login')]
     public function index(): Response
     {
-        return $this->render('reset_password/index.html.twig', [
-            'controller_name' => 'ResetPasswordController',
+        return $this->render('login/index.html.twig', [
+            'controller_name' => 'LoginController',
         ]);
     }
 }
