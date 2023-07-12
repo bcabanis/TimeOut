@@ -21,9 +21,6 @@ class User
     private string $dateNaissance;
 
     #[MongoDB\Field(type: 'string')]
-    private string $city;
-
-    #[MongoDB\Field(type: 'string')]
     private string $email;
 
     #[MongoDB\Field(type: 'string')]
@@ -39,11 +36,6 @@ class User
     public function getId(): string
     {
         return $this->id;
-    }
-
-    public function getCity(): string
-    {
-        return $this->city;
     }
 
     public function getFirstName(): string
@@ -79,13 +71,6 @@ class User
     public function getRole(): string
     {
         return $this->role;
-    }
-
-    public function setCity(string $city): User
-    {
-        $this->city = $city;
-
-        return $this;
     }
 
     public function setFirstName(string $firstName): User
