@@ -308,6 +308,7 @@
     <service id="App\Document\Chat" class="App\Document\Chat" autowire="true" autoconfigure="true"/>
     <service id="App\Document\Event" class="App\Document\Event" autowire="true" autoconfigure="true"/>
     <service id="App\Document\Groupe" class="App\Document\Groupe" autowire="true" autoconfigure="true"/>
+    <service id="App\Document\Tags" class="App\Document\Tags" autowire="true" autoconfigure="true"/>
     <service id="App\Document\User" class="App\Document\User" autowire="true" autoconfigure="true"/>
     <service id="App\Security\AppCustomAuthenticator" class="App\Security\AppCustomAuthenticator" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
