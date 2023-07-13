@@ -2,7 +2,7 @@
 
 namespace App\Document;
 
-use App\Repository\EventRepository;
+use App\Repository\EventRepository; // a priori pas besoin d'être appelée
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]

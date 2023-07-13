@@ -6,6 +6,8 @@
 parameters:
     env(MONGODB_URL): ''
     env(MONGODB_DB): ''
+    mongodb_server: "mongodb://localhost:27017"
+
 
 services:
     # default configuration for services in *this* file
