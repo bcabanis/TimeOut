@@ -3,7 +3,6 @@
 namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use Symfony\Component\Validator\Constraints\Date;
 
 #[MongoDB\Document]
 class Event
@@ -73,14 +72,14 @@ class Event
         return $this->title;
     }
 
-    public function setDate1(date $date1): Event
+    public function setDate1(\DateTime $date1): Event
     {
         $this->date1 = $date1;
 
         return $this;
     }
 
-    public function setDate2(date $date2): Event
+    public function setDate2(\DateTime $date2): Event
     {
         $this->date2 = $date2;
 
