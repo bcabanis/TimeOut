@@ -2,8 +2,8 @@
 
 namespace App\Document;
 
+use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use Symfony\Component\Validator\Constraints\Date;
 
 #[MongoDB\Document]
 class User
