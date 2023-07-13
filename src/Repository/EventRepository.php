@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Document\Event;
+use App\Document\Events;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;
 
@@ -11,21 +11,21 @@ class EventRepository extends ServiceDocumentRepository
     public function __construct(ManagerRegistry $registry)
     {
         // Appelle le constructeur parent de ServiceDocumentRepository
-        // et lui passe le ManagerRegistry et la classe Event
-        parent::__construct($registry, Event::class);
+        // et lui passe le ManagerRegistry et la classe Events
+        parent::__construct($registry, Events::class);
     }
 
     /**
-     * Sauvegarde l'entité Event dans la base de données MongoDB.
+     * Sauvegarde l'entité Events dans la base de données MongoDB.
      *
-     * @param Event $entity L'entité Event à sauvegarder.
+     * @param Events $entity L'entité Events à sauvegarder.
      */
-    public function save(Event $event): void
+    public function save(Events $event): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
-        // Persiste l'entité Event
+        // Persiste l'entité Events
         $objectManager->persist($event);
 
         // Enregistre les modifications dans la base de données
@@ -33,16 +33,16 @@ class EventRepository extends ServiceDocumentRepository
     }
 
     /**
-     * Supprime l'entité Event de la base de données MongoDB.
+     * Supprime l'entité Events de la base de données MongoDB.
      *
-     * @param Event $event L'entité Event à supprimer.
+     * @param Events $event L'entité Events à supprimer.
      */
-    public function remove(Event $event): void
+    public function remove(Events $event): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
-        // Supprime l'entité Event de l'ObjectManager
+        // Supprime l'entité Events de l'ObjectManager
         $objectManager->remove($event);
 
         // Enregistre les modifications dans la base de données

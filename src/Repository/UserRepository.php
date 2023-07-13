@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Document\User;
+use App\Document\Users;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;
 
@@ -11,21 +11,21 @@ class UserRepository extends ServiceDocumentRepository
     public function __construct(ManagerRegistry $registry)
     {
         // Appelle le constructeur parent de ServiceDocumentRepository
-        // et lui passe le ManagerRegistry et la classe User
-        parent::__construct($registry, User::class);
+        // et lui passe le ManagerRegistry et la classe Users
+        parent::__construct($registry, Users::class);
     }
 
     /**
-     * Sauvegarde l'entité User dans la base de données MongoDB.
+     * Sauvegarde l'entité Users dans la base de données MongoDB.
      *
-     * @param User $user L'entité User à sauvegarder.
+     * @param Users $user L'entité Users à sauvegarder.
      */
-    public function save(User $user): void
+    public function save(Users $user): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
-        // Persiste l'entité User
+        // Persiste l'entité Users
         $objectManager->persist($user);
 
         // Enregistre les modifications dans la base de données
@@ -33,16 +33,16 @@ class UserRepository extends ServiceDocumentRepository
     }
 
     /**
-     * Supprime l'entité User de la base de données MongoDB.
+     * Supprime l'entité Users de la base de données MongoDB.
      *
-     * @param User $user L'entité User à supprimer.
+     * @param Users $user L'entité Users à supprimer.
      */
-    public function remove(User $user): void
+    public function remove(Users $user): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
-        // Supprime l'entité User de l'ObjectManager
+        // Supprime l'entité Users de l'ObjectManager
         $objectManager->remove($user);
 
         // Enregistre les modifications dans la base de données
