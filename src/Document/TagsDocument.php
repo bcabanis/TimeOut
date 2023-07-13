@@ -4,7 +4,6 @@ namespace App\Document;
 
 use App\Repository\TagsRepository;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use Symfony\Component\Validator\Constraints\Date;
 
 #[MongoDB\Document]
 class Tags
