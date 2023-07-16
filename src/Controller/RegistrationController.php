@@ -4,21 +4,36 @@ namespace App\Controller;
 
 use App\Document\Users;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
     #[Route('/registration', name: 'app_registration')]
-    public function register(Request $request): Response
+    public function register(Request $request, UserRepository $userRepository): Response
     {
+        // Créer une nouvelle instance de l'entité Users
         $user = new Users();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form ->handleRequest($request);
 
+        // Créer le formulaire d'inscription en utilisant RegistrationFormType et l'entité Users
+        $form = $this->createForm(RegistrationFormType::class, $user);
+
+        // Gère la soumission du formulaire
+        $form->handleRequest($request);
+
+        // Vérifie si le formulaire a été soumis et s'il est valide
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Enregistre l'utilisateur dans la base de données en utilisant la fonction save dans le UserRepository
+            $userRepository->save($user);
+
+            // Redirige vers une autre page ou afficher un message de succès
+            return $this->redirectToRoute('registration_success');
+        }
+
+        // Affiche le formulaire d'inscription à la vue Twig
         return $this->render('registration/index.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
