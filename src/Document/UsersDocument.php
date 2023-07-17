@@ -3,10 +3,12 @@
 namespace App\Document;
 
 use App\Repository\UserRepository;
+use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[MongoDB\Document]
-class User
+class Users implements PasswordAuthenticatedUserInterface
 {
     #[MongoDB\Id]
     private string $id;
@@ -17,8 +19,8 @@ class User
     #[MongoDB\Field(type: 'string')]
     private string $lastName;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $dateNaissance;
+    #[MongoDB\Field(type: 'date')]
+    private ?DateTimeInterface $dateNaissance;
 
     #[MongoDB\Field(type: 'string')]
     private string $email;
@@ -48,7 +50,7 @@ class User
         return $this->lastName;
     }
 
-    public function getDateNaissance(): string
+    public function getDateNaissance(): ?DateTimeInterface
     {
         return $this->dateNaissance;
     }
@@ -73,49 +75,49 @@ class User
         return $this->role;
     }
 
-    public function setFirstName(string $firstName): User
+    public function setFirstName(string $firstName): Users
     {
         $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function setLastName(string $lastName): User
+    public function setLastName(string $lastName): Users
     {
         $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function setDateNaissance(string $dateNaissance): User
+    public function setDateNaissance(DateTimeInterface $dateNaissance): Users
     {
         $this->dateNaissance = $dateNaissance;
 
         return $this;
     }
 
-    public function setEmail(string $email): User
+    public function setEmail(string $email): Users
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function setPassword(string $password): User
+    public function setPassword(string $password): Users
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function setProfilPicture(string $profilPicture): User
+    public function setProfilPicture(string $profilPicture): Users
     {
         $this->profilPicture = $profilPicture;
 
         return $this;
     }
 
-    public function setRole(string $role): User
+    public function setRole(string $role): Users
     {
         $this->role = $role;
 

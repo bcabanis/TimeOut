@@ -6,16 +6,16 @@ use App\Repository\EventRepository;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
-class Event
+class Events
 {
     #[MongoDB\Id]
     private string $id;
 
     #[MongoDB\Field(type: 'date')]
-    private string $date1;
+    private string $startDate;
 
     #[MongoDB\Field(type: 'date')]
-    private string $date2;
+    private string $endDate;
 
     #[MongoDB\Field(type: 'string')]
     private string $description;
@@ -38,14 +38,14 @@ class Event
         return $this->id;
     }
 
-    public function getDate1(): string
+    public function getStartDate(): string
     {
-        return $this->date1;
+        return $this->startDate;
     }
 
-    public function getDate2(): string
+    public function getEndDate(): string
     {
-        return $this->date2;
+        return $this->endDate;
     }
 
     public function getDescription(): string
@@ -73,49 +73,49 @@ class Event
         return $this->title;
     }
 
-    public function setDate1(\DateTime $date1): Event
+    public function setstartDate(\DateTime $startDate): Events
     {
-        $this->date1 = $date1;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function setDate2(\DateTime $date2): Event
+    public function setendDate(\DateTime $endDate): Events
     {
-        $this->date2 = $date2;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
-    public function setDescription(string $description): Event
+    public function setDescription(string $description): Events
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function setPicture(string $picture): Event
+    public function setPicture(string $picture): Events
     {
         $this->picture = $picture;
 
         return $this;
     }
 
-    public function setPlace(string $place): Event
+    public function setPlace(string $place): Events
     {
         $this->place = $place;
 
         return $this;
     }
 
-    public function setPlanner(string $planner): Event
+    public function setPlanner(string $planner): Events
     {
         $this->planner = $planner;
 
         return $this;
     }
 
-    public function setTitle(string $title): Event
+    public function setTitle(string $title): Events
     {
         $this->title = $title;
 
