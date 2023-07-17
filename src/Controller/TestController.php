@@ -16,10 +16,15 @@ class TestController extends AbstractController
     public function index(CallApiService $callApiService): Response
     {
 
-        // // dd($callApiService->getEventData());
-        // $dataApi = $callApiService->getEventData();
+        // dd($callApiService->getEventData());
+        $dataApi = $callApiService->getEventData();
         // dd($dataApi);
-        // // dump($data['records']);
+        // dump($data['records']);
+
+
+        return $this->render('test/index.html.twig',[
+            'data' => $dataApi['records'],
+        ]);
 
         // if(isset($_POST)){
         //     $data = file_get_contents("php://input");
@@ -60,9 +65,6 @@ class TestController extends AbstractController
 
         // }
 
-        return $this->render('test/index.html.twig',[
-            //'data' => $data,
-        ]);
     }
 
     #[Route('/participer', name: 'app_participer')]
