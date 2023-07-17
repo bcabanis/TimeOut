@@ -22,48 +22,53 @@ class TestController extends AbstractController
         // dump($data['records']);
 
 
+        // Assurez-vous que vous recevez une requête POST
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        // Récupérez les données JSON envoyées depuis JavaScript
+        $jsonData = file_get_contents("php://input");
+        
+        // Convertissez les données JSON en tableau associatif
+        $data = json_decode($jsonData, true);
+        
+        // Vérifiez si l'élément "idEvent" est présent dans les données
+        if (isset($data["idEvent"])) {
+            // Récupérez l'identifiant d'événement
+            $idEvent = $data["idEvent"];
+            
+            // Faites ce que vous voulez avec l'identifiant d'événement, par exemple :
+            // - Enregistrez-le dans une base de données
+            // - Effectuez des opérations en fonction de cet identifiant
+            // - Retournez des données ou des résultats à JavaScript si nécessaire
+            
+            // Exemple de réponse pour renvoyer un message simple à JavaScript
+            $response = array("status" => "success", "message" => "Identifiant d'événement reçu : " . $idEvent);
+            echo json_encode($response);
+        } else {
+            // Si l'élément "idEvent" n'est pas présent dans les données
+            $response = array("status" => "error", "message" => "Identifiant d'événement manquant.");
+            echo json_encode($response);
+        }
+        } else {
+            // Si la requête n'est pas de type POST
+            $response = array("status" => "error", "message" => "Requête non autorisée.");
+            echo json_encode($response);
+        }
+
         return $this->render('test/index.html.twig',[
             'data' => $dataApi['records'],
         ]);
 
-        // if(isset($_POST)){
-        //     $data = file_get_contents("php://input");
-        //     $idEvent = json_decode($data, true);
-        //     dump($idEvent);
-        //     // do whatever we want with the users array.
-        //     for ($i=0; $i < count($dataApi['records']); $i++) {
-        //         if ($dataApi['records'][$i]["recordid"] == $idEvent["idEvent"]) {
-        //             dump($dataApi['records'][$i]["fields"]['location_name']); 
-        //         }
-        //     }
-        // }
-
-
-        // $newData = new stdClass();
-        // $newData->location_name = $data['records'][2]["fields"]['location_name'];
-        // $newData->location_coordinates = $data['records'][2]["fields"]['location_name'];
-        // $newData->begin = $data['records'][2]["fields"]['location_name'];
-        // $newData->end = $data['records'][2]["fields"]['location_name'];
-        // $newData->image = $data['records'][2]["fields"]['location_name'];
-        // $newData->title_fr = $data['records'][2]["fields"]['location_name'];
-        // $newData->keywords_fr = $data['records'][2]["fields"]['location_name'];
-        // $newData->daterange_fr = $data['records'][2]["fields"]['location_name'];
-        // $newData->longdescription_fr = $data['records'][2]["fields"]['location_name'];
-
-        // $newData = {
-        //     'location_name' -> json_encode($data["records"]);
-        //     "location_coordinates" -> json_encode($data["records"]),
-        //     "begin"
-        //     "end"
-        //     "image"
-        //     "title_fr"
-        //     "keywords_fr"
-        //     "daterange_fr"
-        //     "longdescription_fr"
-
-
-
-        // }
+            // if(isset($_POST)){
+            //     $data = file_get_contents("php://input");
+            //     $idEvent = json_decode($data, true);
+            //     dump($idEvent);
+            //     // do whatever we want with the users array.
+            //     for ($i=0; $i < count($dataApi['records']); $i++) {
+            //         if ($dataApi['records'][$i]["recordid"] == $idEvent["idEvent"]) {
+            //             dump($dataApi['records'][$i]["fields"]['location_name']); 
+            //         }
+            //     }
+            // }
 
     }
 
