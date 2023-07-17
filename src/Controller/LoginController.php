@@ -17,7 +17,7 @@ class LoginController extends AbstractController
         ]);
     }
 
-
+    // Redirection vers la connexion
     #[Route('/loginconnexion', name: 'app_login_connexion')]
     public function connexion(): Response
     {
@@ -26,7 +26,7 @@ class LoginController extends AbstractController
         ]);
     }
 
-
+    // Redirection vers la personnalisation
     #[Route('/loginpersonnalisation', name: 'app_login_personnalisation')]
     public function personnalisation(): Response
     {
@@ -35,6 +35,7 @@ class LoginController extends AbstractController
         ]);
     }
 
+    // Redirection vers le choix des avatars
     #[Route('/loginavatar', name: 'app_login_avatar')]
     public function avatar(): Response
     {
@@ -43,6 +44,7 @@ class LoginController extends AbstractController
         ]);
     }
 
+    // Redirection vers le choix des tags
     #[Route('/logintags', name: 'app_login_tags')]
     public function tags(): Response
     {
