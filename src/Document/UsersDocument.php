@@ -20,6 +20,9 @@ class Users implements PasswordAuthenticatedUserInterface
     private string $lastName;
 
     #[MongoDB\Field(type: 'string')]
+    private string $pseudo;
+
+    #[MongoDB\Field(type: 'string')]
     private string $city;
 
     #[MongoDB\Field(type: 'date')]
@@ -51,6 +54,11 @@ class Users implements PasswordAuthenticatedUserInterface
     public function getLastName(): string
     {
         return $this->lastName;
+    }
+
+    public function getPseudo(): string
+    {
+        return $this->pseudo;
     }
 
     public function getCity(): string
@@ -93,6 +101,13 @@ class Users implements PasswordAuthenticatedUserInterface
     public function setLastName(string $lastName): Users
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function setPseudo(string $pseudo): Users
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
