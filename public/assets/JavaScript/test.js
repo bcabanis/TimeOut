@@ -1,55 +1,50 @@
-
-
 function testCurrentTarget(event) {
-    let divClick = event.currentTarget;
-  
-    // Récupère l'identifiant de l'événement à partir de l'élément ou des attributs de données
-    let eventId = divClick.dataset.idEvent;
-  
-    // // Supposons que vous ayez une variable "dataToSend" que vous voulez envoyer à PHP
-    let dataToSend = { "idEvent": eventId };
-    let params = {
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      "body": JSON.stringify(dataToSend)
-    }
-  
-    fetch("TestController.php", params)
+  let divClick = event.currentTarget;
 
-    console.log(eventId);
+  // Récupère l'identifiant de l'événement à partir de l'élément ou des attributs de données
+  let eventId = divClick.dataset.idEvent;
 
-    
-}
-
-function sendData() {
-  var data = document.getElementById('inputData').value;
-
-  // Créer un objet XMLHttpRequest pour effectuer une requête HTTP
-  var xhttp = new XMLHttpRequest();
-  
-  // Définir la fonction de rappel pour gérer la réponse du serveur
-  xhttp.onreadystatechange = function() {
-      if (this.readyState === 4 && this.status === 200) {
-          // Afficher la réponse du serveur (facultatif)
-          alert(this.responseText);
-      }
+  // // Supposons que vous ayez une variable "dataToSend" que vous voulez envoyer à PHP
+  let dataToSend = { idEvent: eventId };
+  let params = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify(dataToSend),
   };
 
-  // Ouvrir une requête POST vers le fichier PHP
-  xhttp.open("POST", "traitement.php", true);
+  fetch("TestController.php", params);
 
-  // Définir l'en-tête de la requête pour spécifier le type de contenu
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-  // Envoyer les données au serveur
-  xhttp.send("data=" + data);
+  console.log(eventId);
 }
-  
-  // Lance l'événement de clic sur tous les événements de la page
-  let divTest = document.querySelectorAll('.card-event .btn-participer');
-  
-  divTest.forEach(function(element) {
-    element.addEventListener('click', testCurrentTarget);
-  });
+
+function sendData(event) {
+  let divClick = event.currentTarget;
+  let eventId = {"eventId": divClick.dataset.idEvent};
+
+// Envoi de la requête POST vers Symfony
+fetch('/api/send-data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(eventId)
+})
+.then(response => response.json())
+.then(data => {
+  // Traitement de la réponse renvoyée par Symfony (si nécessaire)
+  console.log(data);
+})
+.catch(error => {
+  // Gérer les erreurs éventuelles
+  console.error('Erreur lors de la requête AJAX :', error);
+});
+}
+
+// Lance l'événement de clic sur tous les événements de la page
+let divTest = document.querySelectorAll(".card-event .btn-participer");
+
+divTest.forEach(function (element) {
+  element.addEventListener("click", sendData);
+});
