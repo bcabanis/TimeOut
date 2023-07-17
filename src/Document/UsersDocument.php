@@ -19,6 +19,9 @@ class Users implements PasswordAuthenticatedUserInterface
     #[MongoDB\Field(type: 'string')]
     private string $lastName;
 
+    #[MongoDB\Field(type: 'string')]
+    private string $city;
+
     #[MongoDB\Field(type: 'date')]
     private ?DateTimeInterface $dateNaissance;
 
@@ -48,6 +51,11 @@ class Users implements PasswordAuthenticatedUserInterface
     public function getLastName(): string
     {
         return $this->lastName;
+    }
+
+    public function getCity(): string
+    {
+        return $this->city;
     }
 
     public function getDateNaissance(): ?DateTimeInterface
@@ -85,6 +93,13 @@ class Users implements PasswordAuthenticatedUserInterface
     public function setLastName(string $lastName): Users
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function setCity(string $city): Users
+    {
+        $this->city = $city;
 
         return $this;
     }
