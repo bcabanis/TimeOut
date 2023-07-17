@@ -8,12 +8,13 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
     #[Route('/registration', name: 'app_registration')]
-    public function register(Request $request, UserRepository $userRepository): Response
+    public function register(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         // Créer une nouvelle instance de l'entité Users
         $user = new Users();
@@ -26,10 +27,15 @@ class RegistrationController extends AbstractController
 
         // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
+            // Hashe le mot de passe de l'utilisateur en utilisant l'objet UserPasswordHasherInterface
+            $hashedPassword = $userPasswordHasher->hashPassword($user, $user->getPassword());
+            // Défini le mot de passe hashé dans l'objet Users
+            $user->setPassword($hashedPassword);
+
             // Enregistre l'utilisateur dans la base de données en utilisant la fonction save dans le UserRepository
             $userRepository->save($user);
 
-            // Redirige vers une autre page ou afficher un message de succès
+            // Redirige vers une autre page pour afficher un message de succès
             return $this->redirectToRoute('registration_success');
         }
 
