@@ -18,6 +18,7 @@ class RegistrationController extends AbstractController
     #[Route('/registration', name: 'app_registration')]
     public function register(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
+        $message = '';
         // Créer une nouvelle instance de l'entité Users
         $user = new Users();
 
@@ -43,7 +44,17 @@ class RegistrationController extends AbstractController
 
         // Affiche le formulaire d'inscription à la vue Twig
         return $this->render('registration/index.html.twig', [
+            'message' => $message,
             'registrationForm' => $form->createView(),
+        ]);
+    }
+
+
+    #[Route('/registration-success', name: 'registration_success')]
+    public function register_success(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    {
+        return $this->render('registration/success.html.twig', [
+            'message' => 'Votre compte a été créé.',
         ]);
     }
 }
