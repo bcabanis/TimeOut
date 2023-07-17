@@ -36,6 +36,7 @@ class RegistrationController extends AbstractController
             $userRepository->save($user);
 
             // Redirige vers une autre page pour afficher un message de succès
+            // return $this->redirectToRoute('registration_success');
             return $this->redirectToRoute('registration_success');
         }
 

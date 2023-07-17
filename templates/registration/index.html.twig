@@ -21,4 +21,35 @@
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
 </div>
+
+{# Code Javascript pour la popup #}
+
+{# <script>
+    document.querySelector('.btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Envoyer le formulaire via AJAX pour enregistrer l'utilisateur
+        const form = document.querySelector('form');
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Afficher la popup de succès
+                alert("Vous vous êtes bien enregistré !");
+                // Rediriger vers la page de connexion après 3 secondes
+                setTimeout(function() {
+                    window.location.href = "{{ path('app_login') }}";
+                }, 3000); // 3000 millisecondes = 3 secondes
+            } else {
+                alert("Une erreur s'est produite lors de l'inscription.");
+            }
+        })
+        .catch(error => {
+            console.error('Erreur :', error);
+        });
+    });
+</script> #}
+
+
 {% endblock %}
