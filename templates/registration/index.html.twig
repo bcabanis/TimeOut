@@ -9,12 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello ! ✅</h1>
 
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/src/Controller/RegistrationController.php'|file_link(0) }}">src/Controller/RegistrationController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/registration/index.html.twig'|file_link(0) }}">templates/registration/index.html.twig</a></code></li>
     </ul>
+    {{ form_start(registrationForm) }}
+        {{ form_errors(registrationForm) }}
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
 </div>
 {% endblock %}
