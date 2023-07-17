@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegistrationController !{% endblock %}
+{% block title %}Hello RegistrationController!{% endblock %}
 
 {% block body %}
 <style>
@@ -10,7 +10,7 @@
 
 <div class="example-wrapper">
     <h1>Hello ! ✅</h1>
-    <h2>{{message}}</h2>
+
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/src/Controller/RegistrationController.php'|file_link(0) }}">src/Controller/RegistrationController.php</a></code></li>
@@ -23,10 +23,6 @@
     {{ form_end(registrationForm) }}
 </div>
 
-<<<<<<< HEAD
-<h1>PAGE D'INSCRIPTION</h1>
-<a href="{{ path('app_login_connexion') }}">Page de connexion</a>
-=======
 <!-- Afficher un message de validation caché -->
 <div id="validationMessage" style="display: none; text-align: center; font-weight: bold;">
     Merci d'avoir rempli le formulaire !
@@ -34,29 +30,30 @@
 
 <script>
     function validateAndSubmitForm() {
-        var formElement = document.getElementById("registrationForm");
-        var formData = new FormData(formElement);
+        // Récupérer les valeurs des champs du formulaire
+        var nom = document.getElementById("registration_form_lastname").value;
+        var prenom = document.getElementById("registration_form_firstname").value;
+        var dateNaissance = document.getElementById("registration_form_dateNaissance").value;
+        var email = document.getElementById("registration_form_email").value;
+        var password = document.getElementById("registration_form_password").value;
 
-        // Envoyer les données du formulaire au serveur
-        fetch('/registration', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.status != 200) { throw new Error("Bad Server Response"); }
-                return response.text();
-        })
-        .then(html => {
-            document.querySelector('#modal .modal-body').innerHTML = html;
-            const myModal = new bootstrap.Modal('#modal', {keyboard: false})
-            myModal.show();
-            // ici
-        })
-        .catch(error => {
-            console.error('Une erreur s\'est produite lors de la validation :', error);
-        });
+        // Vérifier si les champs sont remplis
+        if (nom === "" || prenom === "" || dateNaissance === "" || email === "" || password === "") {
+            // Afficher une fenêtre d'alerte si un champ est vide
+            window.alert("Veuillez remplir tous les champs du formulaire.");
+        } else {
+            // Cacher le formulaire
+            document.getElementById("registrationForm").style.display = "none";
+
+            // Afficher le message de validation
+            document.getElementById("validationMessage").style.display = "block";
+
+            // Redirection vers une autre page après 3 secondes (3000 millisecondes)
+            setTimeout(function() {
+                window.location.href = "";
+            }, 3000); // 3 secondes (3000 millisecondes)
+        }
     }
 </script>
 
->>>>>>> Romain
 {% endblock %}
