@@ -3,10 +3,12 @@
 namespace App\Document;
 
 use App\Repository\UserRepository;
+use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[MongoDB\Document]
-class Users
+class Users implements PasswordAuthenticatedUserInterface
 {
     #[MongoDB\Id]
     private string $id;
@@ -17,8 +19,8 @@ class Users
     #[MongoDB\Field(type: 'string')]
     private string $lastName;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $dateNaissance;
+    #[MongoDB\Field(type: 'date')]
+    private ?DateTimeInterface $dateNaissance;
 
     #[MongoDB\Field(type: 'string')]
     private string $email;
@@ -48,7 +50,7 @@ class Users
         return $this->lastName;
     }
 
-    public function getDateNaissance(): string
+    public function getDateNaissance(): ?DateTimeInterface
     {
         return $this->dateNaissance;
     }
@@ -87,7 +89,7 @@ class Users
         return $this;
     }
 
-    public function setDateNaissance(string $dateNaissance): Users
+    public function setDateNaissance(DateTimeInterface $dateNaissance): Users
     {
         $this->dateNaissance = $dateNaissance;
 

@@ -18,41 +18,34 @@ class TagsRepository extends ServiceDocumentRepository
     /**
      * Sauvegarde l'entité Tags dans la base de données MongoDB.
      *
-     * @param Tags $entity L'entité Tags à sauvegarder.
-     * @param bool $flush Indique si les modifications doivent être immédiatement enregistrées dans la base de données. Par défaut, les modifications sont seulement persistées.
+     * @param Tags $tags L'entité Tags à sauvegarder.
      */
-    public function save(Tags $entity, bool $flush = false): void
+    public function save(Tags $tags): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
         // Persiste l'entité Tags
-        $objectManager->persist($entity);
+        $objectManager->persist($tags);
 
-        // Si le paramètre $flush est défini sur true, enregistre les modifications dans la base de données
-        if ($flush) {
-            $objectManager->flush();
-        }
+        // Enregistre les modifications dans la base de données
+        $objectManager->flush();
     }
 
     /**
      * Supprime l'entité Tags de la base de données MongoDB.
      *
-     * @param Tags $entity L'entité Tags à supprimer.
-     * @param bool $flush Indique si les modifications doivent être immédiatement enregistrées dans la base de données après la suppression. Par défaut, les modifications ne sont pas automatiquement enregistrées.
+     * @param Tags $tags L'entité Tags à supprimer.
      */
-    public function remove(Tags $entity, bool $flush = false): void
+    public function remove(Tags $tags): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
         // Supprime l'entité Tags de l'ObjectManager
-        $objectManager->remove($entity);
+        $objectManager->remove($tags);
 
-        // Si le paramètre $flush est défini sur true, enregistre les modifications dans la base de données
-        if ($flush) {
-            $objectManager->flush();
-        }
+        // Enregistre les modifications dans la base de données
+        $objectManager->flush();
     }
 }
-

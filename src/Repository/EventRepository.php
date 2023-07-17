@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Document\Event;
+use App\Document\Events;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;
 
@@ -11,49 +11,41 @@ class EventRepository extends ServiceDocumentRepository
     public function __construct(ManagerRegistry $registry)
     {
         // Appelle le constructeur parent de ServiceDocumentRepository
-        // et lui passe le ManagerRegistry et la classe Event
-        parent::__construct($registry, Event::class);
+        // et lui passe le ManagerRegistry et la classe Events
+        parent::__construct($registry, Events::class);
     }
 
     /**
-     * Sauvegarde l'entité Event dans la base de données MongoDB.
+     * Sauvegarde l'entité Events dans la base de données MongoDB.
      *
-     * @param Event $entity L'entité Event à sauvegarder.
-     * @param bool $flush Indique si les modifications doivent être immédiatement enregistrées dans la base de données. Par défaut, les modifications sont seulement persistées.
+     * @param Events $entity L'entité Events à sauvegarder.
      */
-    public function save(Event $entity, bool $flush = false): void
+    public function save(Events $event): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
-        // Persiste l'entité Event
-        $objectManager->persist($entity);
+        // Persiste l'entité Events
+        $objectManager->persist($event);
 
-        // Si le paramètre $flush est défini sur true, enregistre les modifications dans la base de données
-        if ($flush) {
-            $objectManager->flush();
-        }
+        // Enregistre les modifications dans la base de données
+        $objectManager->flush();
     }
 
     /**
-     * Supprime l'entité Event de la base de données MongoDB.
+     * Supprime l'entité Events de la base de données MongoDB.
      *
-     * @param Event $entity L'entité Event à supprimer.
-     * @param bool $flush Indique si les modifications doivent être immédiatement enregistrées dans la base de données après la suppression. Par défaut, les modifications ne sont pas automatiquement enregistrées.
+     * @param Events $event L'entité Events à supprimer.
      */
-    public function remove(Event $entity, bool $flush = false): void
+    public function remove(Events $event): void
     {
         // Obtient l'ObjectManager spécifique à MongoDB (ODM) de Doctrine
         $objectManager = $this->getDocumentManager();
 
-        // Supprime l'entité Event de l'ObjectManager
-        $objectManager->remove($entity);
+        // Supprime l'entité Events de l'ObjectManager
+        $objectManager->remove($event);
 
-        // Si le paramètre $flush est défini sur true, enregistre les modifications dans la base de données
-        if ($flush) {
-            $objectManager->flush();
-        }
+        // Enregistre les modifications dans la base de données
+        $objectManager->flush();
     }
 }
-
-
