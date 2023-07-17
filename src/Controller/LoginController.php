@@ -24,7 +24,6 @@ class LoginController extends AbstractController
         // Gère la soumission du formulaire
         $form->handleRequest($request);
 
-
         return $this->render('login/index.html.twig', [
             'loginForm' => $form->createView(),
         ]);
