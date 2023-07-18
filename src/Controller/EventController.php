@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Document\Events;
 use App\Repository\EventRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,4 +41,15 @@ class EventController extends AbstractController
             'controller_name' => 'EventController',
         ]);
     }
+
+    #[Route('/categories', name: 'app_event_categories')]
+    public function categories(CategoryRepository $categoryRepository): Response
+    {
+        $categories = $categoryRepository->findAll();
+    
+        return $this->render('categories.html.twig', [
+            'categories' => $categories,
+        ]);
+    }
+    
 }
