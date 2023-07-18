@@ -2,7 +2,6 @@
 
 namespace App\Document;
 
-use App\Repository\TagsRepository;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]

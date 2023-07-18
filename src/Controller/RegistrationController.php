@@ -18,6 +18,7 @@ class RegistrationController extends AbstractController
     #[Route('/registration', name: 'app_registration')]
     public function register(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
+        $message = '';
         // Créer une nouvelle instance de l'entité Users
         $user = new Users();
 
@@ -29,6 +30,14 @@ class RegistrationController extends AbstractController
 
         // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Vérifie si un utilisateur existe déjà avec l'adresse e-mail fournie
+            $existingUser = $userRepository->findOneBy(['email' => $user->getEmail()]);
+            if ($existingUser) {
+                // Si l'utilisateur existe déjà dans la bdd, on le redirige vers une page d'erreur
+                return $this->redirectToRoute('registration_error');
+            }
+
             // Hashe le mot de passe de l'utilisateur en utilisant l'objet UserPasswordHasherInterface
             $hashedPassword = $userPasswordHasher->hashPassword($user, $user->getPassword());
             // Défini le mot de passe hashé dans l'objet Users
@@ -43,7 +52,17 @@ class RegistrationController extends AbstractController
 
         // Affiche le formulaire d'inscription à la vue Twig
         return $this->render('registration/index.html.twig', [
+            'message' => $message,
             'registrationForm' => $form->createView(),
+        ]);
+    }
+
+
+    #[Route('/registration-success', name: 'registration_success')]
+    public function register_success(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    {
+        return $this->render('registration/success.html.twig', [
+            'message' => 'Votre compte a été créé.',
         ]);
     }
 }
