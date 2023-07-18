@@ -24,7 +24,7 @@ function sendData(event) {
   let eventId = {"eventId": divClick.dataset.idEvent};
 
 // Envoi de la requête POST vers Symfony
-fetch('/api/send-data', {
+fetch('/test', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
