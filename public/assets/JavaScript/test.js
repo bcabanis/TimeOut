@@ -1,23 +1,3 @@
-function testCurrentTarget(event) {
-  let divClick = event.currentTarget;
-
-  // Récupère l'identifiant de l'événement à partir de l'élément ou des attributs de données
-  let eventId = divClick.dataset.idEvent;
-
-  // // Supposons que vous ayez une variable "dataToSend" que vous voulez envoyer à PHP
-  let dataToSend = { idEvent: eventId };
-  let params = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
-    body: JSON.stringify(dataToSend),
-  };
-
-  fetch("TestController.php", params);
-
-  console.log(eventId);
-}
 
 function sendData(event) {
   let divClick = event.currentTarget;

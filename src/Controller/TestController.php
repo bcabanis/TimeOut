@@ -19,31 +19,23 @@ class TestController extends AbstractController
     {
 
         // dd($callApiService->getEventData());
-        $dataApi = $callApiService->getEventData();
+        // $dataApi = $callApiService->getEventData();
 
 
         // Récupérer les données envoyées depuis JavaScript
         $data = json_decode($request->getContent(), true);
 
         // Faire quelque chose avec les données (exemple : les afficher)
-        dump($data);
+        // dump($data);
 
         // Vous pouvez également effectuer des traitements supplémentaires ici
         // et renvoyer une réponse JSON si nécessaire
         $responseData = ['status' => 'success', 'message' => 'Données traitées avec succès'];
-        return new JsonResponse($responseData);
+        return new JsonResponse($data);
 
         // dd($dataApi);
         // dump($data['records']);
 
-
-        // if (isset($_POST['data'])) {
-        //     $receivedData = $_POST['data'];
-        //     // Faites quelque chose avec $receivedData
-        //     echo "PHP a reçu : " . $receivedData;
-        // } else {
-        //     echo "Aucune donnée reçue.";
-        // }
 
         // if(isset($_POST)){
         //     $data = file_get_contents("php://input");
