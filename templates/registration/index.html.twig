@@ -20,6 +20,8 @@
     {{ form_errors(registrationForm) }}
     <button type="button" class="btn" onclick="validateAndSubmitForm()">Register</button>
 
+    {{ form_start(registrationForm) }}
+        {{ form_errors(registrationForm) }}
     {{ form_end(registrationForm) }}
 </div>
 
