@@ -2,9 +2,9 @@
 
 namespace App\Document;
 
-use App\Repository\UserRepository;
 use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[MongoDB\Document]
@@ -30,6 +30,10 @@ class Users implements PasswordAuthenticatedUserInterface
 
     #[MongoDB\Field(type: 'string')]
     private string $password;
+
+    #[MongoDB\Field(type: 'string')]
+    #[Assert\EqualTo(propertyPath: 'password', message: 'Les mots de passe ne correspondent pas.')]
+    private ?string $passwordConfirmation;
 
     #[MongoDB\Field(type: 'string')]
     private string $profilPicture;
@@ -71,6 +75,11 @@ class Users implements PasswordAuthenticatedUserInterface
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    public function getPasswordConfirmation(): ?string
+    {
+        return $this->passwordConfirmation;
     }
 
     public function getProfilPicture(): string
@@ -121,6 +130,13 @@ class Users implements PasswordAuthenticatedUserInterface
     public function setPassword(string $password): Users
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function setPasswordConfirmation(?string $passwordConfirmation): self
+    {
+        $this->passwordConfirmation = $passwordConfirmation;
 
         return $this;
     }

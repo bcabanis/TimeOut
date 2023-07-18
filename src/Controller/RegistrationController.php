@@ -30,6 +30,14 @@ class RegistrationController extends AbstractController
 
         // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Vérifie si un utilisateur existe déjà avec l'adresse e-mail fournie
+            $existingUser = $userRepository->findOneBy(['email' => $user->getEmail()]);
+            if ($existingUser) {
+                // Si l'utilisateur existe déjà dans la bdd, on le redirige vers une page d'erreur
+                return $this->redirectToRoute('registration_error');
+            }
+
             // Hashe le mot de passe de l'utilisateur en utilisant l'objet UserPasswordHasherInterface
             $hashedPassword = $userPasswordHasher->hashPassword($user, $user->getPassword());
             // Défini le mot de passe hashé dans l'objet Users
