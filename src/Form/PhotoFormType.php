@@ -14,15 +14,14 @@ class PhotoFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // Ajouter les autres champs du formulaire si nécessaire
-            // ...
+
             ->add('photo', FileType::class, [
                 'label' => 'Télécharger une photo',
                 'mapped' => false,
                 'required' => true,
                 'constraints' => [
                     new File([
-                        'maxSize' => '5M', // Taille maximale du fichier (5 Mo dans cet exemple)
+                        'maxSize' => '5M', 
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
@@ -30,7 +29,7 @@ class PhotoFormType extends AbstractType
                         'mimeTypesMessage' => 'Veuillez télécharger une image JPEG ou PNG valide.',
                     ]),
                     new Image([
-                        'maxSize' => '5M', // Taille maximale de l'image (5 Mo dans cet exemple)
+                        'maxSize' => '5M',
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
