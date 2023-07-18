@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 class PhotoFormType extends AbstractType
 {
@@ -17,6 +19,25 @@ class PhotoFormType extends AbstractType
             ->add('photo', FileType::class, [
                 'label' => 'Télécharger une photo',
                 'mapped' => false,
+                'required' => true,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M', // Taille maximale du fichier (5 Mo dans cet exemple)
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez télécharger une image JPEG ou PNG valide.',
+                    ]),
+                    new Image([
+                        'maxSize' => '5M', // Taille maximale de l'image (5 Mo dans cet exemple)
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez télécharger une image JPEG ou PNG valide.',
+                    ]),
+                ],
             ]);
     }
 
