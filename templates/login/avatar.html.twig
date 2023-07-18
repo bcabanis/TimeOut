@@ -2,34 +2,25 @@
 
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="../assets/css/profilAvatar.css">
-{% endblock %}
-
 {% block body %}
-    <main class="row">
-        <section class="col-5"></section>
-        <section class="col-7">
-            <h4>Télécharger une photo</h4>
+    <h1>Télécharger une photo</h1>
 
-            {% for flashMessage in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ flashMessage }}
-                </div>
-            {% endfor %}
+    {% for flashMessage in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
 
-            {% for flashMessage in app.flashes('error') %}
-                <div class="alert alert-danger">
-                    {{ flashMessage }}
-                </div>
-            {% endfor %}
+    {% for flashMessage in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
 
-            {{ form_start(photoForm) }}
-                {{ form_widget(photoForm) }}
-                <button type="submit" class="btn btn-primary">Télécharger</button>
-            {{ form_end(photoForm) }}
-        </section>
-    </main>
+    {{ form_start(photoForm) }}
+        {{ form_widget(photoForm) }}
+        <button type="submit" class="btn btn-primary">Télécharger</button>
+    {{ form_end(photoForm) }}
 
 
 <h1>PAGE DE CHOIX D'AVATAR</h1>

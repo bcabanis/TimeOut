@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Config\DoctrineMongodb\DocumentManagerConfig;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -87,46 +86,45 @@ class LoginController extends AbstractController
     #[Route('/loginavatar', name: 'app_login_avatar')]
     public function avatar(Request $request): Response
     {
+
         // Créer le formulaire
         $form = $this->createForm(PhotoFormType::class);
 
         // Gérer la soumission du formulaire
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupérer le fichier téléchargé
             $photoFile = $form->get('photo')->getData();
-
+            
             // Vérifier si un fichier a été téléchargé
             if ($photoFile) {
                 // Déplacer le fichier vers le répertoire d'upload
                 $uploadDir = $this->getParameter('photos_upload_directory');
                 $fileName = md5(uniqid()) . '.' . $photoFile->guessExtension();
-
+                
                 try {
                     $photoFile->move($uploadDir, $fileName);
                 } catch (\Exception $e) {
                     // Gérer les erreurs éventuelles liées au téléchargement
                     $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
+                    return $this->redirectToRoute('app_login_avatar');
                 }
-
-                // Enregistrer le nom du fichier dans la base de données MongoDB
-                $photo = new Users();
-                $photo->setProfilPicture($fileName);
-
-                // Afficher un message de succès
+                
+                // Enregistrer le nom du fichier dans la base de données par exemple
+                // ...
+                
+                // Rediriger ou afficher un message de succès
                 $this->addFlash('success', 'La photo a été téléchargée avec succès !');
-            } else {
-                // Afficher un message d'erreur si le formulaire est soumis sans photo
-                $this->addFlash('error', 'Veuillez sélectionner une photo avant de soumettre le formulaire.');
+                return $this->redirectToRoute('app_login_avatar');
             }
-        }
 
+        }
         return $this->render('login/avatar.html.twig', [
             'photoForm' => $form->createView(),
         ]);
+        
     }
-
 
     // Redirection vers le choix des tags
     #[Route('/tags', name: 'app_tags')]

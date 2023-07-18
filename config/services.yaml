@@ -6,8 +6,7 @@
 parameters:
     env(MONGODB_URL): ''
     env(MONGODB_DB): ''
-    mongodb_server: "mongodb://localhost:27017"
-
+    photos_upload_directory: '%kernel.project_dir%/public/uploads/photos'
 
 services:
     # default configuration for services in *this* file
