@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 class Users implements PasswordAuthenticatedUserInterface
 {
     #[MongoDB\Id]
-    private string $id;
+    public string $id;
 
     #[MongoDB\Field(type: 'string')]
     private string $firstName;
@@ -26,10 +26,10 @@ class Users implements PasswordAuthenticatedUserInterface
     private ?DateTimeInterface $dateNaissance;
 
     #[MongoDB\Field(type: 'string')]
-    private string $email;
+    public string $email;
 
     #[MongoDB\Field(type: 'string')]
-    private string $password;
+    public string $password;
 
     #[MongoDB\Field(type: 'string')]
     #[Assert\EqualTo(propertyPath: 'password', message: 'Les mots de passe ne correspondent pas.')]
