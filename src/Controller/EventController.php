@@ -47,9 +47,10 @@ class EventController extends AbstractController
     {
         $categories = $categoryRepository->findAll();
     
-        return $this->render('categories.html.twig', [
+        return $this->render('event/categories.html.twig', [
             'categories' => $categories,
         ]);
     }
+    
     
 }

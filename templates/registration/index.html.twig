@@ -18,7 +18,7 @@
     </ul>
     {{ form_start(registrationForm, {'attr': {'id': 'registrationForm'}}) }}
     {{ form_errors(registrationForm) }}
-    <button type="button" class="btn" onclick="validateAndSubmitForm()">Register</button>
+    <button type="submit" class="btn">Register</button>
 
     {{ form_end(registrationForm) }}
 </div>
@@ -28,30 +28,5 @@
     Merci d'avoir rempli le formulaire !
 </div>
 
-<script>
-    function validateAndSubmitForm() {
-        var formElement = document.getElementById("registrationForm");
-        var formData = new FormData(formElement);
-
-        // Envoyer les données du formulaire au serveur
-        fetch('/registration', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.status != 200) { throw new Error("Bad Server Response"); }
-                return response.text();
-        })
-        .then(html => {
-            document.querySelector('#modal .modal-body').innerHTML = html;
-            const myModal = new bootstrap.Modal('#modal', {keyboard: false})
-            myModal.show();
-            // ici
-        })
-        .catch(error => {
-            console.error('Une erreur s\'est produite lors de la validation :', error);
-        });
-    }
-</script>
 
 {% endblock %}
