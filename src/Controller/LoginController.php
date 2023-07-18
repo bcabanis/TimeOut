@@ -30,34 +30,17 @@ class LoginController extends AbstractController
         ]);
     }
 
+    // Redirection vers la personnalisation du profil
     #[Route('/profil', name: 'app_profil')]
-    public function profil(): Response
+    public function personnalisation(): Response
     {
         return $this->render('login/profil.html.twig', [
             'controller_name' => 'LoginController',
         ]);
     }
 
-    // Redirection vers la connexion
-    #[Route('/loginconnexion', name: 'app_login_connexion')]
-    public function connexion(): Response
-    {
-        return $this->render('login/connexion.html.twig', [
-            'controller_name' => 'LoginController',
-        ]);
-    }
-
-    // Redirection vers la personnalisation
-    #[Route('/loginpersonnalisation', name: 'app_login_personnalisation')]
-    public function personnalisation(): Response
-    {
-        return $this->render('login/personnalisation.html.twig', [
-            'controller_name' => 'LoginController',
-        ]);
-    }
-
     // Redirection vers le choix des avatars
-    #[Route('/loginavatar', name: 'app_login_avatar')]
+    #[Route('/avatar', name: 'app_avatar')]
     public function avatar(): Response
     {
         return $this->render('login/avatar.html.twig', [
@@ -66,7 +49,7 @@ class LoginController extends AbstractController
     }
 
     // Redirection vers le choix des tags
-    #[Route('/logintags', name: 'app_login_tags')]
+    #[Route('/tags', name: 'app_tags')]
     public function tags(): Response
     {
         return $this->render('login/tags.html.twig', [
