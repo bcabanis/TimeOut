@@ -6,9 +6,10 @@ use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[MongoDB\Document]
-class Users implements PasswordAuthenticatedUserInterface
+class Users implements PasswordAuthenticatedUserInterface, UserInterface
 {
     #[MongoDB\Id]
     private string $id;
@@ -44,7 +45,6 @@ class Users implements PasswordAuthenticatedUserInterface
     #[MongoDB\Field(type: 'string')]
     private string $role;
 
-
     public function getId(): string
     {
         return $this->id;
@@ -55,9 +55,23 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this->firstName;
     }
 
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
     public function getLastName(): string
     {
         return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
     }
 
     public function getPseudo(): string
@@ -65,9 +79,23 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this->pseudo;
     }
 
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
     public function getCity(): string
     {
         return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
     }
 
     public function getDateNaissance(): ?DateTimeInterface
@@ -75,9 +103,23 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this->dateNaissance;
     }
 
+    public function setDateNaissance(?DateTimeInterface $dateNaissance): self
+    {
+        $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
     }
 
     public function getPassword(): string
@@ -85,68 +127,16 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function getPasswordConfirmation(): ?string
-    {
-        return $this->passwordConfirmation;
-    }
-
-    public function getProfilPicture(): string
-    {
-        return $this->profilPicture;
-    }
-
-    public function getRole(): string
-    {
-        return $this->role;
-    }
-
-    public function setFirstName(string $firstName): Users
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function setLastName(string $lastName): Users
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function setPseudo(string $pseudo): Users
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    public function setCity(string $city): Users
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function setDateNaissance(DateTimeInterface $dateNaissance): Users
-    {
-        $this->dateNaissance = $dateNaissance;
-
-        return $this;
-    }
-
-    public function setEmail(string $email): Users
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function setPassword(string $password): Users
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 
         return $this;
+    }
+
+    public function getPasswordConfirmation(): ?string
+    {
+        return $this->passwordConfirmation;
     }
 
     public function setPasswordConfirmation(?string $passwordConfirmation): self
@@ -156,37 +146,47 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function setProfilPicture(string $profilPicture): Users
+    public function getProfilPicture(): string
+    {
+        return $this->profilPicture;
+    }
+
+    public function setProfilPicture(string $profilPicture): self
     {
         $this->profilPicture = $profilPicture;
 
         return $this;
     }
 
-    public function setRole(string $role): Users
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
     {
         $this->role = $role;
 
         return $this;
     }
-// 
+
+    public function getUserIdentifier(): string
+    {
+        return $this->pseudo;
+    }
+
+    public function getRoles(): array
+    {
+        return [$this->role];
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // Ne rien faire dans cette méthode
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

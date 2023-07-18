@@ -2,6 +2,8 @@
 
 namespace App\Document;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
@@ -11,10 +13,10 @@ class Events
     private string $id;
 
     #[MongoDB\Field(type: 'date')]
-    private string $startDate;
+    private \DateTime $startDate;
 
     #[MongoDB\Field(type: 'date')]
-    private string $endDate;
+    private \DateTime $endDate;
 
     #[MongoDB\Field(type: 'string')]
     private string $description;
@@ -31,20 +33,39 @@ class Events
     #[MongoDB\Field(type: 'string')]
     private string $title;
 
+    #[MongoDB\EmbedMany(targetDocument: ChatMessage::class)]
+    private Collection $messages;
+
+    public function __construct()
+    {
+        $this->messages = new ArrayCollection();
+    }
 
     public function getId(): string
     {
         return $this->id;
     }
 
-    public function getStartDate(): string
+    public function getStartDate(): \DateTime
     {
         return $this->startDate;
     }
 
-    public function getEndDate(): string
+    public function setStartDate(\DateTime $startDate): self
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+
+    public function getEndDate(): \DateTime
     {
         return $this->endDate;
+    }
+
+    public function setEndDate(\DateTime $endDate): self
+    {
+        $this->endDate = $endDate;
+        return $this;
     }
 
     public function getDescription(): string
@@ -52,9 +73,21 @@ class Events
         return $this->description;
     }
 
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+        return $this;
+    }
+
     public function getPicture(): string
     {
         return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+        return $this;
     }
 
     public function getPlace(): string
@@ -62,9 +95,21 @@ class Events
         return $this->place;
     }
 
+    public function setPlace(string $place): self
+    {
+        $this->place = $place;
+        return $this;
+    }
+
     public function getPlanner(): string
     {
         return $this->planner;
+    }
+
+    public function setPlanner(string $planner): self
+    {
+        $this->planner = $planner;
+        return $this;
     }
 
     public function getTitle(): string
@@ -72,53 +117,26 @@ class Events
         return $this->title;
     }
 
-    public function setstartDate(\DateTime $startDate): Events
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    public function setendDate(\DateTime $endDate): Events
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    public function setDescription(string $description): Events
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function setPicture(string $picture): Events
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    public function setPlace(string $place): Events
-    {
-        $this->place = $place;
-
-        return $this;
-    }
-
-    public function setPlanner(string $planner): Events
-    {
-        $this->planner = $planner;
-
-        return $this;
-    }
-
-    public function setTitle(string $title): Events
+    public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
-// 
+
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(ChatMessage $message): self
+    {
+        $this->messages[] = $message;
+        return $this;
+    }
+
+    public function removeMessage(ChatMessage $message): self
+    {
+        $this->messages->removeElement($message);
+        return $this;
+    }
 }
