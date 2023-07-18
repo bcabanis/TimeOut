@@ -41,6 +41,9 @@ class Users implements PasswordAuthenticatedUserInterface
     #[MongoDB\Field(type: 'string')]
     private string $role;
 
+    #[MongoDB\Field(type: 'string')]
+    private string $pseudo;
+
 
     public function getId(): string
     {
@@ -90,6 +93,11 @@ class Users implements PasswordAuthenticatedUserInterface
     public function getRole(): string
     {
         return $this->role;
+    }
+
+    public function getPseudo(): string
+    {
+        return $this->pseudo;
     }
 
     public function setFirstName(string $firstName): Users
@@ -151,6 +159,12 @@ class Users implements PasswordAuthenticatedUserInterface
     public function setRole(string $role): Users
     {
         $this->role = $role;
+
+        return $this;
+    }
+    public function setPseudo(string $pseudo): Users
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }

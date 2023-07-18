@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Document\Users;
 use App\Form\LoginFormType;
+use App\Form\ProfilFormType;
 use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -48,7 +49,14 @@ class LoginController extends AbstractController
 
             // Compare si le mot de passe fourni correspond au mot de passe de l'utilisateur
             if (password_verify($user->getPassword(), $authenticatedUser->password)) {
-                // Stocke l'e-mail de l'utilisateur connecté dans la session
+
+                // Vérifie si les informations de personnalisation ont déjà été remplies
+                // if ($authenticatedUser->getFirstName() && $authenticatedUser->getLastName() && $authenticatedUser->getCity() && $authenticatedUser->getPseudo()) {
+                    // Les informations de personnalisation sont déjà remplies, rediriger vers le dashboard
+                   // return $this->redirectToRoute('app_dashboard');
+                
+
+                // Stocker l'e-mail de l'utilisateur connecté dans la session
                 $sessionInterface->set('email', $user->getEmail());
             }
 
@@ -74,10 +82,19 @@ class LoginController extends AbstractController
 
     // Redirection vers la personnalisation du profil
     #[Route('/profil', name: 'app_profil')]
-    public function profil(): Response
+    public function profil(Request $request): Response
     {
+        // Créer une nouvelle instance de l'entité Users
+        $user = new Users();
+
+        // Créer le formulaire d'inscription en utilisant ProfilFormType et l'entité Users
+        $form = $this->createForm(ProfilFormType::class, $user);
+
+        // Gère la soumission du formulaire
+        $form->handleRequest($request);
+        
         return $this->render('login/profil.html.twig', [
-            'controller_name' => 'LoginController',
+            'profilForm' => $form->createView(),
         ]);
     }
 
