@@ -17,16 +17,12 @@
         <li>Your template at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/registration/index.html.twig'|file_link(0) }}">templates/registration/index.html.twig</a></code></li>
     </ul>
     {{ form_start(registrationForm, {'attr': {'id': 'registrationForm'}}) }}
-    {{ form_errors(registrationForm) }}
-    <button type="button" class="btn" onclick="validateAndSubmitForm()">Register</button>
-
-    {{ form_start(registrationForm) }}
         {{ form_errors(registrationForm) }}
     {{ form_end(registrationForm) }}
 </div>
 
 <h1>PAGE D'INSCRIPTION</h1>
-<a href="{{ path('app_login_connexion') }}">Page de connexion</a>
+<a href="{{ path('app_login') }}">Page de connexion</a>
 <!-- Afficher un message de validation caché -->
 <div id="validationMessage" style="display: none; text-align: center; font-weight: bold;">
     Merci d'avoir rempli le formulaire !
