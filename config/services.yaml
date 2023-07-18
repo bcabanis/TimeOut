@@ -26,3 +26,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Repository\UserRepository:
+        arguments:
+            - '@doctrine_mongodb' # Injects the Doctrine MongoDB DocumentManager service
+        public: true
+
+    Doctrine\ODM\MongoDB\DocumentManager:
+        factory: ['@doctrine_mongodb.odm.default_document_manager', 'create']
+        public: true
+
+    Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface: '@security.encoder_factory.default'
