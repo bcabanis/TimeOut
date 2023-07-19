@@ -1,4 +1,3 @@
-alert('yo');
 
 document.addEventListener('DOMContentLoaded', (e) => {
 
