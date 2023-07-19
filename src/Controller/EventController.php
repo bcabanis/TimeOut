@@ -26,6 +26,8 @@ class EventController extends AbstractController
         $image = "";
         $region = "";
 
+        $dataForJs = [];
+
 
         $dataTags = $callApiService->getDataByTags();
         foreach ($dataTags['records'] as $data) {
@@ -42,7 +44,7 @@ class EventController extends AbstractController
             // $endDate = $dataFields['timings'].['end'];
 
             $existingEvent = $eventRepository->findOneBy(['title' => $title]);
-            
+
             if (!$existingEvent) {
                 $event = new Events();
                 $event->setTitle($title);
@@ -52,12 +54,25 @@ class EventController extends AbstractController
                 $event->setAdresse($adresse);
                 $event->setPicture($image);
                 $event->setEventId($eventId);
-                // $event->setDescription($beginDate);
-                // $event->setDescription($endDate);
-    
-                $eventRepository->save($event);
-            }
 
+                $eventRepository->save($event);
+
+                $dataForJs = [
+                    'title' => $title,
+                    'description' => $description,
+                    'city' => $city,
+                    'region' => $region,
+                    'adresse' => $adresse,
+                    'image' => $image,
+                    'eventId' => $eventId,
+
+                ];
+
+                // Retourne les données dans le template requis 
+                return $this->render('event/index.html.twig', [
+                    'jsonData' => $dataForJs,
+                ]);
+            }
         }
 
 
@@ -85,11 +100,9 @@ class EventController extends AbstractController
     public function categories(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
-    
+
         return $this->render('event/categories.html.twig', [
             'categories' => $categories,
         ]);
     }
-    
-    
 }
