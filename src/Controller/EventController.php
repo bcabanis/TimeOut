@@ -18,6 +18,14 @@ class EventController extends AbstractController
     #[Route('/', name: 'app_event')]
     public function index(EventRepository $eventRepository, CallApiService $callApiService): Response
     {
+        return $this->render('event/index.html.twig', [
+            'categories' => "dadz",
+        ]);
+    }
+
+    #[Route('/affiche_event', name: 'app_affiche_event')]
+    public function testApi(EventRepository $eventRepository, CallApiService $callApiService): Response
+    {
         $title = "";
         $description = "";
         $city = "";
@@ -26,7 +34,9 @@ class EventController extends AbstractController
         $image = "";
         $region = "";
 
+        $dataTabForJs = [];
         $dataForJs = [];
+
 
 
         $dataTags = $callApiService->getDataByTags();
@@ -34,7 +44,12 @@ class EventController extends AbstractController
             $dataFields = $data['fields'];
 
             $title = $dataFields['title_fr'];
-            $description = $dataFields['longdescription_fr'];
+            if (isset($dataFields->longdescription_fr)) {
+                $description = $dataFields['longdescription_fr'];
+            } else {
+                $description = $dataFields['description_fr'];
+            }
+            
             $city = $dataFields['location_city'];
             $region = $dataFields['location_region'];
             $adresse = $dataFields['location_address'];
@@ -57,42 +72,28 @@ class EventController extends AbstractController
 
                 $eventRepository->save($event);
 
-                $dataForJs = [
-                    'title' => $title,
-                    'description' => $description,
-                    'city' => $city,
-                    'region' => $region,
-                    'adresse' => $adresse,
-                    'image' => $image,
-                    'eventId' => $eventId,
 
-                ];
-
-                // Retourne les données dans le template requis 
-                return $this->render('event/index.html.twig', [
-                    'jsonData' => $dataForJs,
-                ]);
             }
+            $dataTabForJs = [
+                'title' => $title,
+                'description' => $description,
+                'city' => $city,
+                'region' => $region,
+                'adresse' => $adresse,
+                'image' => $image,
+                'eventId' => $eventId,
+
+            ];
+
+            $dataForJs[] = $dataTabForJs;
+            
+            
+
         }
-
-
-
-        return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
-        ]);
-    }
-
-    #[Route('/test_api', name: 'app_event_test_api')]
-    public function testApi(EventRepository $eventRepository): Response
-    {
-        $event = new Events();
-        $event->setDescription('Message de test');
-        $event->setPlace('Paris');
-
-        $eventRepository->save($event);
-
-        return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
+        // dd($dataForJs);
+        // Retourne les données dans le template requis 
+        return $this->render('event/affichageEvent.html.twig', [
+            'jsonData' => $dataForJs,
         ]);
     }
 
