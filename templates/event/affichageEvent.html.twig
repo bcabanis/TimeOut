@@ -16,10 +16,20 @@
         <li>Your template at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/event/index.html.twig'|file_link(0) }}">templates/event/index.html.twig</a></code></li>
 
     </ul>
-    <a href="{{ path('app_affiche_event')}}">Affichage event</a>
 </div>
+<section class="row">
+{% for data in jsonData %}
+    
+    <article class="card-event col-6">
+        <h1>{{ data.title }}</h1>
+        <img src="{{ data.image }}" alt="" style="width: 200px">
+        <p>{{ data.description }}</p>
+        <p>{{ data.city }} {{ data.region }} {{ data.adresse }}</p>
+        <a href="#" class="btn btn-primary btn-participer" data-id-event="{{ data.eventId }}">Participer</a>
+    </article>
+{% endfor %}
+</section>
 
 
-
-
+<script src="/assets/JavaScript/test.js"></script>
 {% endblock %}

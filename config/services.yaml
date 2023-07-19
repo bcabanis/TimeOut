@@ -37,3 +37,5 @@ services:
         public: true
 
     Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface: '@security.encoder_factory.default'
+
+    

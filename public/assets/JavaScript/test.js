@@ -3,6 +3,7 @@ function sendData(event) {
   let divClick = event.currentTarget;
   let eventId = {"eventId": divClick.dataset.idEvent};
 
+  console.log(divClick.dataset);
 // Envoi de la requête POST vers Symfony
 fetch('/test', {
   method: 'POST',

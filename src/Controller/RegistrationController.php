@@ -63,7 +63,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/registration-success', name: 'registration_success')]
-    public function register_success(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function register_success(): Response
     {
         return $this->render('registration/success.html.twig', [
             'message' => 'Votre compte a été créé.',

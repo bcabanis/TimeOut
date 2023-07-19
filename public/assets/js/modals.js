@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', (e) => {
 
     //@todo : Ajouter une classe pour de cibler que les formulaire devant lancer des modals
