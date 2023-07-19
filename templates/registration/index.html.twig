@@ -17,41 +17,16 @@
         <li>Your template at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/registration/index.html.twig'|file_link(0) }}">templates/registration/index.html.twig</a></code></li>
     </ul>
     {{ form_start(registrationForm, {'attr': {'id': 'registrationForm'}}) }}
-        {{ form_errors(registrationForm) }}
+    {{ form_errors(registrationForm) }}
+    <button type="submit" class="btn">Register</button>
+
     {{ form_end(registrationForm) }}
 </div>
 
-<h1>PAGE D'INSCRIPTION</h1>
-<a href="{{ path('app_login') }}">Page de connexion</a>
 <!-- Afficher un message de validation caché -->
 <div id="validationMessage" style="display: none; text-align: center; font-weight: bold;">
     Merci d'avoir rempli le formulaire !
 </div>
 
-<script>
-    function validateAndSubmitForm() {
-        var formElement = document.getElementById("registrationForm");
-        var formData = new FormData(formElement);
-
-        // Envoyer les données du formulaire au serveur
-        fetch('/registration', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.status != 200) { throw new Error("Bad Server Response"); }
-                return response.text();
-        })
-        .then(html => {
-            document.querySelector('#modal .modal-body').innerHTML = html;
-            const myModal = new bootstrap.Modal('#modal', {keyboard: false})
-            myModal.show();
-            // ici
-        })
-        .catch(error => {
-            console.error('Une erreur s\'est produite lors de la validation :', error);
-        });
-    }
-</script>
 
 {% endblock %}
