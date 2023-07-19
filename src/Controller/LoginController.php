@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use MongoDB\Client;
 use App\Document\Users;
 use App\Form\LoginFormType;
 use App\Form\PhotoFormType;
+use App\Form\ProfilFormType;
 use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +16,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Security;
+
 
 #[Route('/login')]
 class LoginController extends AbstractController
@@ -49,7 +53,14 @@ class LoginController extends AbstractController
 
             // Compare si le mot de passe fourni correspond au mot de passe de l'utilisateur
             if (password_verify($user->getPassword(), $authenticatedUser->password)) {
-                // Stocke l'e-mail de l'utilisateur connecté dans la session
+
+                // Vérifie si les informations de personnalisation ont déjà été remplies
+                // if ($authenticatedUser->getFirstName() && $authenticatedUser->getLastName() && $authenticatedUser->getCity() && $authenticatedUser->getPseudo()) {
+                // Les informations de personnalisation sont déjà remplies, rediriger vers le dashboard
+                // return $this->redirectToRoute('app_dashboard');
+
+
+                // Stocker l'e-mail de l'utilisateur connecté dans la session
                 $sessionInterface->set('email', $user->getEmail());
             }
 
@@ -75,21 +86,28 @@ class LoginController extends AbstractController
 
     // Redirection vers la personnalisation du profil
     #[Route('/profil', name: 'app_profil')]
-    public function profil(): Response
+    public function profil(Request $request): Response
     {
+        // Créer une nouvelle instance de l'entité Users
+        $user = new Users();
+
+        // Créer le formulaire d'inscription en utilisant ProfilFormType et l'entité Users
+        $form = $this->createForm(ProfilFormType::class, $user);
+
+        // Gère la soumission du formulaire
+        $form->handleRequest($request);
+
         return $this->render('login/profil.html.twig', [
-            'controller_name' => 'LoginController',
+            'profilForm' => $form->createView(),
         ]);
     }
 
-    // Redirection vers le choix des avatars
     #[Route('/loginavatar', name: 'app_login_avatar')]
     public function avatar(Request $request): Response
     {
-
         // Créer le formulaire
         $form = $this->createForm(PhotoFormType::class);
-
+    
         // Gérer la soumission du formulaire
         $form->handleRequest($request);
         
@@ -111,19 +129,30 @@ class LoginController extends AbstractController
                     return $this->redirectToRoute('app_login_avatar');
                 }
                 
-                // Enregistrer le nom du fichier dans la base de données par exemple
-                // ...
+                // Enregistrer le nom du fichier dans la base de données
+                $this->savePhotoToDatabase($fileName);
                 
                 // Rediriger ou afficher un message de succès
                 $this->addFlash('success', 'La photo a été téléchargée avec succès !');
                 return $this->redirectToRoute('app_login_avatar');
             }
-
         }
+    
         return $this->render('login/avatar.html.twig', [
             'photoForm' => $form->createView(),
         ]);
-        
+    }
+    
+    // Function to save the photo filename to the MongoDB database
+    private function savePhotoToDatabase(string $fileName): void
+    {
+        // Replace 'your_connection_string' with the actual connection string to your MongoDB server
+        $mongoClient = new Client('mongodb+srv://gettogetherpasserelle:notion23@cluster0.vvlyofu.mongodb.net/get-together?retryWrites=true&w=majority');
+        $database = $mongoClient->selectDatabase('GetTogether');
+        $collection = $database->selectCollection('Users');
+    
+        // Store the filename in the 'photos' field in the collection
+        $collection->insertOne(['photos' => $fileName]);
     }
 
     // Redirection vers le choix des tags
