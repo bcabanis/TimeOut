@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use App\Document\Category;
 use App\Document\Events;
 use App\Repository\EventRepository;
 use App\Repository\CategoryRepository;
@@ -42,15 +42,26 @@ class EventController extends AbstractController
         ]);
     }
 
+    
     #[Route('/categories', name: 'app_event_categories')]
-    public function categories(CategoryRepository $categoryRepository): Response
+    public function categories(CategoryRepository $categoryRepository, DocumentManager $dm): Response
     {
-        $categories = $categoryRepository->findAll();
-    
-        return $this->render('event/categories.html.twig', [
-            'categories' => $categories,
-        ]);
+    $categories = $categoryRepository->findAllCategories();
+
+    $category = new Category();
+    $category->setName('Musique');
+    $category->addSubCategory('Rock');
+    $category->addSubCategory('Rap');
+    $category->addSubCategory('Techno');
+    $category->addSubCategory('Jazz');
+    $category->addSubCategory('Métal');
+    $dm->persist($category);
+    $dm->flush();
+
+    return $this->render('event/categories.html.twig', [
+        'categories' => $categories,
+    ]);
     }
-    
+
     
 }
