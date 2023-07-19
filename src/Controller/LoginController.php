@@ -6,8 +6,9 @@ use App\Document\Users;
 use App\Form\LoginFormType;
 use App\Form\ProfilFormType;
 use App\Repository\UserRepository;
-use Doctrine\ODM\MongoDB\DocumentManager;
+use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -19,7 +20,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends AbstractController
 {
     #[Route('/', name: 'app_login')]
-    public function login(Request $request, DocumentManager $documentManager, AuthenticationUtils $authenticationUtils, UserRepository $userRepository, SessionInterface $sessionInterface): Response
+    public function login(Request $request, ManagerRegistry $managerRegistry, AuthenticationUtils $authenticationUtils, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
         // Récupère les erreurs d'authentification
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -39,7 +40,7 @@ class LoginController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupère l'utilisateur correspondant à l'adresse e-mail fournie depuis la base de données
-            $userRepository = $documentManager->getRepository(Users::class);
+            $userRepository = $managerRegistry->getRepository(Users::class);
             $authenticatedUser = $userRepository->findOneBy(['email' => $user->getEmail()]);
 
             if (!$authenticatedUser) {
@@ -50,13 +51,14 @@ class LoginController extends AbstractController
             // Compare si le mot de passe fourni correspond au mot de passe de l'utilisateur
             if (password_verify($user->getPassword(), $authenticatedUser->password)) {
 
-                // Vérifie si les informations de personnalisation ont déjà été remplies
-                // if ($authenticatedUser->getFirstName() && $authenticatedUser->getLastName() && $authenticatedUser->getCity() && $authenticatedUser->getPseudo()) {
-                    // Les informations de personnalisation sont déjà remplies, rediriger vers le dashboard
-                   // return $this->redirectToRoute('app_dashboard');
-                
+                // Vérifie si l'utilisateur a déjà rempli les informations de profil
+                if ($authenticatedUser->hasFilledProfile()) {
 
-                // Stocker l'e-mail de l'utilisateur connecté dans la session
+                    // Redirige vers le dashboard
+                    return new RedirectResponse($this->generateUrl('app_dashboard'));
+                }
+
+                // Stocke l'e-mail de l'utilisateur connecté dans la session
                 $sessionInterface->set('email', $user->getEmail());
             }
 
@@ -82,17 +84,28 @@ class LoginController extends AbstractController
 
     // Redirection vers la personnalisation du profil
     #[Route('/profil', name: 'app_profil')]
-    public function profil(Request $request): Response
+    public function profil(Request $request, UserRepository $userRepository, SessionInterface $session): Response
     {
-        // Créer une nouvelle instance de l'entité Users
-        $user = new Users();
+        // Récupérer l'email de l'utilisateur connecté depuis la session
+        $email = $session->get('email');
 
-        // Créer le formulaire d'inscription en utilisant ProfilFormType et l'entité Users
+        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        $user = $userRepository->findOneBy(['email' => $email]);
+
+        // Créer le formulaire de profil en utilisant ProfilFormType et l'utilisateur récupéré
         $form = $this->createForm(ProfilFormType::class, $user);
 
-        // Gère la soumission du formulaire
+        // Gérer la soumission du formulaire
         $form->handleRequest($request);
-        
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Enregistrer les modifications de l'utilisateur dans la base de données
+            $userRepository->save($user);
+
+            // Rediriger l'utilisateur vers une autre page (par exemple, le dashboard)
+            return $this->redirectToRoute('app_avatar');
+        }
+
         return $this->render('login/profil.html.twig', [
             'profilForm' => $form->createView(),
         ]);
@@ -100,8 +113,20 @@ class LoginController extends AbstractController
 
     // Redirection vers le choix des avatars
     #[Route('/avatar', name: 'app_avatar')]
-    public function avatar(): Response
+    public function avatar(Request $request, UserRepository $userRepository, SessionInterface $session): Response
     {
+        // Récupérer l'email de l'utilisateur connecté depuis la session
+        $email = $session->get('email');
+
+        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        $user = $userRepository->findOneBy(['email' => $email]);
+
+        // marque le user comme rempli
+        $user->fill();
+
+        // Enregistrer les modifications de l'utilisateur dans la base de données
+        $userRepository->save($user);
+
         return $this->render('login/avatar.html.twig', [
             'controller_name' => 'LoginController',
         ]);
@@ -109,8 +134,20 @@ class LoginController extends AbstractController
 
     // Redirection vers le choix des tags
     #[Route('/tags', name: 'app_tags')]
-    public function tags(): Response
+    public function tags(Request $request, UserRepository $userRepository, SessionInterface $session): Response
     {
+        // Récupérer l'email de l'utilisateur connecté depuis la session
+        $email = $session->get('email');
+
+        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        $user = $userRepository->findOneBy(['email' => $email]);
+
+        // marque le user comme rempli
+        $user->fill();
+
+        // Enregistrer les modifications de l'utilisateur dans la base de données
+        $userRepository->save($user);
+
         return $this->render('login/tags.html.twig', [
             'controller_name' => 'LoginController',
         ]);

@@ -13,6 +13,7 @@ class UserRepository extends ServiceDocumentRepository
         // Appelle le constructeur parent de ServiceDocumentRepository
         // et lui passe le ManagerRegistry et la classe Users
         parent::__construct($registry, Users::class);
+        
     }
 
     /**
@@ -48,4 +49,6 @@ class UserRepository extends ServiceDocumentRepository
         // Enregistre les modifications dans la base de données
         $objectManager->flush();
     }
+
+
 }
