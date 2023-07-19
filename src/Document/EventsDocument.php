@@ -31,6 +31,10 @@ class Events
     #[MongoDB\Field(type: 'string')]
     private string $title;
 
+    #[MongoDB\ReferenceMany(targetDocument:ChatMessage::class, mappedBy:"event")]
+    private $chatMessages; // Collection des messages de chat associés à l'événement
+
+
 
     public function getId(): string
     {
@@ -72,14 +76,26 @@ class Events
         return $this->title;
     }
 
-    public function setstartDate(\DateTime $startDate): Events
+    public function getChatMessages()
+    {
+        return $this->chatMessages;
+    }
+
+    public function setId(string $id): Events
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function setStartDate(\DateTime $startDate): Events
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function setendDate(\DateTime $endDate): Events
+    public function setEndDate(\DateTime $endDate): Events
     {
         $this->endDate = $endDate;
 
@@ -119,6 +135,11 @@ class Events
         $this->title = $title;
 
         return $this;
+    }
+
+    public function setChatMessages($chatMessages): void
+    {
+        $this->chatMessages = $chatMessages;
     }
 // 
 }
