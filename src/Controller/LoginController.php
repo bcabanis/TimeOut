@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use MongoDB\Client;
 use App\Document\Users;
 use App\Form\LoginFormType;
 use App\Form\PhotoFormType;
@@ -14,6 +15,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Security;
+
 
 #[Route('/login')]
 class LoginController extends AbstractController
@@ -82,49 +85,65 @@ class LoginController extends AbstractController
         ]);
     }
 
-    // Redirection vers le choix des avatars
     #[Route('/loginavatar', name: 'app_login_avatar')]
-    public function avatar(Request $request): Response
-    {
+public function avatar(Request $request, Security $security): Response
+{
+    // Créer le formulaire
+    $form = $this->createForm(PhotoFormType::class);
 
-        // Créer le formulaire
-        $form = $this->createForm(PhotoFormType::class);
-
-        // Gérer la soumission du formulaire
-        $form->handleRequest($request);
+    // Gérer la soumission du formulaire
+    $form->handleRequest($request);
+    
+    if ($form->isSubmitted() && $form->isValid()) {
+        // Récupérer le fichier téléchargé
+        $photoFile = $form->get('photo')->getData();
         
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Récupérer le fichier téléchargé
-            $photoFile = $form->get('photo')->getData();
+        // Vérifier si un fichier a été téléchargé
+        if ($photoFile) {
+            // Déplacer le fichier vers le répertoire d'upload
+            $uploadDir = $this->getParameter('photos_upload_directory');
+            $fileName = md5(uniqid()) . '.' . $photoFile->guessExtension();
             
-            // Vérifier si un fichier a été téléchargé
-            if ($photoFile) {
-                // Déplacer le fichier vers le répertoire d'upload
-                $uploadDir = $this->getParameter('photos_upload_directory');
-                $fileName = md5(uniqid()) . '.' . $photoFile->guessExtension();
-                
-                try {
-                    $photoFile->move($uploadDir, $fileName);
-                } catch (\Exception $e) {
-                    // Gérer les erreurs éventuelles liées au téléchargement
-                    $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
-                    return $this->redirectToRoute('app_login_avatar');
-                }
-                
-                // Enregistrer le nom du fichier dans la base de données par exemple
-                // ...
-                
-                // Rediriger ou afficher un message de succès
-                $this->addFlash('success', 'La photo a été téléchargée avec succès !');
+            try {
+                $photoFile->move($uploadDir, $fileName);
+            } catch (\Exception $e) {
+                // Gérer les erreurs éventuelles liées au téléchargement
+                $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
                 return $this->redirectToRoute('app_login_avatar');
             }
-
+            
+            // Get the currently logged-in user
+            $user = $security->getUser();
+            
+            if (!$user) {
+                throw $this->createNotFoundException('User not found.');
+            }
+            
+            // Enregistrer le nom du fichier dans la base de données pour l'utilisateur existant
+            $this->savePhotoToDatabase($user->getId(), $fileName);
+            
+            // Rediriger ou afficher un message de succès
+            $this->addFlash('success', 'La photo a été téléchargée avec succès !');
+            return $this->redirectToRoute('app_login_avatar');
         }
-        return $this->render('login/avatar.html.twig', [
-            'photoForm' => $form->createView(),
-        ]);
-        
     }
+
+    return $this->render('login/avatar.html.twig', [
+        'photoForm' => $form->createView(),
+    ]);
+}
+
+// Function to save the photo filename to the MongoDB database for the given user
+private function savePhotoToDatabase(int $userId, string $fileName): void
+{
+    // Replace 'your_connection_string' with the actual connection string to your MongoDB server
+    $mongoClient = new Client('your_connection_string');
+    $database = $mongoClient->selectDatabase('your_database_name');
+    $collection = $database->selectCollection('your_collection_name');
+
+    // Store the filename in the 'photos' field in the collection, along with the user ID
+    $collection->insertOne(['user_id' => $userId, 'photos' => $fileName]);
+}
 
     // Redirection vers le choix des tags
     #[Route('/tags', name: 'app_tags')]
