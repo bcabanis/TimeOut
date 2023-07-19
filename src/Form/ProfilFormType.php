@@ -20,7 +20,7 @@ class ProfilFormType extends AbstractType
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom'
             ])
-            ->add('username', TextType::class, [
+            ->add('pseudo', TextType::class, [
                 'label' => 'Pseudo'
             ])
             ->add('city', TextType::class, [

@@ -31,10 +31,10 @@ class RegistrationController extends AbstractController
         // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // Vérifie si un utilisateur existe déjà avec l'adresse e-mail fournie
+            // Vérifie si un utilisateur existe déjà dans la base de données avec l'adresse e-mail fournie
             $existingUser = $userRepository->findOneBy(['email' => $user->getEmail()]);
             if ($existingUser) {
-                // Si l'utilisateur existe déjà dans la bdd, on le redirige vers une page d'erreur
+                // Si l'utilisateur existe déjà dans la base de données, on le redirige vers une page d'erreur
                 return $this->redirectToRoute('registration_error');
             }
 
