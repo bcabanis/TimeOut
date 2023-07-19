@@ -23,13 +23,22 @@ class Events
     private string $picture;
 
     #[MongoDB\Field(type: 'string')]
-    private string $place;
+    private string $city;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $region;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $adresse;
 
     #[MongoDB\Field(type: 'string')]
     private string $planner;
 
     #[MongoDB\Field(type: 'string')]
     private string $title;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $eventId;
 
 
     public function getId(): string
@@ -57,9 +66,19 @@ class Events
         return $this->picture;
     }
 
-    public function getPlace(): string
+    public function getCity(): string
     {
-        return $this->place;
+        return $this->city;
+    }
+
+    public function getRegion(): string
+    {
+        return $this->region;
+    }
+
+    public function getAdresse(): string
+    {
+        return $this->adresse;
     }
 
     public function getPlanner(): string
@@ -70,6 +89,11 @@ class Events
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function getEventId(): string
+    {
+        return $this->eventId;
     }
 
     public function setstartDate(\DateTime $startDate): Events
@@ -100,9 +124,23 @@ class Events
         return $this;
     }
 
-    public function setPlace(string $place): Events
+    public function setCity(string $city): Events
     {
-        $this->place = $place;
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function setRegion(string $region): Events
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    public function setAdresse(string $adresse): Events
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
@@ -117,6 +155,13 @@ class Events
     public function setTitle(string $title): Events
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function setEventId(string $eventId): Events
+    {
+        $this->eventId = $eventId;
 
         return $this;
     }

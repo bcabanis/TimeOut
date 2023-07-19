@@ -18,23 +18,17 @@ class TestController extends AbstractController
     public function index(CallApiService $callApiService, UserRepository $userRepository, Request $request): Response
     {
 
-        // dd($callApiService->getEventData());
-        // $dataApi = $callApiService->getEventData();
+
+        dd($callApiService->getDataByTags("musique"));
+
+        $dataTags = $callApiService->getDataByTags("musique");
 
 
-        // Récupérer les données envoyées depuis JavaScript
-        $data = json_decode($request->getContent(), true);
 
-        // Faire quelque chose avec les données (exemple : les afficher)
-        // dump($data);
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
 
-        // Vous pouvez également effectuer des traitements supplémentaires ici
-        // et renvoyer une réponse JSON si nécessaire
-        $responseData = ['status' => 'success', 'message' => 'Données traitées avec succès'];
-        return new JsonResponse($data);
-
-        // dd($dataApi);
-        // dump($data['records']);
 
 
         // if(isset($_POST)){

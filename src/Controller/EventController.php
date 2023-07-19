@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Document\Events;
 use App\Repository\EventRepository;
 use App\Repository\CategoryRepository;
+use App\Service\CallApiService;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,13 +16,51 @@ use Symfony\Component\Routing\Annotation\Route;
 class EventController extends AbstractController
 {
     #[Route('/', name: 'app_event')]
-    public function index(EventRepository $eventRepository): Response
+    public function index(EventRepository $eventRepository, CallApiService $callApiService): Response
     {
-        $event = new Events();
-        $event->setDescription('Message de test');
-        $event->setPlace('Paris');
+        $title = "";
+        $description = "";
+        $city = "";
+        $region = "";
+        $adresse = "";
+        $image = "";
+        $region = "";
 
-        $eventRepository->save($event);
+
+        $dataTags = $callApiService->getDataByTags();
+        foreach ($dataTags['records'] as $data) {
+            $dataFields = $data['fields'];
+
+            $title = $dataFields['title_fr'];
+            $description = $dataFields['longdescription_fr'];
+            $city = $dataFields['location_city'];
+            $region = $dataFields['location_region'];
+            $adresse = $dataFields['location_address'];
+            $image = $dataFields['image'];
+            $eventId = $data['recordid'];
+            // $beginDate = $dataFields['timings'].['begin'];
+            // $endDate = $dataFields['timings'].['end'];
+
+            $existingEvent = $eventRepository->findOneBy(['title' => $title]);
+            
+            if (!$existingEvent) {
+                $event = new Events();
+                $event->setTitle($title);
+                $event->setDescription($description);
+                $event->setCity($city);
+                $event->setRegion($region);
+                $event->setAdresse($adresse);
+                $event->setPicture($image);
+                $event->setEventId($eventId);
+                // $event->setDescription($beginDate);
+                // $event->setDescription($endDate);
+    
+                $eventRepository->save($event);
+            }
+
+        }
+
+
 
         return $this->render('event/index.html.twig', [
             'controller_name' => 'EventController',
