@@ -44,7 +44,9 @@ class Users implements PasswordAuthenticatedUserInterface
 
     #[MongoDB\Field(type: 'string')]
     private string $pseudo;
-
+    
+    #[MongoDB\Field(type: 'boolean')]
+    private bool $filled = false;
 
     public function getId(): string
     {
@@ -53,17 +55,17 @@ class Users implements PasswordAuthenticatedUserInterface
 
     public function getFirstName(): string
     {
-        return $this->firstName;
+        return $this->firstName = '';
     }
 
     public function getLastName(): string
     {
-        return $this->lastName;
+        return $this->lastName = '';
     }
 
     public function getCity(): string
     {
-        return $this->city;
+        return $this->city = '';
     }
 
     public function getDateNaissance(): ?DateTimeInterface
@@ -98,7 +100,7 @@ class Users implements PasswordAuthenticatedUserInterface
 
     public function getPseudo(): string
     {
-        return $this->pseudo;
+        return $this->pseudo = '';
     }
 
     public function setFirstName(string $firstName): Users
@@ -170,7 +172,24 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * Vérifie si l'utilisateur a rempli les informations de profil.
+     *
+     * @return bool True si les informations sont remplies, False sinon.
+     */
+    public function hasFilledProfile(): bool
+    {
+        // Vérifie si les champs de profil sont remplis
+        return $this->filled;
+    }
 
+    public function fill(): Users
+    {
+        $this->filled = true;
+
+        return $this;
+    }
+// 
 }
 
 
