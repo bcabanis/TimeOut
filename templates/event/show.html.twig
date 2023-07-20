@@ -15,11 +15,15 @@
         <h2>Chat</h2>
         <div class="chat-messages">
             {% for message in chatMessages %}
-                <p>{{ message.content }}</p>
+                {% if message.user %}
+                    <p><strong>{{ message.user.pseudo }}</strong>: {{ message.content }}</p>
+                {% else %}
+                    <p><strong>{{ email }}</strong>: {{ message.content }}</p>
+                {% endif %}
             {% endfor %}
         </div>
 
-        <form action="{{ path('app_event_post_chat_message', {'eventId': event.id}) }}" method="post">
+        <form action="{{ path('app_event_post_chat_message', {'eventId': event.eventId}) }}" method="post">
             <div>
                 <label for="content">Message :</label>
                 <input type="text" id="content" name="content" required>
@@ -27,6 +31,12 @@
             <button type="submit">Envoyer</button>
         </form>
     </div>
+
+    {# Afficher le pseudo de l'utilisateur connecté #}
+    {% if authenticatedUser is defined and authenticatedUser is not null %}
+        <p>Pseudo de l'utilisateur connecté : {{ authenticatedUser.pseudo }}</p>
+    {% endif %}
 {% endblock %}
+
 
 

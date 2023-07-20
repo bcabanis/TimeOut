@@ -2,6 +2,7 @@
 
 namespace App\Document;
 
+use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
@@ -10,11 +11,14 @@ class Events
     #[MongoDB\Id]
     private string $id;
 
-    #[MongoDB\Field(type: 'date')]
-    private string $startDate;
+    #[MongoDB\Field(type: 'string')]
+    private string $eventId = '';
 
     #[MongoDB\Field(type: 'date')]
-    private string $endDate;
+    private ?DateTimeInterface $startDate = null;
+
+    #[MongoDB\Field(type: 'date')]
+    private ?DateTimeInterface $endDate = null;
 
     #[MongoDB\Field(type: 'string')]
     private string $description;
@@ -23,30 +27,35 @@ class Events
     private string $picture;
 
     #[MongoDB\Field(type: 'string')]
-    private string $place;
+    private string $place = '';
 
     #[MongoDB\Field(type: 'string')]
-    private string $planner;
+    private string $planner = '';
 
     #[MongoDB\Field(type: 'string')]
     private string $title;
 
-    #[MongoDB\ReferenceMany(targetDocument:ChatMessage::class, mappedBy:"event")]
+    #[MongoDB\ReferenceMany(targetDocument:ChatMessage::class, mappedBy:"eventId")]
     private $chatMessages; // Collection des messages de chat associés à l'événement
 
-
+    // créer un tableau "messages"
 
     public function getId(): string
     {
         return $this->id;
     }
 
-    public function getStartDate(): string
+    public function getEventId(): string
+    {
+        return $this->eventId;
+    }
+
+    public function getStartDate(): ?DateTimeInterface
     {
         return $this->startDate;
     }
 
-    public function getEndDate(): string
+    public function getEndDate(): ?DateTimeInterface
     {
         return $this->endDate;
     }
@@ -84,6 +93,13 @@ class Events
     public function setId(string $id): Events
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function setEventId(string $eventId): Events
+    {
+        $this->eventId = $eventId;
 
         return $this;
     }
@@ -141,5 +157,9 @@ class Events
     {
         $this->chatMessages = $chatMessages;
     }
-// 
+    
+    // créer la méthode getMessages()
+
+    // créer la méthode addMessage($message)
+
 }

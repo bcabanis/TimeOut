@@ -58,12 +58,14 @@ class LoginController extends AbstractController
                 // Vérifie si l'utilisateur a déjà rempli les informations de profil
                 if ($authenticatedUser->hasFilledProfile()) {
 
+                    // Stocke l'e-mail de l'utilisateur connecté dans la session
+                    $sessionInterface->set('email', $user->getEmail());
+                    
                     // Redirige vers le dashboard
                     return new RedirectResponse($this->generateUrl('app_dashboard'));
                 }
 
-                // Stocke l'e-mail de l'utilisateur connecté dans la session
-                $sessionInterface->set('email', $user->getEmail());
+                
             }
 
             // Redirige vers la page profil
