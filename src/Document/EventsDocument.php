@@ -7,163 +7,127 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 #[MongoDB\Document]
 class Events
 {
+
     #[MongoDB\Id]
-    private string $id;
+    protected $id;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $description;
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    protected $category;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $picture;
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    protected $title;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $city;
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    protected $description;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $region;
+    /**
+     * @MongoDB\Field(type="string", name="date")
+     */
+    protected $eventDate;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $adresse;
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    protected $address;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $planner;
+    /**
+     * @MongoDB\Field(type="string", name="image_url")
+     */
+    protected $imageUrl;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $title;
+    /**
+     * @MongoDB\Field(type="string", name="unique_id")
+     */
+    protected $uniqueId;
 
-    #[MongoDB\Field(type: 'string')]
-    private string $eventId;
-    #[MongoDB\ReferenceMany(targetDocument:ChatMessage::class, mappedBy:"event")]
-    private $chatMessages; // Collection des messages de chat associés à l'événement
+    // Add getters and setters for each property
 
-
-
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getDescription(): string
+    public function getCategory(): ?string
     {
-        return $this->description;
+        return $this->category;
     }
 
-    public function getPicture(): string
+    public function setCategory(string $category): self
     {
-        return $this->picture;
+        $this->category = $category;
+        return $this;
     }
 
-    public function getCity(): string
-    {
-        return $this->city;
-    }
-
-    public function getRegion(): string
-    {
-        return $this->region;
-    }
-
-    public function getAdresse(): string
-    {
-        return $this->adresse;
-    }
-
-    public function getPlanner(): string
-    {
-        return $this->planner;
-    }
-
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function getEventId(): string
-    {
-        return $this->eventId;
-    public function getChatMessages()
-    {
-        return $this->chatMessages;
-    }
-
-    public function setId(string $id): Events
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function setStartDate(\DateTime $startDate): Events
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    public function setEndDate(\DateTime $endDate): Events
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    public function setDescription(string $description): Events
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function setPicture(string $picture): Events
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    public function setCity(string $city): Events
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function setRegion(string $region): Events
-    {
-        $this->region = $region;
-
-        return $this;
-    }
-
-    public function setAdresse(string $adresse): Events
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function setPlanner(string $planner): Events
-    {
-        $this->planner = $planner;
-
-        return $this;
-    }
-
-    public function setTitle(string $title): Events
+    public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
 
-    public function setEventId(string $eventId): Events
+    public function getDescription(): ?string
     {
-        $this->eventId = $eventId;
-
-        return $this;
-    public function setChatMessages($chatMessages): void
-    {
-        $this->chatMessages = $chatMessages;
+        return $this->description;
     }
-// 
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    public function getEventDate(): ?string
+    {
+        return $this->eventDate;
+    }
+
+    public function setEventDate(string $eventDate): self
+    {
+        $this->eventDate = $eventDate;
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    public function setImageUrl(string $imageUrl): self
+    {
+        $this->imageUrl = $imageUrl;
+        return $this;
+    }
+
+    public function getUniqueId(): ?string
+    {
+        return $this->uniqueId;
+    }
+
+    public function setUniqueId(string $uniqueId): self
+    {
+        $this->uniqueId = $uniqueId;
+        return $this;
+    }
 }
+// 

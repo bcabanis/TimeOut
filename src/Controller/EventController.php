@@ -19,7 +19,7 @@ use App\Document\User;
 class EventController extends AbstractController
 {
     #[Route('/', name: 'app_event')]
-    public function index(EventRepository $eventRepository, CallApiService $callApiService): Response
+    public function index(EventRepository $eventRepository, CallApiService $callApiService, DocumentManager $dm): Response
     {
         $title = "";
         $description = "";
@@ -28,68 +28,99 @@ class EventController extends AbstractController
         $adresse = "";
         $image = "";
         $region = "";
+        $motCle = "";
 
         $dataForJs = [];
         $dataTabForJs = [];
 
+        $jsonData = '/assets/json/event.json';
+        $eventsData = json_decode($jsonData, true);
+        dd($dataForJs);
+        
+        // foreach ($dataTags['records'] as $data) {
+        //     $dataFields = $data['fields'];
 
-        $dataTags = $callApiService->getDataByTags();
-        foreach ($dataTags['records'] as $data) {
-            $dataFields = $data['fields'];
-
-            $title = $dataFields['title_fr'];
-            if (isset($dataFields['longdescription_fr'])) {
-                $description = $dataFields['longdescription_fr'];
-            } else {
-                $description = $dataFields['description_fr'];
-            }
+        //     $title = $dataFields['title_fr'];
+        //     if (isset($dataFields['longdescription_fr'])) {
+        //         $description = $dataFields['longdescription_fr'];
+        //     } else {
+        //         $description = $dataFields['description_fr'];
+        //     }
             
-            $city = $dataFields['location_city'];
-            $region = $dataFields['location_region'];
-            $adresse = $dataFields['location_address'];
-            $image = $dataFields['image'];
-            $eventId = $data['recordid'];
-            // $beginDate = $dataFields['timings'].['begin'];
-            // $endDate = $dataFields['timings'].['end'];
+        //     $city = $dataFields['location_city'];
+        //     $region = $dataFields['location_region'];
+        //     $adresse = $dataFields['location_address'];
+        //     $image = $dataFields['image'];
+        //     $eventId = $data['recordid'];
+        //     if (isset($dataFields['keywords_fr'])) {
+        //         $motCle = $dataFields['keywords_fr'];
+        //     } else {
+        //         $motCle = "";
+        //     }
+        //     // $beginDate = $dataFields['timings'].['begin'];
+        //     // $endDate = $dataFields['timings'].['end'];
 
-            $existingEvent = $eventRepository->findOneBy(['title' => $title]);
+        //     $existingEvent = $eventRepository->findOneBy(['title' => $title]);
 
-            if (!$existingEvent) {
-                $event = new Events();
-                $event->setTitle($title);
-                $event->setDescription($description);
-                $event->setCity($city);
-                $event->setRegion($region);
-                $event->setAdresse($adresse);
-                $event->setPicture($image);
-                $event->setEventId($eventId);
+        //     if (!$existingEvent) {
+        //         $event = new Events();
+        //         $event->setTitle($title);
+        //         $event->setDescription($description);
+        //         $event->setCity($city);
+        //         $event->setRegion($region);
+        //         $event->setAdresse($adresse);
+        //         $event->setPicture($image);
+        //         $event->setEventId($eventId);
+        //         $event->setMotCle($motCle);
 
-                $eventRepository->save($event);
+        //         $eventRepository->save($event);
+        //     }
 
+        //     $dataForJs = [
+        //         'title' => $title,
+        //         'description' => $description,
+        //         'city' => $city,
+        //         'region' => $region,
+        //         'adresse' => $adresse,
+        //         'image' => $image,
+        //         'eventId' => $eventId,
+        //         'motCle' => $motCle,
 
+        //     ];
 
+        //     $dataTabForJs[] = $dataForJs; 
 
+        // }
+
+        foreach ($eventsData as $category => $events) {
+            foreach ($events as $event) {
+                $title = $event['Titre'];
+                $existingEvent = $eventRepository->findOneBy(['title' => $title]);
+
+                if (!$existingEvent) {
+                    $eventDoc = new Events();
+                    $eventDoc->setCategory($category);
+                    $eventDoc->setTitle($event['Titre']);
+                    $eventDoc->setDescription($event['Description']);
+                    $eventDoc->setEventDate($event['Date_de_l_evenement']);
+                    $eventDoc->setAddress($event['Adresse']);
+                    $eventDoc->setImageUrl($event['URL_d_image']);
+                    $eventDoc->setUniqueId($event['ID_unique']);
+
+                    $eventRepository->save($eventDoc);
+                }
+  
             }
-
-            $dataForJs = [
-                'title' => $title,
-                'description' => $description,
-                'city' => $city,
-                'region' => $region,
-                'adresse' => $adresse,
-                'image' => $image,
-                'eventId' => $eventId,
-
-            ];
-
-            $dataTabForJs[] = $dataForJs; 
-
         }
 
-            // Retourne les données dans le template requis 
-            return $this->render('event/affichage.html.twig', [
-                'jsonData' => $dataTabForJs,
-            ]);
+        
+
+        return new Response('Events inserted successfully!');
+
+            // // Retourne les données dans le template requis 
+            // return $this->render('event/affichage.html.twig', [
+            //     'jsonData' => $dataTabForJs,
+            // ]);
     }
 
     #[Route('/{eventId}', name: 'app_event_show')]

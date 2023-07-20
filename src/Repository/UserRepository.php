@@ -15,7 +15,6 @@ class UserRepository extends ServiceDocumentRepository
         parent::__construct($registry, Users::class);
         
     }
-
     /**
      * Sauvegarde l'entité Users dans la base de données MongoDB.
      *
