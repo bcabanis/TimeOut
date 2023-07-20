@@ -13,8 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
-
-    // Redirection vers le formulaire d'inscription
     #[Route('/registration', name: 'app_registration')]
     public function register(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
@@ -30,13 +28,18 @@ class RegistrationController extends AbstractController
 
         // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
+            $email = $user->getEmail();
 
-            // Vérifie si un utilisateur existe déjà dans la base de données avec l'adresse e-mail fournie
-            $existingUser = $userRepository->findOneBy(['email' => $user->getEmail()]);
+            // Vérifier si l'adresse e-mail existe déjà dans la base de données
+            $existingUser = $userRepository->findOneBy(['email' => $email]);
             if ($existingUser) {
-                // Si l'utilisateur existe déjà dans la base de données, on le redirige vers une page d'erreur
-                return $this->redirectToRoute('registration_error');
+                // Si un utilisateur avec l'e-mail existe déjà, afficher une modal d'erreur
+                return $this->render('registration/error.html.twig', [
+                    'message2' => 'Un compte existe déjà avec cette adresse e-mail.',
+                ]);
             }
+
+            // L'e-mail est unique, nous pouvons continuer avec l'enregistrement de l'utilisateur
 
             // Hashe le mot de passe de l'utilisateur en utilisant l'objet UserPasswordHasherInterface
             $hashedPassword = $userPasswordHasher->hashPassword($user, $user->getPassword());
@@ -46,8 +49,10 @@ class RegistrationController extends AbstractController
             // Enregistre l'utilisateur dans la base de données en utilisant la fonction save dans le UserRepository
             $userRepository->save($user);
 
-            // Redirige vers une autre page pour afficher un message de succès
-            return $this->redirectToRoute('registration_success');
+            // Affiche la modal de succès
+            return $this->render('registration/success.html.twig', [
+                'message' => 'Votre compte a été créé.',
+            ]);
         }
 
         // Affiche le formulaire d'inscription à la vue Twig
@@ -57,9 +62,8 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-
     #[Route('/registration-success', name: 'registration_success')]
-    public function register_success(): Response
+    public function register_success(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         return $this->render('registration/success.html.twig', [
             'message' => 'Votre compte a été créé.',
@@ -70,7 +74,7 @@ class RegistrationController extends AbstractController
     public function register_error(): Response
     {
         return $this->render('registration/error.html.twig', [
-            'message' => 'Un compte existe déjà avec cette adresse mail.',
+            'message2' => 'Un compte existe déjà avec cette adresse mail.',
         ]);
     }
 }

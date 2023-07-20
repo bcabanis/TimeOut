@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use MongoDB\Client;
 use App\Document\Users;
 use App\Form\LoginFormType;
+use App\Form\PhotoFormType;
 use App\Form\ProfilFormType;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
@@ -15,6 +17,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+
 
 #[Route('/login')]
 class LoginController extends AbstractController
@@ -111,25 +115,57 @@ class LoginController extends AbstractController
         ]);
     }
 
-    // Redirection vers le choix des avatars
-    #[Route('/avatar', name: 'app_avatar')]
-    public function avatar(Request $request, UserRepository $userRepository, SessionInterface $session): Response
+    #[Route('/loginavatar', name: 'app_login_avatar')]
+    public function avatar(Request $request): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
-        $email = $session->get('email');
-
-        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
-        $user = $userRepository->findOneBy(['email' => $email]);
-
-        // marque le user comme rempli
-        $user->fill();
-
-        // Enregistrer les modifications de l'utilisateur dans la base de données
-        $userRepository->save($user);
-
+        // Créer le formulaire
+        $form = $this->createForm(PhotoFormType::class);
+    
+        // Gérer la soumission du formulaire
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupérer le fichier téléchargé
+            $photoFile = $form->get('photo')->getData();
+            
+            // Vérifier si un fichier a été téléchargé
+            if ($photoFile) {
+                // Déplacer le fichier vers le répertoire d'upload
+                $uploadDir = $this->getParameter('photos_upload_directory');
+                $fileName = md5(uniqid()) . '.' . $photoFile->guessExtension();
+                
+                try {
+                    $photoFile->move($uploadDir, $fileName);
+                } catch (\Exception $e) {
+                    // Gérer les erreurs éventuelles liées au téléchargement
+                    $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
+                    return $this->redirectToRoute('app_login_avatar');
+                }
+                
+                // Enregistrer le nom du fichier dans la base de données
+                $this->savePhotoToDatabase($fileName);
+                
+                // Rediriger ou afficher un message de succès
+                $this->addFlash('success', 'La photo a été téléchargée avec succès !');
+                return $this->redirectToRoute('app_login_avatar');
+            }
+        }
+    
         return $this->render('login/avatar.html.twig', [
-            'controller_name' => 'LoginController',
+            'photoForm' => $form->createView(),
         ]);
+    }
+    
+    // Function to save the photo filename to the MongoDB database
+    private function savePhotoToDatabase(string $fileName): void
+    {
+        // Replace 'your_connection_string' with the actual connection string to your MongoDB server
+        $mongoClient = new Client('mongodb+srv://gettogetherpasserelle:notion23@cluster0.vvlyofu.mongodb.net/get-together?retryWrites=true&w=majority');
+        $database = $mongoClient->selectDatabase('GetTogether');
+        $collection = $database->selectCollection('Users');
+    
+        // Store the filename in the 'photos' field in the collection
+        $collection->insertOne(['photos' => $fileName]);
     }
 
     // Redirection vers le choix des tags
