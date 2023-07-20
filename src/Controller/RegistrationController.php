@@ -39,8 +39,6 @@ class RegistrationController extends AbstractController
                 ]);
             }
 
-            // L'e-mail est unique, nous pouvons continuer avec l'enregistrement de l'utilisateur
-
             // Hashe le mot de passe de l'utilisateur en utilisant l'objet UserPasswordHasherInterface
             $hashedPassword = $userPasswordHasher->hashPassword($user, $user->getPassword());
             // Défini le mot de passe hashé dans l'objet Users

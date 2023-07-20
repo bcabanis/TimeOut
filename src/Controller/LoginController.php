@@ -19,11 +19,9 @@ use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationExc
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
-
-#[Route('/login')]
 class LoginController extends AbstractController
 {
-    #[Route('/', name: 'app_login')]
+    #[Route('/login', name: 'app_login')]
     public function login(Request $request, ManagerRegistry $managerRegistry, AuthenticationUtils $authenticationUtils, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
         // Récupère les erreurs d'authentification
@@ -60,12 +58,10 @@ class LoginController extends AbstractController
 
                     // Stocke l'e-mail de l'utilisateur connecté dans la session
                     $sessionInterface->set('email', $user->getEmail());
-                    
+
                     // Redirige vers le dashboard
                     return new RedirectResponse($this->generateUrl('app_dashboard'));
                 }
-
-                
             }
 
             // Redirige vers la page profil
@@ -122,20 +118,20 @@ class LoginController extends AbstractController
     {
         // Créer le formulaire
         $form = $this->createForm(PhotoFormType::class);
-    
+
         // Gérer la soumission du formulaire
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupérer le fichier téléchargé
             $photoFile = $form->get('photo')->getData();
-            
+
             // Vérifier si un fichier a été téléchargé
             if ($photoFile) {
                 // Déplacer le fichier vers le répertoire d'upload
                 $uploadDir = $this->getParameter('photos_upload_directory');
                 $fileName = md5(uniqid()) . '.' . $photoFile->guessExtension();
-                
+
                 try {
                     $photoFile->move($uploadDir, $fileName);
                 } catch (\Exception $e) {
@@ -143,21 +139,21 @@ class LoginController extends AbstractController
                     $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
                     return $this->redirectToRoute('app_login_avatar');
                 }
-                
+
                 // Enregistrer le nom du fichier dans la base de données
                 $this->savePhotoToDatabase($fileName);
-                
+
                 // Rediriger ou afficher un message de succès
                 $this->addFlash('success', 'La photo a été téléchargée avec succès !');
                 return $this->redirectToRoute('app_login_avatar');
             }
         }
-    
+
         return $this->render('login/avatar.html.twig', [
             'photoForm' => $form->createView(),
         ]);
     }
-    
+
     // Function to save the photo filename to the MongoDB database
     private function savePhotoToDatabase(string $fileName): void
     {
@@ -165,7 +161,7 @@ class LoginController extends AbstractController
         $mongoClient = new Client('mongodb+srv://gettogetherpasserelle:notion23@cluster0.vvlyofu.mongodb.net/get-together?retryWrites=true&w=majority');
         $database = $mongoClient->selectDatabase('GetTogether');
         $collection = $database->selectCollection('Users');
-    
+
         // Store the filename in the 'photos' field in the collection
         $collection->insertOne(['photos' => $fileName]);
     }
