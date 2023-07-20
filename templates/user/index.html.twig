@@ -17,4 +17,12 @@
         <li>Your template at <code><a href="{{ '/Users/moussaillon/Documents/GitHub/TimeOut/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
     </ul>
 </div>
+
+<h1>Liste des utilisateurs</h1>
+
+<ul>
+    {% for user in users %}
+        <li>{{ user.lastname }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}

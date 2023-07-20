@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 #[MongoDB\Document]
 class Users implements PasswordAuthenticatedUserInterface
 {
+
     #[MongoDB\Id]
     public string $id;
 
@@ -168,7 +169,8 @@ class Users implements PasswordAuthenticatedUserInterface
 
         return $this;
     }
-// 
+
+
 }
 
 

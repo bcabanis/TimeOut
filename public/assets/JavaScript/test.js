@@ -25,11 +25,11 @@ alert('yo')
 // Lance l'événement de clic sur tous les événements de la page
 let divTest = document.querySelectorAll(".card-event .btn-participer");
 
-divTest.forEach(function (event) {
-  element.addEventListener("click", function() {
+divTest.forEach(function (element) {
+  element.addEventListener("click", function(event) {
   let divClick = event.currentTarget;
   let eventId = {"eventId": divClick.dataset.idEvent};
-
+  console.log(divClick.dataset.idEvent);
     // Envoi de la requête AJAX
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/test", true);

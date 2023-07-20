@@ -10,12 +10,6 @@ class Events
     #[MongoDB\Id]
     private string $id;
 
-    #[MongoDB\Field(type: 'date')]
-    private string $startDate;
-
-    #[MongoDB\Field(type: 'date')]
-    private string $endDate;
-
     #[MongoDB\Field(type: 'string')]
     private string $description;
 
@@ -40,20 +34,9 @@ class Events
     #[MongoDB\Field(type: 'string')]
     private string $eventId;
 
-
     public function getId(): string
     {
         return $this->id;
-    }
-
-    public function getStartDate(): string
-    {
-        return $this->startDate;
-    }
-
-    public function getEndDate(): string
-    {
-        return $this->endDate;
     }
 
     public function getDescription(): string
@@ -94,20 +77,6 @@ class Events
     public function getEventId(): string
     {
         return $this->eventId;
-    }
-
-    public function setstartDate(\DateTime $startDate): Events
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    public function setendDate(\DateTime $endDate): Events
-    {
-        $this->endDate = $endDate;
-
-        return $this;
     }
 
     public function setDescription(string $description): Events
