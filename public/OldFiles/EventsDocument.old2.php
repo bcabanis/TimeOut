@@ -33,11 +33,6 @@ class Events
     #[MongoDB\Field(type: 'string')]
     private string $title = '';
 
-    // Nouvelle propriété "address" avec visibilité publique
-    #[MongoDB\Field(type: 'string')]
-    public string $address = '';
-    
-
     // Autres méthodes et propriétés...
 
     public function getId(): string

@@ -3,7 +3,6 @@
 namespace App\Document;
 
 use App\Repository\EventRepository;
-use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
@@ -12,59 +11,41 @@ class Events
     #[MongoDB\Id]
     private string $id;
 
-    #[MongoDB\Field(type:"date")]
-    private ?DateTimeInterface $startDate;
+    #[MongoDB\Field(type: 'date')]
+    private string $startDate;
 
-    #[MongoDB\Field(type:"date")]
-    private ?DateTimeInterface $endDate;
-
-    #[MongoDB\Field(type:"string")]
-    private string $description = '';
-
-    #[MongoDB\Field(type:"string")]
-    private string $picture = '';
-
-    #[MongoDB\Field(type:"string")]
-    private string $place = '';
-
-    #[MongoDB\Field(type:"string")]
-    private string $planner = '';
+    #[MongoDB\Field(type: 'date')]
+    private string $endDate;
 
     #[MongoDB\Field(type: 'string')]
-    private string $title = '';
+    private string $description;
 
-    // Nouvelle propriété "address" avec visibilité publique
     #[MongoDB\Field(type: 'string')]
-    public string $address = '';
-    
+    private string $picture;
 
-    // Autres méthodes et propriétés...
+    #[MongoDB\Field(type: 'string')]
+    private string $place;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $planner;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $title;
+
 
     public function getId(): string
     {
         return $this->id;
     }
 
-    public function getStartDate(): ?DateTimeInterface
+    public function getStartDate(): string
     {
         return $this->startDate;
     }
 
-    public function setStartDate($startDate): Events
-    {
-        $this->startDate = $startDate;
-        return $this;
-    }
-
-    public function getEndDate(): ?DateTimeInterface
+    public function getEndDate(): string
     {
         return $this->endDate;
-    }
-
-    public function setEndDate($endDate): Events
-    {
-        $this->endDate = $endDate;
-        return $this;
     }
 
     public function getDescription(): string
@@ -90,6 +71,20 @@ class Events
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function setstartDate(\DateTime $startDate): Events
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function setendDate(\DateTime $endDate): Events
+    {
+        $this->endDate = $endDate;
+
+        return $this;
     }
 
     public function setDescription(string $description): Events
@@ -128,4 +123,3 @@ class Events
     }
 // 
 }
-

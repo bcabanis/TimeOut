@@ -32,7 +32,7 @@
 {# Afficher la liste des événements récupérés depuis le contrôleur #}
 <div class="event-list">
     {% for event in events %}
-        <div class="event-item" data-event-name="{{ event.title }}" data-event-description="{{ event.description }}" data-event-address="{{ event.address }}">
+        <div class="event-item" data-event-name="{{ event.title }}">
             <h3>{{ event.title }}</h3>
             <p>{{ event.description }}</p>
             <!-- Affichez les autres détails de l'événement ici si nécessaire -->
@@ -51,12 +51,8 @@
 
         events.forEach(event => {
             const eventName = event.getAttribute('data-event-name');
-            const eventDescription = event.getAttribute('data-event-description');
-            const eventAddress = event.getAttribute('data-event-address');
-            const eventAddressFromDB = event.getAttribute('data-event-address-from-db'); // Remplacer par l'attribut contenant l'adresse depuis la base de données
-            const lowerCategoryName = categoryName.toLowerCase();
 
-            if (eventName.toLowerCase().includes(lowerCategoryName) || eventDescription.toLowerCase().includes(lowerCategoryName) || eventAddress.toLowerCase().includes(lowerCategoryName)) {
+            if (eventName.toLowerCase().includes(categoryName.toLowerCase())) {
                 event.style.display = 'block';
             } else {
                 event.style.display = 'none';
