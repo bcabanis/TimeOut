@@ -18,7 +18,7 @@ class CallApiService
     {
         $response = $this->client->request(
             'GET',
-            'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-openagenda&q=&facet=keywords_fr&facet=updatedat&facet=firstdate_begin&facet=firstdate_end&facet=lastdate_begin&facet=lastdate_end&facet=location_city&facet=location_department&facet=location_region&facet=location_countrycode&refine.updatedat=2023%2F07&refine.location_city=Paris'
+            'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-openagenda&q=&refine.location_city=Paris&refine.updatedat=2023%2F07'
         );
 
         return $response->toArray();
