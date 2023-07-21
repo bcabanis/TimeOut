@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event : {{ event.title }}{% endblock %}
+
+{% block body %}
+    <div class="event-details">
+        <h1>{{ event.title }}</h1>
+        <p>Description :{{ event.description }}</p>
+        <p>Lieu : {{ event.place }}</p>
+        <p>Date : {{ event.startDate|date('Y-m-d H:i') }} jusqu'à {{ event.endDate|date('Y-m-d H:i') }}</p>
+        <p>Organisateur : {{ event.planner }}</p>
+    </div>
+
+    <div class="chat-section">
+        <h2>Chat</h2>
+        <div class="chat-messages">
+            {% for message in chatMessages %}
+                {% if message.user %}
+                    <p><strong>{{ message.user.pseudo }}</strong>: {{ message.content }}</p>
+                {% else %}
+                    <p><strong>Utilisateur inconnu</strong>: {{ message.content }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <form action="{{ path('app_event_post_chat_message', {'eventId': event.eventId}) }}" method="post">
+            <div>
+                <label for="content">Message :</label>
+                <input type="text" id="content" name="content" required>
+            </div>
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+    {# Afficher le pseudo de l'utilisateur connecté #}
+    {% if authenticatedUser is defined and authenticatedUser is not null %}
+        <p>Pseudo de l'utilisateur connecté : {{ authenticatedUser.pseudo }}</p>
+    {% endif %}
+{% endblock %}
+
+
+
