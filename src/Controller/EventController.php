@@ -132,4 +132,20 @@ class EventController extends AbstractController
             'events' => $events, // Passer les événements à la vue pour les afficher
         ]);
     }
+
+    #[Route('/calendar', name: 'app_event_calendar')]
+    public function calendar(): Response
+    {
+        // Exemple de données de calendrier (pour les besoins de démonstration)
+        $calendarData = [
+            '2023-07-01' => ['Événement 1', 'Événement 2'],
+            '2023-07-05' => ['Événement 3'],
+            '2023-07-10' => ['Événement 4', 'Événement 5', 'Événement 6'],
+        ];
+
+        // Passez les données à votre modèle Twig et générez la vue
+        return $this->render('event/calendar.html.twig', [
+            'calendarData' => $calendarData,
+        ]);
+    }
 }
