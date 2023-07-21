@@ -8,7 +8,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     .sub-category-btn { display: none; }
     .category-btn { background-color: #fff; }
-    .category-btn.active { background-color: red; }
+    .category-btn:hover { background-color: red; }
 </style>
 
 <div class="example-wrapper">
@@ -20,8 +20,8 @@
             <style>
                 .sub-category-btn[data-category-name="{{ subCategory }}"] {
                     display: none;
-                }
-                .sub-category-btn[data-category-name="{{ subCategory }}"].active {
+                } 
+                .sub-category-btn[data-category-name="{{ subCategory }}"]:hover {
                     display: inline-block;
                 }
             </style>
@@ -34,7 +34,8 @@
     {% for event in events %}
         <div class="event-item" data-event-name="{{ event.title }}" data-event-description="{{ event.description }}" data-event-address="{{ event.address }}">
             <h3>{{ event.title }}</h3>
-            <p>{{ event.description }}</p>
+            {# Utilisation de la fonction "raw" pour désactiver l'échappement des balises HTML #}
+            <p>{{ event.description|raw }}</p>
             <!-- Affichez les autres détails de l'événement ici si nécessaire -->
         </div>
     {% endfor %}
