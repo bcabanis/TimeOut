@@ -61,5 +61,7 @@ class ChatMessage
     {
         $this->user = $user;
     }
+
+    
 }
 

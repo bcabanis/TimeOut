@@ -18,7 +18,7 @@
                 {% if message.user %}
                     <p><strong>{{ message.user.pseudo }}</strong>: {{ message.content }}</p>
                 {% else %}
-                    <p><strong>{{ email }}</strong>: {{ message.content }}</p>
+                    <p><strong>Utilisateur inconnu</strong>: {{ message.content }}</p>
                 {% endif %}
             {% endfor %}
         </div>
