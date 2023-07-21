@@ -9,7 +9,6 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
     <h1>Hello ! ✅</h1>
 
     This friendly message is coming from:
@@ -17,6 +16,10 @@
         <li>Your controller at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/src/Controller/LoginController.php'|file_link(0) }}">src/Controller/LoginController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/login/index.html.twig'|file_link(0) }}">templates/login/index.html.twig</a></code></li>
     </ul>
+    {{ form_start(tagsForm) }}
+        {{ form_errors(tagsForm) }}
+        {{ form_widget(tagsForm) }}
+    {{ form_end(tagsForm) }}
 </div>
 
 <h1>PAGE DE CHOIX DES TAGS</h1>

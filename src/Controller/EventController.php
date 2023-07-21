@@ -22,7 +22,8 @@ class EventController extends AbstractController
     #[Route('/', name: 'app_event')]
     public function index(EventRepository $eventRepository): Response
     {
-        $event = new Events();;
+        $event = new Events();
+        dump($event);
 
         $eventId = '';
         $event->setEventId($eventId);

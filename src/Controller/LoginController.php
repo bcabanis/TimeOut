@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-use MongoDB\Client;
 use App\Document\Users;
 use App\Form\LoginFormType;
 use App\Form\PhotoFormType;
 use App\Form\ProfilFormType;
+use App\Form\TagsFormType;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,6 +63,9 @@ class LoginController extends AbstractController
                     // Redirige vers le dashboard
                     return new RedirectResponse($this->generateUrl('app_dashboard'));
                 }
+
+                // Stocke l'e-mail de l'utilisateur connecté dans la session
+                $sessionInterface->set('email', $user->getEmail());
             }
 
             // Redirige vers la page profil
@@ -86,10 +90,10 @@ class LoginController extends AbstractController
 
     // Redirection vers la personnalisation du profil
     #[Route('/profil', name: 'app_profil')]
-    public function profil(Request $request, UserRepository $userRepository, SessionInterface $session): Response
+    public function profil(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
         // Récupérer l'email de l'utilisateur connecté depuis la session
-        $email = $session->get('email');
+        $email = $sessionInterface->get('email');
 
         // Récupérer l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
@@ -104,8 +108,8 @@ class LoginController extends AbstractController
             // Enregistrer les modifications de l'utilisateur dans la base de données
             $userRepository->save($user);
 
-            // Rediriger l'utilisateur vers une autre page (par exemple, le dashboard)
-            return $this->redirectToRoute('app_avatar');
+            // Redirige l'utilisateur vers une autre page 
+            return $this->redirectToRoute('app_login_avatar');
         }
 
         return $this->render('login/profil.html.twig', [
@@ -114,8 +118,14 @@ class LoginController extends AbstractController
     }
 
     #[Route('/loginavatar', name: 'app_login_avatar')]
-    public function avatar(Request $request): Response
+    public function avatar(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
+        // Récupérer l'email de l'utilisateur connecté depuis la session
+        $email = $sessionInterface->get('email');
+
+        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        $user = $userRepository->findOneBy(['email' => $email]);
+
         // Créer le formulaire
         $form = $this->createForm(PhotoFormType::class);
 
@@ -124,7 +134,7 @@ class LoginController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupérer le fichier téléchargé
-            $photoFile = $form->get('photo')->getData();
+            $photoFile = $form->get('profilPicture')->getData();
 
             // Vérifier si un fichier a été téléchargé
             if ($photoFile) {
@@ -140,11 +150,12 @@ class LoginController extends AbstractController
                     return $this->redirectToRoute('app_login_avatar');
                 }
 
-                // Enregistrer le nom du fichier dans la base de données
-                $this->savePhotoToDatabase($fileName);
+                // Enregistrer le nom du fichier de la photo de profil dans l'utilisateur
+                $user->setProfilPicture($fileName);
+                $userRepository->save($user);
 
                 // Rediriger ou afficher un message de succès
-                $this->addFlash('success', 'La photo a été téléchargée avec succès !');
+                $this->addFlash('success', 'La photo de profil a été téléchargée avec succès !');
                 return $this->redirectToRoute('app_login_avatar');
             }
         }
@@ -154,36 +165,42 @@ class LoginController extends AbstractController
         ]);
     }
 
-    // Function to save the photo filename to the MongoDB database
-    private function savePhotoToDatabase(string $fileName): void
-    {
-        // Replace 'your_connection_string' with the actual connection string to your MongoDB server
-        $mongoClient = new Client('mongodb+srv://gettogetherpasserelle:notion23@cluster0.vvlyofu.mongodb.net/get-together?retryWrites=true&w=majority');
-        $database = $mongoClient->selectDatabase('GetTogether');
-        $collection = $database->selectCollection('Users');
-
-        // Store the filename in the 'photos' field in the collection
-        $collection->insertOne(['photos' => $fileName]);
-    }
-
     // Redirection vers le choix des tags
     #[Route('/tags', name: 'app_tags')]
-    public function tags(Request $request, UserRepository $userRepository, SessionInterface $session): Response
+    public function tags(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
-        $email = $session->get('email');
+        // Récupére l'email de l'utilisateur connecté depuis la session
+        $email = $sessionInterface->get('email');
 
-        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        // Récupére l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
-        // marque le user comme rempli
-        $user->fill();
+        // Convertir le tableau de tags en ArrayCollection
+        $tags = $user->getTags();
+        if (!$tags) {
+            $tags = new ArrayCollection();
+        }
 
-        // Enregistrer les modifications de l'utilisateur dans la base de données
-        $userRepository->save($user);
+        // Créer le formulaire
+        $form = $this->createForm(TagsFormType::class);
+
+        // Gère la soumission du formulaire
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // Mettre à jour les tags dans l'utilisateur avec le tableau converti en ArrayCollection
+            $user->setTags($tags);
+
+            // Enregistre les modifications de l'utilisateur dans la base de données
+            $userRepository->save($user);
+
+            // Redirige l'utilisateur vers une autre page 
+            return $this->redirectToRoute('app_dashboard');
+        }
 
         return $this->render('login/tags.html.twig', [
-            'controller_name' => 'LoginController',
+            'tagsForm' => $form->createView(),
         ]);
     }
 }
