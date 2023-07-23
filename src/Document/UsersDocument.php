@@ -44,9 +44,9 @@ class Users implements PasswordAuthenticatedUserInterface
 
     #[MongoDB\Field(type: 'string')]
     private string $pseudo;
-    
+
     #[MongoDB\Field(type: 'collection')]
-    private ?ArrayCollection $tags = null;
+    private array $tagsByCategory = [];
 
     #[MongoDB\Field(type: 'boolean')]
     private bool $filled = false;
@@ -106,9 +106,9 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this->pseudo;
     }
 
-    public function getTags(): ?ArrayCollection
+    public function getTagsByCategory(): array
     {
-        return $this->tags;
+        return $this->tagsByCategory;
     }
 
     public function setFirstName(string $firstName): Users
@@ -180,10 +180,9 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function setTags(ArrayCollection $tags): self
+    public function setTagsByCategory(array $tagsByCategory): self
     {
-        $this->tags = $tags;
-
+        $this->tagsByCategory = $tagsByCategory;
         return $this;
     }
 
@@ -204,24 +203,5 @@ class Users implements PasswordAuthenticatedUserInterface
 
         return $this;
     }
-// 
+    // 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

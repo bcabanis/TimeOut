@@ -9,7 +9,6 @@ use App\Form\ProfilFormType;
 use App\Form\TagsFormType;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,12 +29,12 @@ class LoginController extends AbstractController
         // Récupère le dernier nom d'utilisateur utilisé
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        // Crée une nouvelle instance de l'entité Users
+        // Créer une nouvelle instance de l'entité Users
         $user = new Users();
         // Pré-remplit le champ d'e-mail avec le dernier nom d'utilisateur utilisé
         $user->setEmail($lastUsername);
 
-        // Crée le formulaire de connexion en utilisant LoginFormType et l'entité Users
+        // Créer le formulaire de connexion en utilisant LoginFormType et l'entité Users
         $form = $this->createForm(LoginFormType::class, $user);
 
         // Gère la soumission du formulaire
@@ -92,20 +91,20 @@ class LoginController extends AbstractController
     #[Route('/profil', name: 'app_profil')]
     public function profil(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
+        // Récupére l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
 
-        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        // Récupére l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
         // Créer le formulaire de profil en utilisant ProfilFormType et l'utilisateur récupéré
         $form = $this->createForm(ProfilFormType::class, $user);
 
-        // Gérer la soumission du formulaire
+        // Gère la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Enregistrer les modifications de l'utilisateur dans la base de données
+            // Enregistre les modifications de l'utilisateur dans la base de données
             $userRepository->save($user);
 
             // Redirige l'utilisateur vers une autre page 
@@ -120,41 +119,41 @@ class LoginController extends AbstractController
     #[Route('/loginavatar', name: 'app_login_avatar')]
     public function avatar(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
+        // Récupére l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
 
-        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        // Récupére l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
         // Créer le formulaire
         $form = $this->createForm(PhotoFormType::class);
 
-        // Gérer la soumission du formulaire
+        // Gère la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupérer le fichier téléchargé
+            // Récupére le fichier téléchargé
             $photoFile = $form->get('profilPicture')->getData();
 
-            // Vérifier si un fichier a été téléchargé
+            // Vérifie si un fichier a été téléchargé
             if ($photoFile) {
-                // Déplacer le fichier vers le répertoire d'upload
+                // Déplace le fichier vers le répertoire d'upload
                 $uploadDir = $this->getParameter('photos_upload_directory');
                 $fileName = md5(uniqid()) . '.' . $photoFile->guessExtension();
 
                 try {
                     $photoFile->move($uploadDir, $fileName);
                 } catch (\Exception $e) {
-                    // Gérer les erreurs éventuelles liées au téléchargement
+                    // Gère les erreurs éventuelles liées au téléchargement
                     $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
                     return $this->redirectToRoute('app_login_avatar');
                 }
 
-                // Enregistrer le nom du fichier de la photo de profil dans l'utilisateur
+                // Enregistre le nom du fichier de la photo de profil dans l'utilisateur
                 $user->setProfilPicture($fileName);
                 $userRepository->save($user);
 
-                // Rediriger ou afficher un message de succès
+                // Redirige ou affiche un message de succès
                 $this->addFlash('success', 'La photo de profil a été téléchargée avec succès !');
                 return $this->redirectToRoute('app_login_avatar');
             }
@@ -175,22 +174,25 @@ class LoginController extends AbstractController
         // Récupére l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
-        // Convertir le tableau de tags en ArrayCollection
-        $tags = $user->getTags();
-        if (!$tags) {
-            $tags = new ArrayCollection();
-        }
+        // Récupère les catégories et les tags associés
+        $tagsByCategory = [
+            'Sports' => [
+                'Marche', 'Cyclisme', 'Football', 'Basket', 'Moto', 'Tennis', 'Hockey Sur gazon', 'Golf', 'Arts Martiaux', 'Body Building', 'Yoga', 'Boxe Anglaise'
+            ],
+            'Musique' => [
+                'Folk', 'Hip-Hop / Rap', 'Latin', 'Rock', 'Alternatif', 'Blues', 'Jazz', 'Classique', 'Dj/Dance', 'R&B', 'Opéra', 'Pop'
+            ],
+        ];
 
-        // Créer le formulaire
-        $form = $this->createForm(TagsFormType::class);
+        // Crée le formulaire avec les tags de chaque catégorie
+        $form = $this->createForm(TagsFormType::class, $user, [
+            'tagsByCategory' => $tagsByCategory,
+        ]);
 
         // Gère la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // Mettre à jour les tags dans l'utilisateur avec le tableau converti en ArrayCollection
-            $user->setTags($tags);
 
             // Enregistre les modifications de l'utilisateur dans la base de données
             $userRepository->save($user);

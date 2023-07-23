@@ -23,7 +23,6 @@ class EventController extends AbstractController
     public function index(EventRepository $eventRepository): Response
     {
         $event = new Events();
-        dump($event);
 
         $eventId = '';
         $event->setEventId($eventId);
@@ -41,6 +40,7 @@ class EventController extends AbstractController
         // Récupére l'événement associé à l'ID de l'URL
         $event = $eventRepository->findOneBy(['eventId' => $eventId]);
         
+        // Si l'évènement n'existe pas on renvoie un message d'erreur
         if (!$event) {
             throw $this->createNotFoundException('Aucun évènement trouvé.');
         }
@@ -48,7 +48,7 @@ class EventController extends AbstractController
         // Récupére les messages de chat associés à l'événement
         $chatMessages = $chatMessageRepository->findBy(['event' => $event]);
 
-        // Récupérer l'email de l'utilisateur connecté depuis la session
+        // Récupére l'email de l'utilisateur connecté depuis la session
         $emailSession = $sessionInterface->get('email');
 
         // Affiche la page d'affichage de l'événement avec les messages de chat
@@ -63,22 +63,23 @@ class EventController extends AbstractController
     #[Route('/{eventId}/post_chat_message', name: 'app_event_post_chat_message', methods: ['GET', 'POST'])]
     public function postChatMessage(Request $request, EventRepository $eventRepository, UserRepository $userRepository, ChatMessageRepository $chatMessageRepository, string $eventId, SessionInterface $sessionInterface): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
+        // Récupére l'email de l'utilisateur connecté depuis la session
         $emailSession = $sessionInterface->get('email');
-        // Rechercher l'utilisateur connecté dans la base de données en utilisant l'email
+        // Recherche l'utilisateur connecté dans la base de données en utilisant l'email
         $authenticatedUser = $userRepository->findOneBy(['email' => $emailSession]);
 
-        // Récupérer l'événement associé à l'ID de l'URL
+        // Récupére l'événement associé à l'ID de l'URL
         $event = $eventRepository->findOneBy(['eventId' => $eventId]);
 
+        // Si l'évènement n'existe pas on renvoie un message d'erreur
         if (!$event) {
             throw $this->createNotFoundException('Aucun évènement trouvé.');
         }
 
-        // Récupérer le contenu du message de chat à partir de la requête POST
+        // Récupére le contenu du message de chat à partir de la requête POST
         $content = $request->request->get('content');
 
-        // Vérifier si $content est null et lui attribuer une valeur par défaut si c'est le cas
+        // Vérifie si $content est null et lui attribuer une valeur par défaut si c'est le cas
         if ($content === null) {
             $content = ''; // Valeur par défaut
         }
@@ -88,13 +89,13 @@ class EventController extends AbstractController
         $chatMessage->setContent($content);
         $chatMessage->setEvent($event);
         
-        // Associer l'utilisateur au message de chat
+        // Associe l'utilisateur au message de chat
         $chatMessage->setUser($authenticatedUser);
 
-        // Enregistrer le nouveau message de chat dans la base de données
+        // Enregistre le nouveau message de chat dans la base de données
         $chatMessageRepository->save($chatMessage);
 
-        // Rediriger l'utilisateur vers la page d'affichage de l'événement
+        // Redirige l'utilisateur vers la page d'affichage de l'événement
         return $this->redirectToRoute('app_event_show', ['eventId' => $eventId]);
     }
 }

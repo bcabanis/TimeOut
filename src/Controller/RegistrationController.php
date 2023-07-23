@@ -30,7 +30,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $email = $user->getEmail();
 
-            // Vérifier si l'adresse e-mail existe déjà dans la base de données
+            // Vérifie si l'adresse e-mail existe déjà dans la base de données
             $existingUser = $userRepository->findOneBy(['email' => $email]);
             if ($existingUser) {
                 // Si un utilisateur avec l'e-mail existe déjà, afficher une modal d'erreur
@@ -61,7 +61,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/registration-success', name: 'registration_success')]
-    public function register_success(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function register_success(): Response
     {
         return $this->render('registration/success.html.twig', [
             'message' => 'Votre compte a été créé.',
