@@ -91,10 +91,10 @@ class LoginController extends AbstractController
     #[Route('/profil', name: 'app_profil')]
     public function profil(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupére l'email de l'utilisateur connecté depuis la session
+        // Récupère l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
 
-        // Récupére l'utilisateur depuis la base de données en utilisant l'email
+        // Récupère l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
         // Créer le formulaire de profil en utilisant ProfilFormType et l'utilisateur récupéré
@@ -105,6 +105,7 @@ class LoginController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Enregistre les modifications de l'utilisateur dans la base de données
+            $user->fill();
             $userRepository->save($user);
 
             // Redirige l'utilisateur vers une autre page 
@@ -119,10 +120,10 @@ class LoginController extends AbstractController
     #[Route('/loginavatar', name: 'app_login_avatar')]
     public function avatar(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupére l'email de l'utilisateur connecté depuis la session
+        // Récupère l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
 
-        // Récupére l'utilisateur depuis la base de données en utilisant l'email
+        // Récupère l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
         // Créer le formulaire
@@ -132,7 +133,7 @@ class LoginController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupére le fichier téléchargé
+            // Récupère le fichier téléchargé
             $photoFile = $form->get('profilPicture')->getData();
 
             // Vérifie si un fichier a été téléchargé
@@ -151,6 +152,7 @@ class LoginController extends AbstractController
 
                 // Enregistre le nom du fichier de la photo de profil dans l'utilisateur
                 $user->setProfilPicture($fileName);
+                $user->fill();
                 $userRepository->save($user);
 
                 // Redirige ou affiche un message de succès
@@ -168,23 +170,23 @@ class LoginController extends AbstractController
     #[Route('/tags', name: 'app_tags')]
     public function tags(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupére l'email de l'utilisateur connecté depuis la session
+        // Récupère l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
 
-        // Récupére l'utilisateur depuis la base de données en utilisant l'email
+        // Récupère l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
         // Récupère les catégories et les tags associés
         $tagsByCategory = [
             'Sports' => [
-                'Marche', 'Cyclisme', 'Football', 'Basket', 'Moto', 'Tennis', 'Hockey Sur gazon', 'Golf', 'Arts Martiaux', 'Body Building', 'Yoga', 'Boxe Anglaise'
+                'Marche' => 'Marche', 'Cyclisme' => 'Cyclisme', 'Football' => 'Football', 'Basket' => 'Basket', 'Moto' => 'Moto', 'Tennis' => 'Tennis', 'Hockey sur gazon' => 'Hockey sur gazon', 'Golf' => 'Golf', 'Arts Martiaux' => 'Arts Martiaux', 'Body Building' => 'Body Building', 'Yoga' => 'Yoga', 'Boxe Anglaise' => 'Boxe Anglaise'
             ],
             'Musique' => [
-                'Folk', 'Hip-Hop / Rap', 'Latin', 'Rock', 'Alternatif', 'Blues', 'Jazz', 'Classique', 'Dj/Dance', 'R&B', 'Opéra', 'Pop'
+                'Folk' => 'Folk', 'Hip-Hop / Rap' => 'Hip-Hop / Rap', 'Latin' => 'Latin', 'Rock' => 'Rock', 'Alternatif' => 'Alternatif', 'Blues' => 'Blues', 'Jazz' => 'Jazz', 'Classique' => 'Classique', 'Dj/Dance' => 'Dj/Dance', 'R&B' => 'R&B', 'Opéra' => 'Opéra', 'Pop' => 'Pop'
             ],
         ];
 
-        // Crée le formulaire avec les tags de chaque catégorie
+        // Créer le formulaire avec les tags de chaque catégorie
         $form = $this->createForm(TagsFormType::class, $user, [
             'tagsByCategory' => $tagsByCategory,
         ]);
@@ -194,7 +196,22 @@ class LoginController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // Initialise un tableau vide pour stocker les tags sélectionnés
+            $selectedTags = [];
+
+            // Parcourt les catégories pour extraire les tags sélectionnés
+            foreach ($tagsByCategory as $category => $tags) {
+                // Vérifie si la catégorie est présente dans les données soumises
+                if ($form->has($category)) {
+                    // Récupère les tags sélectionnés pour cette catégorie
+                    $selectedTags[$category] = $form->get($category)->getData();
+                }
+            }
+            // Enregistre les tags sélectionnés dans l'entité Users
+            $user->setTagsByCategory($selectedTags);
+
             // Enregistre les modifications de l'utilisateur dans la base de données
+            $user->fill();
             $userRepository->save($user);
 
             // Redirige l'utilisateur vers une autre page 
