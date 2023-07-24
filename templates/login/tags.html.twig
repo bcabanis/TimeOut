@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello ! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/src/Controller/LoginController.php'|file_link(0) }}">src/Controller/LoginController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/login/index.html.twig'|file_link(0) }}">templates/login/index.html.twig</a></code></li>
+    </ul>
+    {{ form_start(tagsForm) }}
+        {{ form_errors(tagsForm) }}
+        {{ form_widget(tagsForm) }}
+    {{ form_end(tagsForm) }}
+</div>
+
+<h1>PAGE DE CHOIX DES TAGS</h1>
+<a href="{{ path('app_dashboard') }}">Page Dashboard</a>
+{% endblock %}

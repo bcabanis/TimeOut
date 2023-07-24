@@ -35,10 +35,9 @@ class Events
     #[MongoDB\Field(type: 'string')]
     private string $title;
 
-    #[MongoDB\ReferenceMany(targetDocument:ChatMessage::class, mappedBy:"eventId")]
+    #[MongoDB\ReferenceMany(targetDocument: ChatMessage::class, mappedBy: "eventId")]
     private $chatMessages; // Collection des messages de chat associés à l'événement
 
-    // créer un tableau "messages"
 
     public function getId(): string
     {
@@ -157,9 +156,4 @@ class Events
     {
         $this->chatMessages = $chatMessages;
     }
-    
-    // créer la méthode getMessages()
-
-    // créer la méthode addMessage($message)
-
 }

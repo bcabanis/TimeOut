@@ -3,6 +3,7 @@
 namespace App\Document;
 
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -43,7 +44,10 @@ class Users implements PasswordAuthenticatedUserInterface
 
     #[MongoDB\Field(type: 'string')]
     private string $pseudo;
-    
+
+    #[MongoDB\Field(type: 'collection')]
+    private array $tagsByCategory = [];
+
     #[MongoDB\Field(type: 'boolean')]
     private bool $filled = false;
 
@@ -100,6 +104,11 @@ class Users implements PasswordAuthenticatedUserInterface
     public function getPseudo(): string
     {
         return $this->pseudo;
+    }
+
+    public function getTagsByCategory(): array
+    {
+        return $this->tagsByCategory;
     }
 
     public function setFirstName(string $firstName): Users
@@ -171,6 +180,12 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function setTagsByCategory(array $tagsByCategory): self
+    {
+        $this->tagsByCategory = $tagsByCategory;
+        return $this;
+    }
+
     /**
      * Vérifie si l'utilisateur a rempli les informations de profil.
      *
@@ -188,24 +203,5 @@ class Users implements PasswordAuthenticatedUserInterface
 
         return $this;
     }
-// 
+    // 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
