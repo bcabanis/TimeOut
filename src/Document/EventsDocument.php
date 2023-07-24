@@ -11,39 +11,26 @@ class Events
     #[MongoDB\Id]
     protected $id;
 
-    /**
-     * @MongoDB\Field(type="string")
-     */
+    
+    #[MongoDB\Field(type:"string")]
     protected $category;
 
-    /**
-     * @MongoDB\Field(type="string")
-     */
+    #[MongoDB\Field(type:"string")]
     protected $title;
 
-    /**
-     * @MongoDB\Field(type="string")
-     */
+    #[MongoDB\Field(type:"string")]
     protected $description;
 
-    /**
-     * @MongoDB\Field(type="string", name="date")
-     */
+    #[MongoDB\Field(type:"string", name:"date")]
     protected $eventDate;
 
-    /**
-     * @MongoDB\Field(type="string")
-     */
+    #[MongoDB\Field(type:"string")]
     protected $address;
 
-    /**
-     * @MongoDB\Field(type="string", name="image_url")
-     */
+    #[MongoDB\Field(type:"string", name:"image_url")]
     protected $imageUrl;
 
-    /**
-     * @MongoDB\Field(type="string", name="unique_id")
-     */
+    #[MongoDB\Field(type:"string", name:"eventId")]
     protected $uniqueId;
 
     // Add getters and setters for each property

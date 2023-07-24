@@ -31,15 +31,15 @@ divTest.forEach(function (element) {
   let eventId = {"eventId": divClick.dataset.idEvent};
   console.log(divClick.dataset.idEvent);
     // Envoi de la requête AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/test", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        // Réponse du serveur (si nécessaire)
-        console.log(xhr.responseText);
-      }
-    };
-    xhr.send(JSON.stringify(eventId));
+    // var xhr = new XMLHttpRequest();
+    // xhr.open("POST", "/test", true);
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // xhr.onreadystatechange = function() {
+    //   if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+    //     // Réponse du serveur (si nécessaire)
+    //     console.log(xhr.responseText);
+    //   }
+    // };
+    // xhr.send(JSON.stringify(eventId));
   });
 });

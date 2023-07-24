@@ -11,10 +11,11 @@
         <article class="card-event">
             <h4>{{ data.title }}</h4>
             <p>{{ data.description }}</p>
-            <p>{{ data.city }} {{ data.region }} {{ data.adresse }}</p>
+            <p>{{ data.adresse }}</p>
+            <p>{{ data.date }}</p>
             <img src="{{ data.image }}" alt="">
-            <p>{{ data.motCle }}</p>
-            <a href="#" data-id-event="{{ data.eventId }}" class="btn-primary btn btn-participer">Participer</a>
+            
+            <a href="#" data-id-event="{{ data.unique_id }}" class="btn-primary btn btn-participer">Participer</a>
         </article>
 
     {% endfor %}

@@ -20,15 +20,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'app_user')]
-    public function listUsers(DocumentManager $dm)
-    {
-        $groups = $dm->getRepository(Groupe::class)->findAll();
-
-        return $this->render('group/list_groups.html.twig', [
-            'groups' => $groups,
-        ]);
-    }
 }
 
 

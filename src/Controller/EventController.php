@@ -14,113 +14,105 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Document\User;
+use PhpParser\Node\Expr\Cast\Object_;
 
 #[Route('/event')]
 class EventController extends AbstractController
 {
-    #[Route('/', name: 'app_event')]
-    public function index(EventRepository $eventRepository, CallApiService $callApiService, DocumentManager $dm): Response
+
+    // Affichage de tous les événements (pas spécielement utile)
+    #[Route('/affichage', name: 'app_event_affichage')]
+    public function AfficheEvent(EventRepository $eventRepository, CallApiService $callApiService, DocumentManager $dm): Response
     {
+
+        // Variables qui seront reprises pour le partage de données vers la vue
+        $category = "";
         $title = "";
         $description = "";
-        $city = "";
-        $region = "";
         $adresse = "";
         $image = "";
-        $region = "";
-        $motCle = "";
+        $unique_id = "";
+        $date = "";
 
         $dataForJs = [];
         $dataTabForJs = [];
 
-        $jsonData = '/assets/json/event.json';
-        $eventsData = json_decode($jsonData, true);
-        dd($dataForJs);
-        
-        // foreach ($dataTags['records'] as $data) {
-        //     $dataFields = $data['fields'];
+        // Recherche des événements dans la base de données
+        $e = $eventRepository->findAll();
+        // dd($eventsData);
 
-        //     $title = $dataFields['title_fr'];
-        //     if (isset($dataFields['longdescription_fr'])) {
-        //         $description = $dataFields['longdescription_fr'];
-        //     } else {
-        //         $description = $dataFields['description_fr'];
-        //     }
-            
-        //     $city = $dataFields['location_city'];
-        //     $region = $dataFields['location_region'];
-        //     $adresse = $dataFields['location_address'];
-        //     $image = $dataFields['image'];
-        //     $eventId = $data['recordid'];
-        //     if (isset($dataFields['keywords_fr'])) {
-        //         $motCle = $dataFields['keywords_fr'];
-        //     } else {
-        //         $motCle = "";
-        //     }
-        //     // $beginDate = $dataFields['timings'].['begin'];
-        //     // $endDate = $dataFields['timings'].['end'];
+        // Boucle sur tous les événements pour récupérer les données et les afficher
+        for ($i = 0; $i < count($e); $i++) {
+            $title = $e[$i]->getTitle();
+            $description = $e[$i]->getDescription();
+            $category = $e[$i]->getCategory();
+            $date = $e[$i]->getEventDate();
+            $adresse = $e[$i]->getAddress();
+            $adresse = $e[$i]->getAddress();
+            $image = $e[$i]->getImageUrl();
+            $unique_id = $e[$i]->getUniqueId();
 
-        //     $existingEvent = $eventRepository->findOneBy(['title' => $title]);
+            // Tableau d'un événement
+            $dataForJs = [
+                'title' => $title,
+                'description' => $description,
+                'adresse' => $adresse,
+                'image' => $image,
+                'unique_id' => $unique_id,
+                'date' => $date,
+                'category' => $category,
+            ];
 
-        //     if (!$existingEvent) {
-        //         $event = new Events();
-        //         $event->setTitle($title);
-        //         $event->setDescription($description);
-        //         $event->setCity($city);
-        //         $event->setRegion($region);
-        //         $event->setAdresse($adresse);
-        //         $event->setPicture($image);
-        //         $event->setEventId($eventId);
-        //         $event->setMotCle($motCle);
+            // Tableau des événements
+            $dataTabForJs[] = $dataForJs;
+        }
 
-        //         $eventRepository->save($event);
-        //     }
+        // Retourne les données dans le template requis 
+        return $this->render('event/affichage.html.twig', [
+            'jsonData' => $dataTabForJs,
+        ]);
+    }
 
-        //     $dataForJs = [
-        //         'title' => $title,
-        //         'description' => $description,
-        //         'city' => $city,
-        //         'region' => $region,
-        //         'adresse' => $adresse,
-        //         'image' => $image,
-        //         'eventId' => $eventId,
-        //         'motCle' => $motCle,
 
-        //     ];
+    // Envoie des évenements en BDD
+    #[Route('/to_bdd', name: 'app_event_bdd')]
+    public function EventToBDD(EventRepository $eventRepository): Response
+    {
 
-        //     $dataTabForJs[] = $dataForJs; 
+        // Récupération du lien de l'api (json)
+        $jsonData = './assets/json/event.json';
 
-        // }
+        // Decodage en string pour la lecture en php
+        $eventsData = json_decode(file_get_contents($jsonData, true));
 
+        // Boucle sur $eventData pour permettre l'insertion des données de l'événements dans la BDD
         foreach ($eventsData as $category => $events) {
             foreach ($events as $event) {
-                $title = $event['Titre'];
-                $existingEvent = $eventRepository->findOneBy(['title' => $title]);
+                foreach ($event as $e) {
 
-                if (!$existingEvent) {
-                    $eventDoc = new Events();
-                    $eventDoc->setCategory($category);
-                    $eventDoc->setTitle($event['Titre']);
-                    $eventDoc->setDescription($event['Description']);
-                    $eventDoc->setEventDate($event['Date_de_l_evenement']);
-                    $eventDoc->setAddress($event['Adresse']);
-                    $eventDoc->setImageUrl($event['URL_d_image']);
-                    $eventDoc->setUniqueId($event['ID_unique']);
+                    // Variable qui va permettre la vérification de non doublons dans la BDD
+                    $existingEvent = $eventRepository->findOneBy(['eventId' => $e->ID_unique]);
 
-                    $eventRepository->save($eventDoc);
+                    // Condition pour eviter des doublons d'événements dans la base de données 
+                    if (!$existingEvent) {
+                        $eventDoc = new Events();
+                        $eventDoc->setCategory($category);
+                        $eventDoc->setTitle($e->Titre);
+                        $eventDoc->setDescription($e->Description);
+                        $eventDoc->setEventDate($e->Date_de_l_evenement);
+                        $eventDoc->setAddress($e->Adresse);
+                        $eventDoc->setImageUrl($e->URL_d_image);
+                        $eventDoc->setUniqueId($e->ID_unique);
+
+                        // Enregistre dans la base de données
+                        $eventRepository->save($eventDoc);
+                    }
                 }
-  
             }
         }
 
-        
-
+        // Réponse si bon injection des données
         return new Response('Events inserted successfully!');
-
-            // // Retourne les données dans le template requis 
-            // return $this->render('event/affichage.html.twig', [
-            //     'jsonData' => $dataTabForJs,
-            // ]);
     }
 
     #[Route('/{eventId}', name: 'app_event_show')]
@@ -128,42 +120,42 @@ class EventController extends AbstractController
     {
         // Récupére l'événement associé à l'ID de l'URL
         $event = $eventRepository->find($eventId);
-        
+
         if (!$event) {
             throw $this->createNotFoundException('Aucun évènement trouvé.');
         }
-        
+
         // Récupére les messages de chat associés à l'événement
         $chatMessages = $chatMessageRepository->findBy(['event' => $event]);
-        
+
         // Affiche la page d'affichage de l'événement avec les messages de chat
         return $this->render('event/show.html.twig', [
             'event' => $event,
             'chatMessages' => $chatMessages,
         ]);
     }
-    
+
     #[Route('/{eventId}/post_chat_message', name: 'app_event_post_chat_message', methods: ['POST'])]
     public function postChatMessage(Request $request, EventRepository $eventRepository, ChatMessageRepository $chatMessageRepository, string $eventId): Response
     {
         // Récupére l'événement associé à l'ID de l'URL
         $event = $eventRepository->find($eventId);
-        
+
         if (!$event) {
             throw $this->createNotFoundException('Aucun évènement trouvé.');
         }
-        
+
         // Récupére le contenu du message de chat à partir de la requête POST
         $content = $request->request->get('content');
-        
+
         // Créer un nouveau message de chat
         $chatMessage = new ChatMessage();
         $chatMessage->setContent($content);
         $chatMessage->setEvent($event);
-        
+
         // Enregistre le nouveau message de chat dans la base de données
         $chatMessageRepository->save($chatMessage);
-        
+
         // Redirige l'utilisateur vers la page d'affichage de l'événement
         return $this->redirectToRoute('app_event_show', ['eventId' => $eventId]);
     }
@@ -227,4 +219,3 @@ class EventController extends AbstractController
 //         'controller_name' => 'EventController',
 //     ]);
 // }
-
