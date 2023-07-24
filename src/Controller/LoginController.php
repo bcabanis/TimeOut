@@ -109,7 +109,7 @@ class LoginController extends AbstractController
             $userRepository->save($user);
 
             // Redirige l'utilisateur vers une autre page 
-            return $this->redirectToRoute('app_login_avatar');
+            return $this->redirectToRoute('app_avatar');
         }
 
         return $this->render('login/profil.html.twig', [
@@ -117,7 +117,7 @@ class LoginController extends AbstractController
         ]);
     }
 
-    #[Route('/loginavatar', name: 'app_login_avatar')]
+    #[Route('/avatar', name: 'app_avatar')]
     public function avatar(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
         // Récupère l'email de l'utilisateur connecté depuis la session
@@ -147,7 +147,7 @@ class LoginController extends AbstractController
                 } catch (\Exception $e) {
                     // Gère les erreurs éventuelles liées au téléchargement
                     $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
-                    return $this->redirectToRoute('app_login_avatar');
+                    return $this->redirectToRoute('app_avatar');
                 }
 
                 // Enregistre le nom du fichier de la photo de profil dans l'utilisateur
@@ -157,7 +157,7 @@ class LoginController extends AbstractController
 
                 // Redirige ou affiche un message de succès
                 $this->addFlash('success', 'La photo de profil a été téléchargée avec succès !');
-                return $this->redirectToRoute('app_login_avatar');
+                return $this->redirectToRoute('app_tags');
             }
         }
 
@@ -223,7 +223,7 @@ class LoginController extends AbstractController
             $user->fill();
             $userRepository->save($user);
 
-            // Redirige l'utilisateur vers une autre page 
+            // Redirige l'utilisateur vers son dashboard 
             return $this->redirectToRoute('app_dashboard');
         }
 
