@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canaux d'évènements</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
+    <link rel=" preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/21-07-23-style.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark">
+            <div class="container-fluid">
+                
+                <a href="#"><img class="logo" src="assets/img/logowhite.png" alt="Logo gettogether"></a>
+            
+                <!-- searchbar -->
+                <form class="d-flex" role="search" id="searchbarheader">
+                <input class="form-control me-2" type="search" placeholder="Veuillez taper votre recherche d’évent" id="navsearchevent" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Localisation" id="navsearchlocal" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"><img src="/assets/img/searchwhite.svg" alt=""></button>
+                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link chat" href="#">Chat</a>
+                    </li>
+                    <li class="nav-item">     
+                    <a class="nav-link notif" href="#">Notifcations</a>
+                    </li>   
+                    <li class="nav-item">
+                    <a class="nav-link user">Profil</a>
+                    </li>
+                </ul>
+                
+                </div>
+            </div>
+            </nav>
+        </div> <!-- container end  -->
+    </header><!-- header end  -->
+    <section id="canaux">
+        <div class="container">
+            <div class="row">
+                <h1 class="col-12 col-lg-5">Canaux d’évènements</h1>
+                <form id="formcanaux" action="#" method="post" class="col-12 col-lg-7">
+                    <button type="button">Du plus récent au plus ancien</button>
+                    <input type="search" name="eventsearch" id="eventsearch" placeholder="Rechercher par event">
+                </form>
+            </div>
+
+            <a class="cardcanaux" href="#">
+                <article id="concert-rock-prix-libre">
+                    <img class="eventpicture" src="assets/img/image-concert-rock-prix-libre.png" alt="image-event-1">
+                    <div class="event">
+                        <h1>Concert rock prix libre</h1>
+                        <p class="date"><img src="assets/img/schedule-icon-darkgrey.svg" alt="calendrier">23/08/2023</p>
+                        <p class="lieu"><img src="assets/img/location-icon-darkgrey.svg" alt="location pin">La Boule Noire</p>
+                    </div>
+                </article>
+            </a>
+
+            <a class="cardcanaux" href="#">
+                <article id="event-2">
+                    <img class="eventpicture" src="assets/img/image-event-2.png" alt="image-event-2">
+                    <div class="event">
+                        <h1>Nom Event 2</h1>
+                        <p class="date"><img src="assets/img/schedule-icon-darkgrey.svg" alt="calendrier">00/00/0000</p>
+                        <p class="lieu"><img src="assets/img/location-icon-darkgrey.svg" alt="location pin">Lieu</p>
+                    </div>
+                </article>
+            </a>
+
+            <a class="cardcanaux" href="#">
+                <article id="event-3">
+                    <img class="eventpicture" src="assets/img/image-event-3.png" alt="image-event-3">
+                    <div class="event">
+                        <h1>Nom Event 3</h1>
+                        <p class="date"><img src="assets/img/schedule-icon-darkgrey.svg" alt="calendrier">00/00/0000</p>
+                        <p class="lieu"><img src="assets/img/location-icon-darkgrey.svg" alt="location pin">Lieu</p>
+                    </div>
+                </article>
+            </a class="cardcanaux" href="#">
+
+            <a class="cardcanaux" href="#">
+                <article id="event-4">
+                    <img class="eventpicture" src="assets/img/image-event-4.png" alt="image-event-4">
+                    <div class="event">
+                        <h1>Nom Event 4</h1>
+                        <p class="date"><img src="assets/img/schedule-icon-darkgrey.svg" alt="calendrier">00/00/0000</p>
+                        <p class="lieu"><img src="assets/img/location-icon-darkgrey.svg" alt="location pin">Lieu</p>
+                    </div>
+                </article>
+            </a class="cardcanaux" href="#">
+
+        </div>
+
+
+    </section>
+    <footer>
+        <div class="container">
+           <div class="logotimeout">
+                <a href="#">
+                    <img class="logo" src="assets/img/logo-timeout-white.svg" alt="Logo TimeOut">
+                </a>
+           </div>
+            
+            <div class="row">
+                <article class="col-6 col-md-3 mobile">
+                    <h4>Nous Suivre</h4>
+                    <div class="rs-icons">
+                        <a id="facebookicon" href="#"></a>
+                        <a id="pinteresticon" href="#"></a>
+                        <a id="twittericon" href="#"></a>
+                        <a id="instagramicon" href="#"></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="row">
+                <article id="aproposdenous" class="col-xl-3 col-md-3 col-6">
+                    <h4><a href="#">À propos de nous</a></h4>
+                    <p><a href="#">Les communiqués de presse</a></p>
+                    <p><a href="#">Actionnaires</a></p>
+                    <p><a href="#">Recrutement</a></p>
+                    <p><a href="#">Avis de confidentialité</a></p>
+                    <p><a href="#">Politique concernant les cookies</a></p>
+                    <p><a href="#">Conditions d'utilisation</a></p>
+                    <p id="cookies"><a href="#">Gérer les cookies</a></p>
+                </article>
+
+                <article id="nouscontacter" class="col-xl-3 col-md-3 col-6">
+                    <h4><a href="#">Nous contacter</a></h4>
+                    <p><a href="#">Apparaitre sur Time Out Paris</a></p>
+                    <p><a href="#">La publicité</a></p>
+                    <p><a href="#">Time Out Market</a></p>
+                </article>
+
+                <article id="loffretimeout" class="col-xl-3 col-md-3 col-6">
+                    <h4><a href="#">L'offre Time Out</a></h4>
+                    <p><a href="#">Magazine papier</a></p>
+                    <p><a href="#">Media kit</a></p>
+                    <p><a href="#">Les Profils Premium</a></p>
+                    <p><a href="#">Les leviers digitaux</a></p>
+                    <p><a href="#">Time Out worldwide</a></p>
+                </article>
+
+                <article class="col-xl-3 col-md-3 col-6 noussuivre">
+                    <h4>Nous Suivre</h4>
+                    <div class="rs-icons">
+                        <a id="facebookicon" href="#"></a>
+                        <a id="pinteresticon" href="#"></a>
+                        <a id="twittericon" href="#"></a>
+                        <a id="instagramicon" href="#"></a>
+                    </div>
+                </article>
+            </div>
+            <p class="sitemap"><a href="#">PLAN DU SITE</a></p>
+            <p class="mentionslegales">© 2023 Time Out England Limited and affiliated companies owned by Time Out Group
+                Plc. All rights reserved. Time Out is a registered trademark of Time Out Digital Limited.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
