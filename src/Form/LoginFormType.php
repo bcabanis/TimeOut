@@ -17,17 +17,26 @@ class LoginFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Adresse mail'
+                'label' => 'Adresse mail',
+                'attr' => [
+                    'class' => 'inputsub label-margin'
+                ]
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe'
+                'label' => 'Mot de passe',
+                'attr' => [
+                    'class' => 'inputsub label-margin'
+                ]
             ])
             ->add('stayConnected', CheckboxType::class, [
                 'label' => 'Rester connecté',
                 'mapped' => false
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Se connecter'
+                'label' => 'Se connecter',
+                'attr' => [
+                    'class' => 'inputsub btninscrire btn-valide colorWhite'
+                ]
             ]);
     }
 
