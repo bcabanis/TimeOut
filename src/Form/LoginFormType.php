@@ -34,6 +34,10 @@ class LoginFormType extends AbstractType
         // Ajoute le champ "submit" avec le type SubmitType
         $builder->add('submit', SubmitType::class, [
             'label' => 'Se connecter',
+            'attr' => [
+                'class' => 'inputsub btninscrire btn-valide colorWhite',
+                'onclick' => "window.location.href='{{ path('app_profil') }}'"
+            ]
         ]);
     }
 
