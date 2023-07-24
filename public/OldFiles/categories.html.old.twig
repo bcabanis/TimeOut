@@ -1,0 +1,63 @@
+{# OLD (19 Juillet) #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .sub-category-btn { display: none; } /* On cache initialement les sous-catégories */
+    .category-btn { background-color: #fff; } /* Couleur par défaut pour les boutons */
+    .category-btn.active { background-color: red; } /* Couleur pour les boutons actifs (rouges) */
+</style>
+
+<div class="example-wrapper">
+    <h1>Liste des catégories</h1>
+    {% for category in categories %}
+        <h2>{{ category.name }}</h2> {# Afficher le nom de la catégorie #}
+        {% for subCategory in category.subCategories %}
+            <button class="category-btn" onclick="toggleSubCategory(this)" data-category="{{ loop.index }}">{{ subCategory }}</button>
+            <style>
+                .sub-category-btn[data-category="{{ loop.index }}"] {
+                    display: none; /* On cache toutes les sous-catégories */
+                }
+                .sub-category-btn[data-category="{{ loop.index }}"].active {
+                    display: inline-block; /* On affiche la sous-catégorie quand le bouton est actif */
+                }
+            </style>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+<script>
+    function toggleSubCategory(button) {
+        // Récupérer l'index de la catégorie parente du bouton cliqué
+        const categoryIndex = button.getAttribute('data-category');
+
+        // Récupérer tous les boutons de classe "sub-category-btn" avec le même index de catégorie
+        const subCategories = document.querySelectorAll(`.sub-category-btn[data-category="${categoryIndex}"]`);
+
+        // Parcourir les sous-catégories pour les afficher ou les cacher en fonction de leur état actuel
+        subCategories.forEach(subCategory => {
+            if (subCategory.style.display === 'none') {
+                subCategory.classList.add('active'); // Si elle est cachée, on l'affiche
+            } else {
+                subCategory.classList.remove('active'); // Sinon, on la cache
+            }
+        });
+
+        // Inverser la classe "active" du bouton cliqué pour changer sa couleur
+        button.classList.toggle('active');
+    }
+</script>
+
+
+{# 
+SUITE DU SCRIPT : AJOUTER A L'EVENEMENT DU CLIQUE L'APPARITION DES EVENEMENTS EN FONCTION DE LEUR MOTS CLES INTEGRES 
+REGLE : SI UN EVENEMENT CONTIENT subCategory.name DANS L'UN DE SES CHAMPS : CHANGER LEUR DISPLAY EN "ON"
+#}
+
+
+{% endblock %} //
