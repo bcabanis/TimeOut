@@ -184,6 +184,15 @@ class LoginController extends AbstractController
             'Musique' => [
                 'Folk' => 'Folk', 'Hip-Hop / Rap' => 'Hip-Hop / Rap', 'Latin' => 'Latin', 'Rock' => 'Rock', 'Alternatif' => 'Alternatif', 'Blues' => 'Blues', 'Jazz' => 'Jazz', 'Classique' => 'Classique', 'Dj/Dance' => 'Dj/Dance', 'R&B' => 'R&B', 'Opéra' => 'Opéra', 'Pop' => 'Pop'
             ],
+            'Arts' => [
+                'Ballet' => 'Ballet', 'Bijoux' => 'Bijoux', 'Chorales' => 'Chorales', 'Comédie' => 'Comédie', 'Design' => 'Design', 'Littérature' => 'Littérature', 'Comédie musicale' => 'Comédie musicale', 'Orchestres' => 'Orchestres', 'Peinture' => 'Peinture', 'Sculpture' => 'Sculpture'
+            ],
+            'Business' => [
+                'Associations' => 'Associations', 'Carrière' => 'Carrière', 'Immobilier' => 'Immobilier', 'Investissement' => 'Investissement', 'Marketing' => 'Marketing', 'Médias' => 'Médias', 'ONG' => 'ONG', 'PME' => 'PME', 'Startups' => 'Startups'
+            ],
+            'Communaute' => [
+                'Bénévolat' => 'Bénévolat', 'Cours Particuliers' => 'Cours Particuliers', 'Histoire' => 'Histoire', 'Langues' => 'Langues', 'Actions locales' => 'Actions locales', 'Nationalité' => 'Nationalité', 'Parrainages' => 'Parrainages', 'Participatif' => 'Participatif', 'Atelier' => 'Atelier'
+            ],
         ];
 
         // Créer le formulaire avec les tags de chaque catégorie
