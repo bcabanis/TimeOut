@@ -8,8 +8,10 @@ use App\Repository\CategoryRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Document\EventsDocument;
+
 
 
 #[Route('/event')]
@@ -132,6 +134,31 @@ class EventController extends AbstractController
         return $this->render('event/categories.html.twig', [
             'categories' => $categories,
             'events' => $events, // Passer les événements à la vue pour les afficher
+        ]);
+    }
+
+    // public function getEventsAction()
+    // {
+    //     // Code pour récupérer les événements depuis MongoDB (remplacez-le par votre propre logique)
+
+    //     // Supposons que vous avez les événements dans un tableau nommé $events
+    //     return new JsonResponse($events);
+    // }
+
+
+    #[Route('/calendar', name: 'app_event_calendar')]
+    public function calendar(): Response
+    {
+        // Exemple de données de calendrier (pour les besoins de démonstration)
+        $calendarData = [
+            '2023-07-01' => ['Événement 1', 'Événement 2'],
+            '2023-07-05' => ['Événement 3'],
+            '2023-07-10' => ['Événement 4', 'Événement 5', 'Événement 6'],
+        ];
+
+        // Passez les données à votre modèle Twig et générez la vue
+        return $this->render('event/calendar.html.twig', [
+            'calendarData' => $calendarData,
         ]);
     }
 }

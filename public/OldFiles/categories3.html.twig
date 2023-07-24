@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .sub-category-btn { display: none; }
+    .category-btn { background-color: #fff; }
+    .category-btn:hover { background-color: red; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Liste des catégories</h1>
+    {% for category in categories %}
+        <h2>{{ category.name }}</h2>
+        {% for subCategory in category.subCategories %}
+            <button class="category-btn" onclick="toggleSubCategory(this)" data-category-name="{{ subCategory }}">{{ subCategory }}</button>
+            <style>
+                .sub-category-btn[data-category-name="{{ subCategory }}"] {
+                    display: none;
+                } 
+                .sub-category-btn[data-category-name="{{ subCategory }}"]:hover {
+                    display: inline-block;
+                }
+            </style>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+{# Afficher la liste des événements récupérés depuis le contrôleur #}
+<div class="event-list">
+    {% for event in events %}
+        <div class="event-item" data-event-name="{{ event.title }}" data-event-description="{{ event.description }}" data-event-address="{{ event.address }}">
+            <h3>{{ event.title }}</h3>
+            {# Utilisation de la fonction "raw" pour désactiver l'échappement des balises HTML #}
+            <p>{{ event.description|raw }}</p>
+            <!-- Affichez les autres détails de l'événement ici si nécessaire -->
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    function toggleSubCategory(button) {
+        const categoryName = button.getAttribute('data-category-name');
+        filterEventsByCategory(categoryName);
+    }
+
+    function filterEventsByCategory(categoryName) {
+        const events = document.querySelectorAll('.event-item');
+
+        events.forEach(event => {
+            const eventName = event.getAttribute('data-event-name');
+            const eventDescription = event.getAttribute('data-event-description');
+            const eventAddress = event.getAttribute('data-event-address');
+            const eventAddressFromDB = event.getAttribute('data-event-address-from-db'); // Remplacer par l'attribut contenant l'adresse depuis la base de données
+            const lowerCategoryName = categoryName.toLowerCase();
+
+            if (eventName.toLowerCase().includes(lowerCategoryName) || eventDescription.toLowerCase().includes(lowerCategoryName) || eventAddress.toLowerCase().includes(lowerCategoryName)) {
+                event.style.display = 'block';
+            } else {
+                event.style.display = 'none';
+            }
+        });
+    }
+
+    // Filtre les événements pour afficher tous les événements au chargement initial de la page
+    window.onload = function () {
+        filterEventsByCategory("");
+    };
+</script>
+
+{% endblock %}

@@ -11,3 +11,9 @@ app_event_categories:
     path: /categories
     controller: App\Controller\EventController::categories
     methods: GET
+
+# Ajout de Romain pour afficher \calendar, à supprimer si conflits
+app_event_calendar:
+    path: /calendar
+    controller: App\Controller\EventController::calendar
+    methods: GET
