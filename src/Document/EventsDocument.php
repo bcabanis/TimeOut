@@ -27,7 +27,7 @@ class Events
     private string $picture;
 
     #[MongoDB\Field(type: 'string')]
-    private string $place = '';
+    private string $address = '';
 
     #[MongoDB\Field(type: 'string')]
     private string $planner = '';
@@ -69,9 +69,9 @@ class Events
         return $this->picture;
     }
 
-    public function getPlace(): string
+    public function getAddress(): string
     {
-        return $this->place;
+        return $this->address;
     }
 
     public function getPlanner(): string
@@ -131,9 +131,9 @@ class Events
         return $this;
     }
 
-    public function setPlace(string $place): Events
+    public function setAddress(string $address): Events
     {
-        $this->place = $place;
+        $this->address = $address;
 
         return $this;
     }
