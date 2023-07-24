@@ -8,7 +8,9 @@ use App\Repository\CategoryRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 #[Route('/event')]
 class EventController extends AbstractController
@@ -132,6 +134,15 @@ class EventController extends AbstractController
             'events' => $events, // Passer les événements à la vue pour les afficher
         ]);
     }
+
+    // public function getEventsAction()
+    // {
+    //     // Code pour récupérer les événements depuis MongoDB (remplacez-le par votre propre logique)
+
+    //     // Supposons que vous avez les événements dans un tableau nommé $events
+    //     return new JsonResponse($events);
+    // }
+
 
     #[Route('/calendar', name: 'app_event_calendar')]
     public function calendar(): Response

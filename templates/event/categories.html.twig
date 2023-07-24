@@ -7,7 +7,8 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     .sub-category-btn { display: none; }
-    .category-btn { background-color: #fff; }
+    .category-btn { background-color: lightgrey; border: 1px solid black; padding: 0.1rem; }
+    .category-btn-onclick { background-color: red; border: 1px solid black; padding: 0.1rem; }
     .category-btn:active { background-color: red; }
 </style>
 
@@ -21,7 +22,7 @@
                 .sub-category-btn[data-category-name="{{ subCategory }}"] {
                     display: none;
                 } 
-                .sub-category-btn[data-category-name="{{ subCategory }}"]:hover {
+                .sub-category-btn[data-category-name="{{ subCategory }}"] {
                     display: inline-block;
                 }
             </style>
