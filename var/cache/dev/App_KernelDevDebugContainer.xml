@@ -4274,17 +4274,17 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.37hY7K." class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
-      </argument>
-    </service>
     <service id=".service_locator.Fq26VWZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="categoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
         <argument key="dm" type="service_closure" id="doctrine_mongodb.odm.default_document_manager"/>
+        <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.37hY7K." class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
         <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
       </argument>
     </service>
@@ -4301,9 +4301,10 @@
         <argument key="callApiService" type="service_closure" id="App\Service\CallApiService"/>
       </argument>
     </service>
-    <service id=".service_locator.jyrvZ48" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.esJg8Ka" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\DashboardController::categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
         <argument key="App\Controller\EventController::categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
         <argument key="App\Controller\EventController::index" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.yy.Upc_"/>
@@ -4313,6 +4314,7 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
+        <argument key="App\Controller\DashboardController:categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
         <argument key="App\Controller\EventController:categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
         <argument key="App\Controller\EventController:index" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.yy.Upc_"/>
@@ -4621,12 +4623,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.jyrvZ48"/>
+      <argument type="service" id=".service_locator.esJg8Ka"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.jyrvZ48"/>
+      <argument type="service" id=".service_locator.esJg8Ka"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -5340,14 +5342,14 @@
     <service id="doctrine_mongodb.odm.event_manager" alias="doctrine_mongodb.odm.default_connection.event_manager"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.jyrvZ48"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.esJg8Ka"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.QZi2MH3" alias=".service_locator.Fq26VWZ"/>
     <service id=".service_locator.XveGcE." alias=".service_locator.yy.Upc_"/>
-    <service id=".service_locator.S_49ckh" alias=".service_locator.jyrvZ48"/>
+    <service id=".service_locator.viJ__9i" alias=".service_locator.esJg8Ka"/>
     <service id=".service_locator.Naiw5mr" alias=".service_locator.HuqLxd2"/>
     <service id=".service_locator.6KYmWpU" alias=".service_locator.QrKkdNp"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
@@ -5369,8 +5371,8 @@
     <service id="argument_resolver.not_tagged_controller" alias="debug.argument_resolver.not_tagged_controller"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.JBAFp66" alias=".service_locator.KfbR3DY"/>
-    <service id=".service_locator.VlzuqH1" alias=".service_locator.37hY7K."/>
     <service id=".service_locator.20bj_nQ" alias=".service_locator.Fq26VWZ"/>
+    <service id=".service_locator.VlzuqH1" alias=".service_locator.37hY7K."/>
     <service id=".service_locator.jm3BRbB" alias=".service_locator.yy.Upc_"/>
     <service id=".service_locator.0R1nEew" alias=".service_locator.IdwyOIE"/>
     <service id=".service_locator.ADknlmN" alias=".service_locator.l1ae.Qz"/>
