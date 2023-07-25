@@ -72,7 +72,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
         ";
         // line 30
         $this->displayBlock('body', $context, $blocks);
-        // line 301
+        // line 302
         echo "
 </html>
 
@@ -382,9 +382,11 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
             <p>Vous ne participez pas encore à aucun event</p>
           </div>
         ";
-        // line 184
-        echo "        
+        // line 183
+        echo " 
+        
         <div class=\"columnspacer col-md-1 col-12\"></div>
+
 
         <article class=\"columnright col-md-6 col-12\">
           <h2>Aujourd'hui</h2>  
@@ -427,7 +429,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
              
         
       </div>
-
+  </div> 
   </article> 
 
 
@@ -498,7 +500,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
   
             <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
             <script src=\"./assets/js/tags.js\"></script> ";
-        // line 299
+        // line 300
         echo "</body>
 ";
         
@@ -513,7 +515,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
 
     public function getDebugInfo()
     {
-        return array (  502 => 299,  386 => 184,  351 => 150,  348 => 148,  336 => 143,  332 => 141,  327 => 139,  323 => 138,  319 => 137,  315 => 135,  311 => 134,  308 => 133,  300 => 126,  294 => 125,  282 => 121,  279 => 120,  274 => 119,  270 => 118,  267 => 117,  262 => 113,  256 => 112,  250 => 111,  247 => 110,  243 => 108,  234 => 104,  231 => 103,  228 => 102,  223 => 101,  218 => 100,  216 => 99,  207 => 92,  185 => 72,  142 => 31,  135 => 30,  122 => 25,  106 => 14,  99 => 13,  86 => 10,  76 => 301,  74 => 30,  68 => 26,  66 => 25,  63 => 24,  61 => 13,  55 => 10,  44 => 1,);
+        return array (  504 => 300,  386 => 183,  351 => 150,  348 => 148,  336 => 143,  332 => 141,  327 => 139,  323 => 138,  319 => 137,  315 => 135,  311 => 134,  308 => 133,  300 => 126,  294 => 125,  282 => 121,  279 => 120,  274 => 119,  270 => 118,  267 => 117,  262 => 113,  256 => 112,  250 => 111,  247 => 110,  243 => 108,  234 => 104,  231 => 103,  228 => 102,  223 => 101,  218 => 100,  216 => 99,  207 => 92,  185 => 72,  142 => 31,  135 => 30,  122 => 25,  106 => 14,  99 => 13,  86 => 10,  76 => 302,  74 => 30,  68 => 26,  66 => 25,  63 => 24,  61 => 13,  55 => 10,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -700,9 +702,10 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
            </div>
             <p>Vous ne participez pas encore à aucun event</p>
           </div>
-        {# </div> #}
+        {# </div> Décommenter pour la colonne à droite mais revoir la largeur colonne gauche#} 
         
         <div class=\"columnspacer col-md-1 col-12\"></div>
+
 
         <article class=\"columnright col-md-6 col-12\">
           <h2>Aujourd'hui</h2>  
@@ -745,7 +748,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
              
         
       </div>
-
+  </div> 
   </article> 
 
 

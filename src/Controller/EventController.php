@@ -68,4 +68,17 @@ class EventController extends AbstractController
             'calendarData' => $calendarData,
         ]);
     }
+
+    #[Route('/mestags', name: 'app_event_mestags')]
+    public function mestags(): Response
+    {
+        // Exemple de données de calendrier (pour les besoins de démonstration)
+        $tags = [
+        ];
+
+        // Passez les données à votre modèle Twig et générez la vue
+        return $this->render('event/mestags.html.twig', [
+            'TagsData' => $tags,
+        ]);
+    }
 }

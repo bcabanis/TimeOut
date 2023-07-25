@@ -32,7 +32,7 @@ class DashboardController extends AbstractController
         $firstName = "Maxime";
 
         // Rend la vue event/categories.html.twig avec les catégories et les événements récupérés
-        return $this->render('event/categories.html.twig', [
+        return $this->render('dashboard/mainboard.html.twig', [
             'categories' => $categories,
             'events' => $events, // Passer les événements à la vue pour les afficher
             'firstName' => $firstName,
