@@ -76,7 +76,10 @@ class __TwigTemplate_d0683f11afb81444ea8f991ddaae0def39b9257eaeba629f07bcb38f5e0
 </style>
 
 <div class=\"example-wrapper\">
-    <h1>Hello ! ✅</h1>
+    <h1>Hello ";
+        // line 12
+        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new RuntimeError('Variable "controller_name" does not exist.', 12, $this->source); })()), "html", null, true);
+        echo "! ✅</h1>
 
     This friendly message is coming from:
     <ul>
@@ -89,24 +92,6 @@ class __TwigTemplate_d0683f11afb81444ea8f991ddaae0def39b9257eaeba629f07bcb38f5e0
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/login/index.html.twig", 0), "html", null, true);
         echo "\">templates/login/index.html.twig</a></code></li>
     </ul>
-    ";
-        // line 19
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["loginForm"]) || array_key_exists("loginForm", $context) ? $context["loginForm"] : (function () { throw new RuntimeError('Variable "loginForm" does not exist.', 19, $this->source); })()), 'form_start');
-        echo "
-        ";
-        // line 20
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["loginForm"]) || array_key_exists("loginForm", $context) ? $context["loginForm"] : (function () { throw new RuntimeError('Variable "loginForm" does not exist.', 20, $this->source); })()), 'errors');
-        echo "
-    ";
-        // line 21
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["loginForm"]) || array_key_exists("loginForm", $context) ? $context["loginForm"] : (function () { throw new RuntimeError('Variable "loginForm" does not exist.', 21, $this->source); })()), 'form_end');
-        echo "
-
-    <h1>PAGE DE CONNEXION</h1>
-    <a href=\"";
-        // line 24
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profil");
-        echo "\">Page de profil</a>
 </div>
 ";
         
@@ -126,7 +111,7 @@ class __TwigTemplate_d0683f11afb81444ea8f991ddaae0def39b9257eaeba629f07bcb38f5e0
 
     public function getDebugInfo()
     {
-        return array (  108 => 24,  102 => 21,  98 => 20,  94 => 19,  89 => 17,  85 => 16,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  92 => 17,  88 => 16,  81 => 12,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -142,19 +127,13 @@ class __TwigTemplate_d0683f11afb81444ea8f991ddaae0def39b9257eaeba629f07bcb38f5e0
 </style>
 
 <div class=\"example-wrapper\">
-    <h1>Hello ! ✅</h1>
+    <h1>Hello {{ controller_name }}! ✅</h1>
 
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href=\"{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/src/Controller/LoginController.php'|file_link(0) }}\">src/Controller/LoginController.php</a></code></li>
         <li>Your template at <code><a href=\"{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/login/index.html.twig'|file_link(0) }}\">templates/login/index.html.twig</a></code></li>
     </ul>
-    {{ form_start(loginForm) }}
-        {{ form_errors(loginForm) }}
-    {{ form_end(loginForm) }}
-
-    <h1>PAGE DE CONNEXION</h1>
-    <a href=\"{{ path('app_profil') }}\">Page de profil</a>
 </div>
 {% endblock %}
 ", "login/index.html.twig", "/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/templates/login/index.html.twig");

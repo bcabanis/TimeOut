@@ -96,13 +96,15 @@ class __TwigTemplate_a613190f08e70cc31126ace16436875ed44dd93d44537d79b4d162e32fc
         // line 19
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 19, $this->source); })()), 'form_start', ["attr" => ["id" => "registrationForm"]]);
         echo "
-        ";
+    ";
         // line 20
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 20, $this->source); })()), 'errors');
         echo "
+    <button type=\"submit\" class=\"btn\">Register</button>
+
     ";
-        // line 21
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 21, $this->source); })()), 'form_end');
+        // line 23
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 23, $this->source); })()), 'form_end');
         echo "
 </div>
 
@@ -130,7 +132,7 @@ class __TwigTemplate_a613190f08e70cc31126ace16436875ed44dd93d44537d79b4d162e32fc
 
     public function getDebugInfo()
     {
-        return array (  105 => 21,  101 => 20,  97 => 19,  92 => 17,  88 => 16,  82 => 13,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  107 => 23,  101 => 20,  97 => 19,  92 => 17,  88 => 16,  82 => 13,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -154,7 +156,9 @@ class __TwigTemplate_a613190f08e70cc31126ace16436875ed44dd93d44537d79b4d162e32fc
         <li>Your template at <code><a href=\"{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/registration/index.html.twig'|file_link(0) }}\">templates/registration/index.html.twig</a></code></li>
     </ul>
     {{ form_start(registrationForm, {'attr': {'id': 'registrationForm'}}) }}
-        {{ form_errors(registrationForm) }}
+    {{ form_errors(registrationForm) }}
+    <button type=\"submit\" class=\"btn\">Register</button>
+
     {{ form_end(registrationForm) }}
 </div>
 

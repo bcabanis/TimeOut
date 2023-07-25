@@ -1,1 +1,1 @@
-a:0:{}
+a:1:{i:0;a:6:{s:4:"type";i:16384;s:7:"message";s:93:"Since doctrine/mongodb-odm 2.1: The "boolean" mapping type is deprecated. Use "bool" instead.";s:4:"file";s:112:"/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/vendor/symfony/deprecation-contracts/function.php";s:4:"line";i:25;s:5:"trace";a:1:{i:0;a:3:{s:4:"file";s:141:"/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/vendor/doctrine/mongodb-odm/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php";s:4:"line";i:2368;s:8:"function";s:19:"trigger_deprecation";}}s:5:"count";i:1;}}

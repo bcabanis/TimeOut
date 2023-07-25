@@ -72,7 +72,6 @@ class EventController extends AbstractController
     #[Route('/mestags', name: 'app_event_mestags')]
     public function mestags(): Response
     {
-        // Exemple de données de calendrier (pour les besoins de démonstration)
         $tags = [
         ];
 

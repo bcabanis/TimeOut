@@ -93,12 +93,6 @@ class __TwigTemplate_5026f90b42255391cd15487c323ffc9a8e9150e626e85cdd3cfe3549c4c
         echo "\">templates/home/index.html.twig</a></code></li>
     </ul>
 </div>
-<h1>PAGE ACCUEIL</h1>
-
-<a href=\"";
-        // line 22
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home_presentation");
-        echo "\">Page de presentation</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -117,7 +111,7 @@ class __TwigTemplate_5026f90b42255391cd15487c323ffc9a8e9150e626e85cdd3cfe3549c4c
 
     public function getDebugInfo()
     {
-        return array (  100 => 22,  92 => 17,  88 => 16,  81 => 12,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  92 => 17,  88 => 16,  81 => 12,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -141,9 +135,6 @@ class __TwigTemplate_5026f90b42255391cd15487c323ffc9a8e9150e626e85cdd3cfe3549c4c
         <li>Your template at <code><a href=\"{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/templates/home/index.html.twig'|file_link(0) }}\">templates/home/index.html.twig</a></code></li>
     </ul>
 </div>
-<h1>PAGE ACCUEIL</h1>
-
-<a href=\"{{ path('app_home_presentation') }}\">Page de presentation</a>
 {% endblock %}
 ", "home/index.html.twig", "/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/templates/home/index.html.twig");
     }

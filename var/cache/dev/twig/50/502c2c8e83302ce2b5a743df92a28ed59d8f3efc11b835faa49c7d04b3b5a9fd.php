@@ -110,8 +110,8 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
     <link href=\"https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">
-    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
     <link rel=\"stylesheet\" href=\"./assets/css/21-07-23-style.css\"> 
+    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
     ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -540,8 +540,8 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
     <link href=\"https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">
-    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
     <link rel=\"stylesheet\" href=\"./assets/css/21-07-23-style.css\"> 
+    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
     {% endblock %}
 
     {% block javascript %}  {% endblock %}
