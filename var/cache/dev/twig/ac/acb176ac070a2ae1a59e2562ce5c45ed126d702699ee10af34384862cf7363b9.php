@@ -53,21 +53,26 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
         ";
         // line 8
         echo "        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM\" crossorigin=\"anonymous\"> 
+        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM\" crossorigin=\"anonymous\">
+    <!-- fonts --> 
+    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+    <link href=\"https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">
         ";
-        // line 9
+        // line 14
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 12
+        // line 17
         echo "
         ";
-        // line 13
+        // line 18
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 16
+        // line 21
         echo "    </head>
     <body>
         ";
-        // line 18
+        // line 23
         $this->displayBlock('body', $context, $blocks);
-        // line 19
+        // line 24
         echo "
     <div class=\"modal fade\" id=\"modal\" tabindex=\"-1\" aria-labelledby=\"modal\" aria-hidden=\"true\">
     <div class=\"modal-dialog\">
@@ -108,14 +113,14 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 
     }
 
-    // line 9
+    // line 14
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 10
+        // line 15
         echo "            ";
         echo twig_escape_filter($this->env, $this->env->getFunction('encore_entry_link_tags')->getCallable()("app"), "html", null, true);
         echo "
@@ -125,14 +130,14 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 
     }
 
-    // line 13
+    // line 18
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 14
+        // line 19
         echo "            ";
         echo twig_escape_filter($this->env, $this->env->getFunction('encore_entry_script_tags')->getCallable()("app"), "html", null, true);
         echo "
@@ -142,7 +147,7 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 
     }
 
-    // line 18
+    // line 23
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -161,7 +166,7 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 
     public function getDebugInfo()
     {
-        return array (  146 => 18,  136 => 14,  129 => 13,  119 => 10,  112 => 9,  99 => 5,  71 => 19,  69 => 18,  65 => 16,  63 => 13,  60 => 12,  58 => 9,  55 => 8,  50 => 5,  44 => 1,);
+        return array (  151 => 23,  141 => 19,  134 => 18,  124 => 15,  117 => 14,  104 => 5,  76 => 24,  74 => 23,  70 => 21,  68 => 18,  65 => 17,  63 => 14,  55 => 8,  50 => 5,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -174,6 +179,11 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM\" crossorigin=\"anonymous\"> 
+        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM\" crossorigin=\"anonymous\">
+    <!-- fonts --> 
+    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+    <link href=\"https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}

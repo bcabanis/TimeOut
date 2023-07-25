@@ -59,20 +59,20 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
     ";
         // line 13
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 23
+        // line 24
         echo "
     ";
-        // line 24
-        $this->displayBlock('javascript', $context, $blocks);
         // line 25
+        $this->displayBlock('javascript', $context, $blocks);
+        // line 26
         echo "
     </head>
 
         
         ";
-        // line 29
+        // line 30
         $this->displayBlock('body', $context, $blocks);
-        // line 278
+        // line 301
         echo "
 </html>
 
@@ -103,21 +103,22 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 14
-        echo "    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
-    <link rel=\"stylesheet\" href=\"./assets/css/21-07-23-style.css\"> 
+        echo "    
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM\" crossorigin=\"anonymous\">
    
     <!-- fonts --> 
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
     <link href=\"https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">
+    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
+    <link rel=\"stylesheet\" href=\"./assets/css/21-07-23-style.css\"> 
     ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
 
-    // line 24
+    // line 25
     public function block_javascript($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -130,14 +131,14 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
 
     }
 
-    // line 29
+    // line 30
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 30
+        // line 31
         echo "        <body> 
         <!-- navbar -->
         <header>
@@ -180,13 +181,14 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
   
       <section class=\"welcometext mb-5\">
         <h1>Bienvenue ";
-        // line 71
-        echo twig_escape_filter($this->env, (isset($context["firstName"]) || array_key_exists("firstName", $context) ? $context["firstName"] : (function () { throw new RuntimeError('Variable "firstName" does not exist.', 71, $this->source); })()), "html", null, true);
+        // line 72
+        echo twig_escape_filter($this->env, (isset($context["firstName"]) || array_key_exists("firstName", $context) ? $context["firstName"] : (function () { throw new RuntimeError('Variable "firstName" does not exist.', 72, $this->source); })()), "html", null, true);
         echo " sur ton Dashboard : “Get together “ !</h1>
         <h2>Voici les evenements qui peuvent t’intéresser :</h2>
       </section>
   
-      <div class=\"row\">
+  <div class=\"flexOnMyBody\">
+      <div class=\"row flexOnMyBody\">
         <div class=\"columnleft col-md-5 col-sm-12\">
           <div class=\"date\">            
             <a href=\"#\">Aujourd'hui</a>
@@ -201,82 +203,138 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
 
 
 ";
-        // line 90
+        // line 92
         echo "            <div class=\"tags text-center\">
             <h3><span>Mes tags</span></h3>
-            <script src=\"./assets/js/tags.js\"></script> ";
-        // line 93
-        echo "            
+
+            
             <h1>Liste des catégories</h1>
                         <div class=\"example-wrapper\">
             <br>
             ";
-        // line 97
+        // line 99
+        $context["tagCounter"] = 0;
+        // line 100
+        echo "            ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 97, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 100, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-            // line 98
+            // line 101
             echo "            ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["category"], "subCategories", [], "any", false, false, false, 98));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["category"], "subCategories", [], "any", false, false, false, 101));
             foreach ($context['_seq'] as $context["_key"] => $context["subCategory"]) {
-                // line 99
-                echo "            <label>
-            <checkbox class=\"category-btn\" onclick=\"toggleSubCategory(this)\" data-category-name=\"";
-                // line 100
-                echo twig_escape_filter($this->env, $context["subCategory"], "html", null, true);
-                echo "\">";
-                echo twig_escape_filter($this->env, $context["subCategory"], "html", null, true);
-                echo "</checkbox>
+                // line 102
+                echo "            ";
+                if (((isset($context["tagCounter"]) || array_key_exists("tagCounter", $context) ? $context["tagCounter"] : (function () { throw new RuntimeError('Variable "tagCounter" does not exist.', 102, $this->source); })()) < 12)) {
+                    // line 103
+                    echo "            <label>
+            <checkbox class=\"category-btn supertags\" onclick=\"toggleSubCategory(this)\" data-category-name=\"";
+                    // line 104
+                    echo twig_escape_filter($this->env, $context["subCategory"], "html", null, true);
+                    echo "\">";
+                    echo twig_escape_filter($this->env, $context["subCategory"], "html", null, true);
+                    echo "</checkbox>
             </label>
             <br>
             ";
+                } else {
+                    // line 108
+                    echo "            <!-- Les boutons supplémentaires iront dans le menu déroulant -->
+            ";
+                }
+                // line 110
+                echo "            ";
+                $context["tagCounter"] = ((isset($context["tagCounter"]) || array_key_exists("tagCounter", $context) ? $context["tagCounter"] : (function () { throw new RuntimeError('Variable "tagCounter" does not exist.', 110, $this->source); })()) + 1);
+                // line 111
+                echo "          ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['subCategory'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 104
-            echo "            <br>
-            ";
+            // line 112
+            echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 106
+        // line 113
         echo "            </div>
           </div>
+
+      ";
+        // line 117
+        echo "      <div class=\"dropdown tags text-center supertags\" id=\"tags-dropdown\" style=\"display : none;\">
+      ";
+        // line 118
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 118, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 119
+            echo "      ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["category"], "subCategories", [], "any", false, false, false, 119));
+            foreach ($context['_seq'] as $context["_key"] => $context["subCategory"]) {
+                // line 120
+                echo "        <label>
+        <checkbox class=\"category-btn supertags\" onclick=\"toggleSubCategory(this)\" data-category-name=\"";
+                // line 121
+                echo twig_escape_filter($this->env, $context["subCategory"], "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $context["subCategory"], "html", null, true);
+                echo "</checkbox>
+        </label>
+        <br>
+      ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['subCategory'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 125
+            echo "    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 126
+        echo "    </div>
+     <!-- Bouton pour afficher le menu déroulant -->
+    <button id=\"see-more-tags-btn\">Voir mes tags</button>
+    </div>
+
+
            ";
-        // line 109
+        // line 133
         echo "    <div class=\"event-list\">
       ";
-        // line 110
+        // line 134
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 110, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 134, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-            // line 111
+            // line 135
             echo "
       <div class=\"event-item\" 
       data-event-name=\"";
-            // line 113
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "title", [], "any", false, false, false, 113), "html", null, true);
+            // line 137
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "title", [], "any", false, false, false, 137), "html", null, true);
             echo "\" 
       data-event-description=\"";
-            // line 114
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 114), "html", null, true);
+            // line 138
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 138), "html", null, true);
             echo "\" 
       data-event-address=\"";
-            // line 115
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "address", [], "any", false, false, false, 115), "html", null, true);
+            // line 139
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "address", [], "any", false, false, false, 139), "html", null, true);
             echo "\">
 
           <h3>";
-            // line 117
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "title", [], "any", false, false, false, 117), "html", null, true);
+            // line 141
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "title", [], "any", false, false, false, 141), "html", null, true);
             echo "</h3>
           ";
-            // line 119
+            // line 143
             echo "          <p>";
-            echo twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 119);
+            echo twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 143);
             echo "</p>
            <!-- Affichez les autres détails de l'événement ici si nécessaire -->
       </div>
@@ -286,10 +344,10 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 124
+        // line 148
         echo "    </div>
 ";
-        // line 126
+        // line 150
         echo "
           <div class=\"events\">
             <h3><span>Recommandation d'évent</span></h3>
@@ -301,10 +359,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
                 </div>
                 <div class=\"bg-dark bg-opacity-75 text-white cardtext\">
                   <div>
-                    <h5>";
-        // line 137
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 137, $this->source); })()), "title", [], "any", false, false, false, 137), "html", null, true);
-        echo "</h5>
+                    <h5>Le roi Jean</h5>
                     <p class=\"icondate\">29/08/2023</p>
                     <p class=\"iconloc\">L'opera de Paris</p>
                   </div>
@@ -326,8 +381,9 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
            </div>
             <p>Vous ne participez pas encore à aucun event</p>
           </div>
-        </div>
-        
+        ";
+        // line 184
+        echo "        
         <div class=\"columnspacer col-md-1 col-12\"></div>
 
         <article class=\"columnright col-md-6 col-12\">
@@ -368,14 +424,12 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
               </div>
             </div>
           </div><!-- CARD event BIG end  -->
-          
-
-    
-        </article>
+             
+        
       </div>
-      
 
-  </div>
+  </article> 
+
 
 </main><!-- main end  -->
 <footer><!-- footer start  -->
@@ -442,8 +496,10 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
     </div>
 </footer><!-- footer end  -->
   
-<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
-</body>
+            <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
+            <script src=\"./assets/js/tags.js\"></script> ";
+        // line 299
+        echo "</body>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -457,7 +513,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
 
     public function getDebugInfo()
     {
-        return array (  306 => 137,  293 => 126,  290 => 124,  278 => 119,  274 => 117,  269 => 115,  265 => 114,  261 => 113,  257 => 111,  253 => 110,  250 => 109,  246 => 106,  239 => 104,  227 => 100,  224 => 99,  219 => 98,  215 => 97,  209 => 93,  205 => 90,  184 => 71,  141 => 30,  134 => 29,  121 => 24,  106 => 14,  99 => 13,  86 => 10,  76 => 278,  74 => 29,  68 => 25,  66 => 24,  63 => 23,  61 => 13,  55 => 10,  44 => 1,);
+        return array (  502 => 299,  386 => 184,  351 => 150,  348 => 148,  336 => 143,  332 => 141,  327 => 139,  323 => 138,  319 => 137,  315 => 135,  311 => 134,  308 => 133,  300 => 126,  294 => 125,  282 => 121,  279 => 120,  274 => 119,  270 => 118,  267 => 117,  262 => 113,  256 => 112,  250 => 111,  247 => 110,  243 => 108,  234 => 104,  231 => 103,  228 => 102,  223 => 101,  218 => 100,  216 => 99,  207 => 92,  185 => 72,  142 => 31,  135 => 30,  122 => 25,  106 => 14,  99 => 13,  86 => 10,  76 => 301,  74 => 30,  68 => 26,  66 => 25,  63 => 24,  61 => 13,  55 => 10,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -475,14 +531,15 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
 
     <!-- styles --> 
     {% block stylesheets %}
-    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
-    <link rel=\"stylesheet\" href=\"./assets/css/21-07-23-style.css\"> 
+    
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM\" crossorigin=\"anonymous\">
    
     <!-- fonts --> 
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
     <link href=\"https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">
+    <link rel=\"stylesheet\" href=\"./assets/css/dashboard.css\">
+    <link rel=\"stylesheet\" href=\"./assets/css/21-07-23-style.css\"> 
     {% endblock %}
 
     {% block javascript %}  {% endblock %}
@@ -536,7 +593,8 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
         <h2>Voici les evenements qui peuvent t’intéresser :</h2>
       </section>
   
-      <div class=\"row\">
+  <div class=\"flexOnMyBody\">
+      <div class=\"row flexOnMyBody\">
         <div class=\"columnleft col-md-5 col-sm-12\">
           <div class=\"date\">            
             <a href=\"#\">Aujourd'hui</a>
@@ -553,22 +611,44 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
 {# Début de la DIV #}
             <div class=\"tags text-center\">
             <h3><span>Mes tags</span></h3>
-            <script src=\"./assets/js/tags.js\"></script> {# le script#}
+
             
             <h1>Liste des catégories</h1>
                         <div class=\"example-wrapper\">
             <br>
+            {% set tagCounter = 0 %}
             {% for category in categories %}
             {% for subCategory in category.subCategories %}
+            {% if tagCounter < 12 %}
             <label>
-            <checkbox class=\"category-btn\" onclick=\"toggleSubCategory(this)\" data-category-name=\"{{ subCategory }}\">{{ subCategory }}</checkbox>
+            <checkbox class=\"category-btn supertags\" onclick=\"toggleSubCategory(this)\" data-category-name=\"{{ subCategory }}\">{{ subCategory }}</checkbox>
             </label>
             <br>
-            {% endfor %}
-            <br>
-            {% endfor %}
+            {% else %}
+            <!-- Les boutons supplémentaires iront dans le menu déroulant -->
+            {% endif %}
+            {% set tagCounter = tagCounter + 1 %}
+          {% endfor %}
+        {% endfor %}
             </div>
           </div>
+
+      {# Menu déroulant pour les tags supplémentaires #}
+      <div class=\"dropdown tags text-center supertags\" id=\"tags-dropdown\" style=\"display : none;\">
+      {% for category in categories %}
+      {% for subCategory in category.subCategories %}
+        <label>
+        <checkbox class=\"category-btn supertags\" onclick=\"toggleSubCategory(this)\" data-category-name=\"{{ subCategory }}\">{{ subCategory }}</checkbox>
+        </label>
+        <br>
+      {% endfor %}
+    {% endfor %}
+    </div>
+     <!-- Bouton pour afficher le menu déroulant -->
+    <button id=\"see-more-tags-btn\">Voir mes tags</button>
+    </div>
+
+
            {# Afficher la liste des événements récupérés depuis le contrôleur #}
     <div class=\"event-list\">
       {% for event in events %}
@@ -598,7 +678,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
                 </div>
                 <div class=\"bg-dark bg-opacity-75 text-white cardtext\">
                   <div>
-                    <h5>{{ event.title }}</h5>
+                    <h5>Le roi Jean</h5>
                     <p class=\"icondate\">29/08/2023</p>
                     <p class=\"iconloc\">L'opera de Paris</p>
                   </div>
@@ -620,7 +700,7 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
            </div>
             <p>Vous ne participez pas encore à aucun event</p>
           </div>
-        </div>
+        {# </div> #}
         
         <div class=\"columnspacer col-md-1 col-12\"></div>
 
@@ -662,14 +742,12 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
               </div>
             </div>
           </div><!-- CARD event BIG end  -->
-          
-
-    
-        </article>
+             
+        
       </div>
-      
 
-  </div>
+  </article> 
+
 
 </main><!-- main end  -->
 <footer><!-- footer start  -->
@@ -736,7 +814,8 @@ class __TwigTemplate_ec91e3942091376d5654b6e925b6a5958a10e73d67958f548a1764bed6a
     </div>
 </footer><!-- footer end  -->
   
-<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
+            <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
+            <script src=\"./assets/js/tags.js\"></script> {# le script#}
 </body>
 {% endblock %}
 

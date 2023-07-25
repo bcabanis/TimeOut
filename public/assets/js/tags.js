@@ -19,6 +19,29 @@
         }
     }
 
+    // Fonction pour afficher ou masquer le menu déroulant des tags
+    function toggleTagsDropdown() {
+        let dropdown = document.getElementById("tags-dropdown");
+        if (dropdown.style.display === "none") {
+            dropdown.style.display = "flex";
+            dropdown.style.flexWrap= "wrap";
+        } else {
+            dropdown.style.display = "none";
+        }
+    }
+
+    // Récupération du bouton par son ID
+    let seeMoreTagsBtn = document.getElementById('see-more-tags-btn');
+
+    // Attacher l'événement click
+    seeMoreTagsBtn.addEventListener('click', toggleTagsDropdown);
+
+    // Filtre les événements pour afficher tous les événements au chargement initial de la page
+    window.onload = function () {
+        filterEventsBySelectedCategories();
+    };
+
+
     function filterEventsBySelectedCategories() {
         const events = document.querySelectorAll('.event-item');
 

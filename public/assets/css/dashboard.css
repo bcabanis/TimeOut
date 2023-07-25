@@ -10,3 +10,15 @@
 .sub-category-btn[data-category-name="{{ subCategory }}"] {
     display: inline-block;
 }
+
+.supertags {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
+.flexOnMyBody {
+    display: flex;
+    flex-direction: column;
+}
