@@ -9,7 +9,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1> ✅</h1>
 
     This friendly message is coming from:
     <ul>
@@ -17,4 +17,9 @@
         <li>Your template at <code><a href="{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
     </ul>
 </div>
+
+{{dump(app.user)}}
+<h1>DASHBOARD</h1>
+<br>
+<a href="{{ path('app_home') }}">Accueil</a>
 {% endblock %}

@@ -1,0 +1,28 @@
+{# templates/photo/upload.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Télécharger une photo</h1>
+
+    {% for flashMessage in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(photoForm) }}
+        {{ form_widget(photoForm) }}
+        <button type="submit" class="btn btn-primary">Télécharger</button>
+    {{ form_end(photoForm) }}
+
+
+<h1>PAGE DE CHOIX D'AVATAR</h1>
+<a href="{{ path('app_tags') }}">Page de tags</a>
+{% endblock %}

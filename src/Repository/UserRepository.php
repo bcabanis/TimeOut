@@ -13,8 +13,8 @@ class UserRepository extends ServiceDocumentRepository
         // Appelle le constructeur parent de ServiceDocumentRepository
         // et lui passe le ManagerRegistry et la classe Users
         parent::__construct($registry, Users::class);
+        
     }
-
     /**
      * Sauvegarde l'entité Users dans la base de données MongoDB.
      *
@@ -48,4 +48,6 @@ class UserRepository extends ServiceDocumentRepository
         // Enregistre les modifications dans la base de données
         $objectManager->flush();
     }
+
+
 }

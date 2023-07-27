@@ -2,94 +2,220 @@
 
 namespace App\Controller;
 
+use App\Document\ChatMessage;
 use App\Document\Events;
+use App\Repository\ChatMessageRepository;
 use App\Repository\EventRepository;
 use App\Repository\CategoryRepository;
+use App\Service\CallApiService;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Document\User;
+use PhpParser\Node\Expr\Cast\Object_;
 
 #[Route('/event')]
 class EventController extends AbstractController
 {
-    #[Route('/', name: 'app_event')]
-    public function index(EventRepository $eventRepository): Response
+
+    // Affichage de tous les événements (pas spécielement utile)
+    #[Route('/affichage', name: 'app_event_affichage')]
+    public function AfficheEvent(EventRepository $eventRepository, CallApiService $callApiService, DocumentManager $dm): Response
     {
-        // Crée un nouvel événement pour tester et le sauvegarde en base de données
-        $event = new Events();
-        $event->setDescription('Message de test');
-        $event->setPlace('Paris');
 
-        $eventRepository->save($event);
+        // Variables qui seront reprises pour le partage de données vers la vue
+        $category = "";
+        $title = "";
+        $description = "";
+        $adresse = "";
+        $image = "";
+        $unique_id = "";
+        $date = "";
 
-        // Rend la vue event/index.html.twig avec un paramètre supplémentaire 'controller_name'
-        return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
+        $dataForJs = [];
+        $dataTabForJs = [];
+
+        // Recherche des événements dans la base de données
+        $e = $eventRepository->findAll();
+        // dd($eventsData);
+
+        // Boucle sur tous les événements pour récupérer les données et les afficher
+        for ($i = 0; $i < count($e); $i++) {
+            $title = $e[$i]->getTitle();
+            $description = $e[$i]->getDescription();
+            $category = $e[$i]->getCategory();
+            $date = $e[$i]->getEventDate();
+            $adresse = $e[$i]->getAddress();
+            $adresse = $e[$i]->getAddress();
+            $image = $e[$i]->getImageUrl();
+            $unique_id = $e[$i]->getUniqueId();
+
+            // Tableau d'un événement
+            $dataForJs = [
+                'title' => $title,
+                'description' => $description,
+                'adresse' => $adresse,
+                'image' => $image,
+                'unique_id' => $unique_id,
+                'date' => $date,
+                'category' => $category,
+            ];
+
+            // Tableau des événements
+            $dataTabForJs[] = $dataForJs;
+        }
+
+        // Retourne les données dans le template requis 
+        return $this->render('event/affichage.html.twig', [
+            'jsonData' => $dataTabForJs,
         ]);
     }
 
-    #[Route('/categories', name: 'app_event_categories')]
-    public function categories(CategoryRepository $categoryRepository, EventRepository $eventRepository, DocumentManager $dm): Response
+
+    // Envoie des évenements en BDD
+    #[Route('/to_bdd', name: 'app_event_bdd')]
+    public function EventToBDD(EventRepository $eventRepository): Response
     {
-        // Récupère toutes les catégories depuis la base de données MongoDB.
-        $categories = $categoryRepository->findAllCategories();
 
-        // Récupérer tous les événements depuis la base de données MongoDB.
-        $events = $eventRepository->findAll();
+        // Récupération du lien de l'api (json)
+        $jsonData = './assets/json/event.json';
 
-        // Récupérer le nom de l'utilisateur loggé depuis la bse de MongoDB.
-        $firstName = "Maxime";
+        // Decodage en string pour la lecture en php
+        $eventsData = json_decode(file_get_contents($jsonData, true));
 
-    
-        // Rend la vue event/categories.html.twig avec les catégories et les événements récupérés
-        return $this->render('event/categories.html.twig', [
-            'categories' => $categories,
-            'events' => $events, // Passer les événements à la vue pour les afficher
-            'firstName' => $firstName,
+        // Boucle sur $eventData pour permettre l'insertion des données de l'événements dans la BDD
+        foreach ($eventsData as $category => $events) {
+            foreach ($events as $event) {
+                foreach ($event as $e) {
+
+                    // Variable qui va permettre la vérification de non doublons dans la BDD
+                    $existingEvent = $eventRepository->findOneBy(['eventId' => $e->ID_unique]);
+
+                    // Condition pour eviter des doublons d'événements dans la base de données 
+                    if (!$existingEvent) {
+                        $eventDoc = new Events();
+                        $eventDoc->setCategory($category);
+                        $eventDoc->setTitle($e->Titre);
+                        $eventDoc->setDescription($e->Description);
+                        $eventDoc->setEventDate($e->Date_de_l_evenement);
+                        $eventDoc->setAddress($e->Adresse);
+                        $eventDoc->setImageUrl($e->URL_d_image);
+                        $eventDoc->setUniqueId($e->ID_unique);
+
+                        // Enregistre dans la base de données
+                        $eventRepository->save($eventDoc);
+                    }
+                }
+            }
+        }
+
+        // Réponse si bon injection des données
+        return new Response('Events inserted successfully!');
+    }
+
+    #[Route('/{eventId}', name: 'app_event_show')]
+    public function show(EventRepository $eventRepository, ChatMessageRepository $chatMessageRepository, string $eventId): Response
+    {
+        // Récupére l'événement associé à l'ID de l'URL
+        $event = $eventRepository->find($eventId);
+
+        if (!$event) {
+            throw $this->createNotFoundException('Aucun évènement trouvé.');
+        }
+
+        // Récupére les messages de chat associés à l'événement
+        $chatMessages = $chatMessageRepository->findBy(['event' => $event]);
+
+        // Affiche la page d'affichage de l'événement avec les messages de chat
+        return $this->render('event/show.html.twig', [
+            'event' => $event,
+            'chatMessages' => $chatMessages,
         ]);
     }
 
-
-    #[Route('/calendar', name: 'app_event_calendar')]
-    public function calendar(): Response
+    #[Route('/{eventId}/post_chat_message', name: 'app_event_post_chat_message', methods: ['POST'])]
+    public function postChatMessage(Request $request, EventRepository $eventRepository, ChatMessageRepository $chatMessageRepository, string $eventId): Response
     {
-        // Exemple de données de calendrier (pour les besoins de démonstration)
-        $calendarData = [
-            '2023-07-01' => ['Événement 1', 'Événement 2'],
-            '2023-07-05' => ['Événement 3'],
-            '2023-07-10' => ['Événement 4', 'Événement 5', 'Événement 6'],
-        ];
+        // Récupére l'événement associé à l'ID de l'URL
+        $event = $eventRepository->find($eventId);
 
-        // Passez les données à votre modèle Twig et générez la vue
-        return $this->render('event/calendar.html.twig', [
-            'calendarData' => $calendarData,
-        ]);
-    }
+        if (!$event) {
+            throw $this->createNotFoundException('Aucun évènement trouvé.');
+        }
 
-    #[Route('/mestags', name: 'app_event_mestags')]
-    public function mestags(): Response
-    {
-        $tags = [
-        ];
+        // Récupére le contenu du message de chat à partir de la requête POST
+        $content = $request->request->get('content');
 
-        // Passez les données à votre modèle Twig et générez la vue
-        return $this->render('event/mestags.html.twig', [
-            'TagsData' => $tags,
-        ]);
-    }
+        // Créer un nouveau message de chat
+        $chatMessage = new ChatMessage();
+        $chatMessage->setContent($content);
+        $chatMessage->setEvent($event);
 
-    #[Route('/mesevents', name: 'app_event_mesevents')]
-    public function mesevents(): Response
-    {
-        $events = [
-        ];
+        // Enregistre le nouveau message de chat dans la base de données
+        $chatMessageRepository->save($chatMessage);
 
-        // Passez les données à votre modèle Twig et générez la vue
-        return $this->render('event/mesevents.html.twig', [
-            'EventsData' => $events,
-        ]);
+        // Redirige l'utilisateur vers la page d'affichage de l'événement
+        return $this->redirectToRoute('app_event_show', ['eventId' => $eventId]);
     }
 }
+
+
+
+
+
+
+
+
+
+
+// #[Route('/test_api', name: 'app_event_test_api')]
+// public function testApi(EventRepository $eventRepository): Response
+// {
+//     $event = new Events();
+//     $event->setDescription('Message de test');
+//     $event->setPlace('Paris');
+
+//     $eventRepository->save($event);
+
+//     return $this->render('event/index.html.twig', [
+//         'controller_name' => 'EventController',
+//     ]);
+// }
+
+// #[Route('/eventchat', name: 'app_event_chat')]
+// public function chat(): Response
+// {
+
+//     return $this->render('event/chat.html.twig', [
+//         'controller_name' => 'EventController',
+//     ]);
+// }
+
+// #[Route('/eventtags', name: 'app_event_tags')]
+// public function tags(): Response
+// {
+
+//     return $this->render('event/tags.html.twig', [
+//         'controller_name' => 'EventController',
+//     ]);
+// }
+
+// #[Route('/test_api', name: 'app_event_test_api')]
+// public function testApi(EventRepository $eventRepository): Response
+// {
+
+//     return $this->render('event/index.html.twig', [
+//         'controller_name' => 'EventController',
+//     ]);
+// }
+
+// #[Route('/test_api', name: 'app_event_test_api')]
+// public function testApi(EventRepository $eventRepository): Response
+// {
+
+//     return $this->render('event/index.html.twig', [
+//         'controller_name' => 'EventController',
+//     ]);
+// }

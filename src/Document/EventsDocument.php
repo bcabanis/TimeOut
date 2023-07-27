@@ -2,130 +2,119 @@
 
 namespace App\Document;
 
-use App\Repository\EventRepository;
-use DateTimeInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
 class Events
 {
+
     #[MongoDB\Id]
-    private string $id;
+    protected $id;
 
-    #[MongoDB\Field(type:"date")]
-    private ?DateTimeInterface $startDate;
-
-    #[MongoDB\Field(type:"date")]
-    private ?DateTimeInterface $endDate;
-
-    #[MongoDB\Field(type:"string")]
-    private string $description = '';
-
-    #[MongoDB\Field(type:"string")]
-    private string $picture = '';
-
-    #[MongoDB\Field(type:"string")]
-    private string $place = '';
-
-    #[MongoDB\Field(type:"string")]
-    private string $planner = '';
-
-    #[MongoDB\Field(type: 'string')]
-    private string $title = '';
-
-    // Nouvelle propriété "address" avec visibilité publique
-    #[MongoDB\Field(type: 'string')]
-    public string $address = '';
     
+    #[MongoDB\Field(type:"string")]
+    protected $category;
 
-    // Autres méthodes et propriétés...
+    #[MongoDB\Field(type:"string")]
+    protected $title;
 
-    public function getId(): string
+    #[MongoDB\Field(type:"string")]
+    protected $description;
+
+    #[MongoDB\Field(type:"string", name:"date")]
+    protected $eventDate;
+
+    #[MongoDB\Field(type:"string")]
+    protected $address;
+
+    #[MongoDB\Field(type:"string", name:"image_url")]
+    protected $imageUrl;
+
+    #[MongoDB\Field(type:"string", name:"eventId")]
+    protected $uniqueId;
+
+    // Add getters and setters for each property
+
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getStartDate(): ?DateTimeInterface
+    public function getCategory(): ?string
     {
-        return $this->startDate;
+        return $this->category;
     }
 
-    public function setStartDate($startDate): Events
+    public function setCategory(string $category): self
     {
-        $this->startDate = $startDate;
+        $this->category = $category;
         return $this;
     }
 
-    public function getEndDate(): ?DateTimeInterface
-    {
-        return $this->endDate;
-    }
-
-    public function setEndDate($endDate): Events
-    {
-        $this->endDate = $endDate;
-        return $this;
-    }
-
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    public function getPicture(): string
-    {
-        return $this->picture;
-    }
-
-    public function getPlace(): string
-    {
-        return $this->place;
-    }
-
-    public function getPlanner(): string
-    {
-        return $this->planner;
-    }
-
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setDescription(string $description): Events
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function setPicture(string $picture): Events
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    public function setPlace(string $place): Events
-    {
-        $this->place = $place;
-
-        return $this;
-    }
-
-    public function setPlanner(string $planner): Events
-    {
-        $this->planner = $planner;
-
-        return $this;
-    }
-
-    public function setTitle(string $title): Events
+    public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
-// 
-}
 
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    public function getEventDate(): ?string
+    {
+        return $this->eventDate;
+    }
+
+    public function setEventDate(string $eventDate): self
+    {
+        $this->eventDate = $eventDate;
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    public function setImageUrl(string $imageUrl): self
+    {
+        $this->imageUrl = $imageUrl;
+        return $this;
+    }
+
+    public function getUniqueId(): ?string
+    {
+        return $this->uniqueId;
+    }
+
+    public function setUniqueId(string $uniqueId): self
+    {
+        $this->uniqueId = $uniqueId;
+        return $this;
+    }
+}
+// 
