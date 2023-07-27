@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use MongoDB\Client;
 use App\Document\Users;
 use App\Form\LoginFormType;
 use App\Form\PhotoFormType;
@@ -72,7 +71,7 @@ class LoginController extends AbstractController
         return $this->render('login/index.html.twig', [
             'loginForm' => $form->createView(),
             'error' => $error,
-            
+
         ]);
     }
 
@@ -115,7 +114,7 @@ class LoginController extends AbstractController
         ]);
     }
 
-    #[Route('/loginavatar', name: 'app_login_avatar')]
+    #[Route('/avatar', name: 'app_login_avatar')]
     public function avatar(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
         // Récupérer l'email de l'utilisateur connecté depuis la session
@@ -150,6 +149,7 @@ class LoginController extends AbstractController
 
                 // Enregistrer le nom du fichier de la photo de profil dans l'utilisateur
                 $user->setProfilPicture($fileName);
+                $user->fill();
                 $userRepository->save($user);
 
                 // Rediriger ou afficher un message de succès
@@ -165,22 +165,68 @@ class LoginController extends AbstractController
 
     // Redirection vers le choix des tags
     #[Route('/tags', name: 'app_tags')]
-    public function tags(Request $request, UserRepository $userRepository, SessionInterface $session): Response
+    public function tags(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
-        $email = $session->get('email');
+        // Récupère l'email de l'utilisateur connecté depuis la session
+        $email = $sessionInterface->get('email');
 
-        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        // Récupère l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
-        // marque le user comme rempli
-        $user->fill();
+        // Récupère les catégories et les tags associés
+        $tagsByCategory = [
+            'Sports' => [
+                'Marche' => 'Marche', 'Cyclisme' => 'Cyclisme', 'Football' => 'Football', 'Basket' => 'Basket', 'Moto' => 'Moto', 'Tennis' => 'Tennis', 'Hockey sur gazon' => 'Hockey sur gazon', 'Golf' => 'Golf', 'Arts Martiaux' => 'Arts Martiaux', 'Body Building' => 'Body Building', 'Yoga' => 'Yoga', 'Boxe Anglaise' => 'Boxe Anglaise'
+            ],
+            'Musique' => [
+                'Folk' => 'Folk', 'Hip-Hop / Rap' => 'Hip-Hop / Rap', 'Latin' => 'Latin', 'Rock' => 'Rock', 'Alternatif' => 'Alternatif', 'Blues' => 'Blues', 'Jazz' => 'Jazz', 'Classique' => 'Classique', 'Dj/Dance' => 'Dj/Dance', 'R&B' => 'R&B', 'Opéra' => 'Opéra', 'Pop' => 'Pop'
+            ],
+            'Arts' => [
+                'Ballet' => 'Ballet', 'Bijoux' => 'Bijoux', 'Chorales' => 'Chorales', 'Comédie' => 'Comédie', 'Design' => 'Design', 'Littérature' => 'Littérature', 'Comédie musicale' => 'Comédie musicale', 'Orchestres' => 'Orchestres', 'Peinture' => 'Peinture', 'Sculpture' => 'Sculpture'
+            ],
+            'Business' => [
+                'Associations' => 'Associations', 'Carrière' => 'Carrière', 'Immobilier' => 'Immobilier', 'Investissement' => 'Investissement', 'Marketing' => 'Marketing', 'Médias' => 'Médias', 'ONG' => 'ONG', 'PME' => 'PME', 'Startups' => 'Startups'
+            ],
+            'Communaute' => [
+                'Bénévolat' => 'Bénévolat', 'Cours Particuliers' => 'Cours Particuliers', 'Histoire' => 'Histoire', 'Langues' => 'Langues', 'Actions locales' => 'Actions locales', 'Nationalité' => 'Nationalité', 'Parrainages' => 'Parrainages', 'Participatif' => 'Participatif', 'Atelier' => 'Atelier'
+            ],
+        ];
 
-        // Enregistrer les modifications de l'utilisateur dans la base de données
-        $userRepository->save($user);
+        // Créer le formulaire avec les tags de chaque catégorie
+        $form = $this->createForm(TagsFormType::class, $user, [
+            'tagsByCategory' => $tagsByCategory,
+        ]);
+
+        // Gère la soumission du formulaire
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // Initialise un tableau vide pour stocker les tags sélectionnés
+            $selectedTags = [];
+
+            // Parcourt les catégories pour extraire les tags sélectionnés
+            foreach ($tagsByCategory as $category => $tags) {
+                // Vérifie si la catégorie est présente dans les données soumises
+                if ($form->has($category)) {
+                    // Récupère les tags sélectionnés pour cette catégorie
+                    $selectedTags[$category] = $form->get($category)->getData();
+                }
+            }
+            // Enregistre les tags sélectionnés dans l'entité Users
+            $user->setTagsByCategory($selectedTags);
+
+            // Enregistre les modifications de l'utilisateur dans la base de données
+            $user->fill();
+            $userRepository->save($user);
+
+        // Redirige l'utilisateur vers son dashboard 
+        return $this->redirectToRoute('app_dashboard');
+        }
 
         return $this->render('login/tags.html.twig', [
-            'controller_name' => 'LoginController',
+            // 'tagsForm' => $form->createView(),
+            'tagsForm' => '$form->createView()',
         ]);
     }
 }

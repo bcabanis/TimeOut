@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block stylesheets %}
-	
+	<link rel="stylesheet" href="/assets/css/17-07-23-style.css">
+	<link rel="stylesheet" href="/assets/css/mathieu.css">
 {% endblock %}
 
 {% block body %}
@@ -44,13 +45,10 @@
 						</article>
 					</div>
 
-					<a class="bienvenue-sinscrire" href="{{ path('app_registration') }}">S’inscrire</a>
+					<a class="bienvenue-sinscrire inputsub btninscrire btn-valide colorWhite" href="{{ path('app_registration') }}">S’inscrire</a>
 
 				</div>
 			</div>
 		</div>
 	</main>
-	<h1>PAGE DE PRESENTATION</h1>
-
-	<a href="{{ path('app_registration') }}">Page d'inscription</a>
 {% endblock %}

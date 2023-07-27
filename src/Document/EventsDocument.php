@@ -31,7 +31,7 @@ class Events
     protected $imageUrl;
 
     #[MongoDB\Field(type:"string", name:"eventId")]
-    protected $uniqueId;
+    protected $eventId;
 
     // Add getters and setters for each property
 
@@ -106,15 +106,15 @@ class Events
         return $this;
     }
 
-    public function getUniqueId(): ?string
+    public function geteventId(): ?string
     {
-        return $this->uniqueId;
+        return $this->eventId;
     }
 
-    public function setUniqueId(string $uniqueId): self
+    public function seteventId(string $eventId): self
     {
-        $this->uniqueId = $uniqueId;
+        $this->eventId = $eventId;
         return $this;
     }
 }
-// 
+

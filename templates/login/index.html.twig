@@ -1,4 +1,3 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello RegistrationController !
@@ -17,22 +16,35 @@
 			<div class="containerfluid">
 				<div class="row">
 					<div class="col-12 col-md-5 background">
-						<a href="#" class="logo"><img src="/assets/img/logo-timeout-white.svg" alt=""></a>
+						<a href="#" class="logo"><img src="/assets/img/logo-gettogether-white.svg" alt=""></a>
 					</div>
 
 
-					<form class="col-12 col-md-7 inscription adjust">
+					<div class="col-12 col-md-7 inscription adjust">
 						<article class="cardsub">
 							<h1>Connexion</h1>
-							<div class="subform" action="#" method="post">
+							<div class="subform">
 								<div class="inputsub">
 									{{ form_start(loginForm) }}
 									{{ form_errors(loginForm) }}
+									{{ form_row(loginForm.email) }}
+									{{ form_row(loginForm.password) }}
+
+									<div class="col-8 row">
+
+										<div class="col-2">
+											{{ form_widget(loginForm.stayConnected) }}
+										</div>
+										<div class="col-10">
+											{{ form_label(loginForm.stayConnected)  }}
+										</div>
+									</div>
+
 									{{ form_end(loginForm) }}
 								</div>
 							</div>
 						</article>
-					</form>
+					</div>
 				</div>
 			</div>
 
@@ -41,8 +53,6 @@
 
 
 	</main>
-
-	<a href="{{ path('app_profil') }}">Page de connexion</a>
 
 
 

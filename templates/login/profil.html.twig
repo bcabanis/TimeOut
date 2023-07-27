@@ -6,6 +6,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="/assets/css/17-07-23-style.css">
+	<link rel="stylesheet" href="/assets/css/mathieu.css">
 {% endblock %}
 
 
@@ -17,30 +18,31 @@
 			<div class="containerfluid">
 				<div class="row">
 					<div class="col-12 col-md-5 background">
-						<a href="#" class="logo"><img src="/assets/img/logo-timeout-white.svg" alt=""></a>
-                        <div class="divBack">
-                            <div class="divSepa">
-                                <p>Étape 1 sur 3</p>
-                                <img src="/assets/img/step1.svg" alt="" class="imgStep">
-                            </div>
-                            <h1 class="h1perso">Choisissez votre pseudo<br>& votre ville</h1>
-                        </div>
+						<a href="#" class="logo"><img src="/assets/img/logo-gettogether-white.svg" alt=""></a>
+						<div class="divBack">
+							<div class="divSepa">
+								<p>Étape 1 sur 3</p>
+								<img src="/assets/img/step1.svg" alt="" class="imgStep">
+							</div>
+							<h1 class="h1perso">Choisissez votre pseudo<br>& votre ville</h1>
+						</div>
 					</div>
 
 
-					<form class="col-12 col-md-7 inscription">
+					<div class="col-12 col-md-7 inscription">
 						<article class="cardsub">
 							<h1>Parcours de personnalisation</h1>
-                            <p>Bienvenue dans votre parcours de personnalisation. Ce parcours n'est pas obligatoire mais vous permettera d'optimiser votre expérience "Get together".</p>
-							<div class="subform" action="#" method="post">
+							<p>Bienvenue dans votre parcours de personnalisation. Ce parcours n'est pas obligatoire mais vous permettera d'optimiser votre expérience "Get together".</p>
+							<div class="subform">
 								<div class="inputsub">
 									{{ form_start(profilForm) }}
 									{{ form_errors(profilForm) }}
 									{{ form_end(profilForm) }}
 								</div>
 							</div>
+
 						</article>
-					</form>
+					</div>
 				</div>
 			</div>
 
@@ -50,8 +52,6 @@
 
 	</main>
 
-	<h1>PAGE DE PROFIL</h1>
-	<a href="{{ path('app_login_avatar') }}">Page de choix d'avatar</a>
 
 
 {% endblock %}

@@ -14,7 +14,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Document\User;
+use App\Repository\UserRepository;
 use PhpParser\Node\Expr\Cast\Object_;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 #[Route('/event')]
 class EventController extends AbstractController
@@ -128,48 +130,68 @@ class EventController extends AbstractController
     }
 
     #[Route('/{eventId}', name: 'app_event_show')]
-    public function show(EventRepository $eventRepository, ChatMessageRepository $chatMessageRepository, string $eventId): Response
+    public function show(EventRepository $eventRepository, ChatMessageRepository $chatMessageRepository, string $eventId, SessionInterface $sessionInterface): Response
     {
-        // Récupére l'événement associé à l'ID de l'URL
-        $event = $eventRepository->find($eventId);
-
+        // Récupère l'événement associé à l'ID de l'URL
+        $event = $eventRepository->findOneBy(['eventId' => $eventId]);
+        
+        // Si l'évènement n'existe pas on renvoie un message d'erreur
         if (!$event) {
             throw $this->createNotFoundException('Aucun évènement trouvé.');
         }
 
-        // Récupére les messages de chat associés à l'événement
+        // Récupère les messages de chat associés à l'événement
         $chatMessages = $chatMessageRepository->findBy(['event' => $event]);
 
+        // Récupère l'email de l'utilisateur connecté depuis la session
+        $emailSession = $sessionInterface->get('email');
+        // dd($event);
         // Affiche la page d'affichage de l'événement avec les messages de chat
         return $this->render('event/show.html.twig', [
             'event' => $event,
             'chatMessages' => $chatMessages,
+            'email' => $emailSession
+            
         ]);
     }
 
-    #[Route('/{eventId}/post_chat_message', name: 'app_event_post_chat_message', methods: ['POST'])]
-    public function postChatMessage(Request $request, EventRepository $eventRepository, ChatMessageRepository $chatMessageRepository, string $eventId): Response
+    #[Route('/{eventId}/post_chat_message', name: 'app_event_post_chat_message', methods: ['GET', 'POST'])]
+    public function postChatMessage(Request $request, EventRepository $eventRepository, UserRepository $userRepository, ChatMessageRepository $chatMessageRepository, string $eventId, SessionInterface $sessionInterface): Response
     {
-        // Récupére l'événement associé à l'ID de l'URL
-        $event = $eventRepository->find($eventId);
+        // Récupère l'email de l'utilisateur connecté depuis la session
+        $emailSession = $sessionInterface->get('email');
+        // Recherche l'utilisateur connecté dans la base de données en utilisant l'email
+        $authenticatedUser = $userRepository->findOneBy(['email' => $emailSession]);
 
+        // Récupère l'événement associé à l'ID de l'URL
+        $event = $eventRepository->findOneBy(['eventId' => $eventId]);
+
+        // Si l'évènement n'existe pas on renvoie un message d'erreur
         if (!$event) {
             throw $this->createNotFoundException('Aucun évènement trouvé.');
         }
 
-        // Récupére le contenu du message de chat à partir de la requête POST
+        // Récupère le contenu du message de chat à partir de la requête POST
         $content = $request->request->get('content');
+
+        // Vérifie si $content est null et lui attribuer une valeur par défaut si c'est le cas
+        if ($content === null) {
+            $content = ''; // Valeur par défaut
+        }
 
         // Créer un nouveau message de chat
         $chatMessage = new ChatMessage();
         $chatMessage->setContent($content);
         $chatMessage->setEvent($event);
+        
+        // Associe l'utilisateur au message de chat
+        $chatMessage->setUser($authenticatedUser);
 
         // Enregistre le nouveau message de chat dans la base de données
         $chatMessageRepository->save($chatMessage);
 
         // Redirige l'utilisateur vers la page d'affichage de l'événement
-        return $this->redirectToRoute('app_event_show', ['eventId' => $eventId]);
+        return $this->redirectToRoute('app_event_chat', ['eventId' => $eventId]);
     }
 
 }
