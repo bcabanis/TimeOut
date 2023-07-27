@@ -95,14 +95,14 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
+\t\t
+\t\t<script src=\"/assets/js/modals.js\"></script>
+\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
 \t\t";
-        // line 50
+        // line 53
         $this->displayBlock('body', $context, $blocks);
-        // line 51
-        echo "\t\t";
-        // line 52
-        echo "\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
-\t</body>
+        // line 54
+        echo "\t</body>
 </html></body></html>
 ";
         
@@ -158,7 +158,7 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 
     }
 
-    // line 50
+    // line 53
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -177,7 +177,7 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 
     public function getDebugInfo()
     {
-        return array (  162 => 50,  152 => 29,  145 => 28,  135 => 25,  128 => 24,  114 => 6,  104 => 52,  102 => 51,  100 => 50,  79 => 31,  77 => 28,  74 => 27,  72 => 24,  58 => 12,  53 => 8,  51 => 6,  44 => 1,);
+        return array (  162 => 53,  152 => 29,  145 => 28,  135 => 25,  128 => 24,  114 => 6,  105 => 54,  103 => 53,  79 => 31,  77 => 28,  74 => 27,  72 => 24,  58 => 12,  53 => 8,  51 => 6,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -231,9 +231,10 @@ class __TwigTemplate_622026b70d0c8d362db738c79a42d458fe0fae7beb234082e7762b00965
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
-\t\t{% block body %}{% endblock %}
-\t\t{# <script src=\"/assets/js/modals.js\"></script> #}
+\t\t
+\t\t<script src=\"/assets/js/modals.js\"></script>
 \t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
+\t\t{% block body %}{% endblock %}
 \t</body>
 </html></body></html>
 ", "base.html.twig", "/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/templates/base.html.twig");
