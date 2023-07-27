@@ -6,6 +6,7 @@ use App\Document\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,16 +20,25 @@ class RegistrationFormType extends AbstractType
     {
         // Ajoute le champ 'email' de type EmailType
         $builder
+        ->add('destination', HiddenType::class, [
+            'data' => '/registration',
+            'mapped' => false
+        ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse mail (*)',
                 // 'placeholder' => 'Entrez votre email',
                 'attr' => [
-                    'class' => 'inputsub label-margin'
+                    'class' => 'inputsub label-margin',
+                    'placeholder' => 'Patrick@hotmail.com'
                 ]
+
             ])
 
             // Ajoute le champ 'password' de type RepeatedType pour la saisie du mot de passe et sa confirmation
             ->add('password', RepeatedType::class, [
+                'attr' => [
+                    'placeholder' => 'Mot de passe'
+                ],
                 'type' => PasswordType::class,
 
                 'invalid_message' => 'Les mots de passe doivent correspondre.',
@@ -54,7 +64,7 @@ class RegistrationFormType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
                 'attr' => [
-                    'class' => 'inputsub btninscrire btn-valide'
+                    'class' => 'inputsub btninscrire colorWhite registration'
                 ]
             ]);
     }

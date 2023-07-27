@@ -6,23 +6,23 @@ CSS COMMUN
 /* CSS COMMUN */
 @font-face {
   font-family: "Avenir-Book-01.ttf";
-  src: url(../fonts/Avenir-Book-01.ttf);
+  src: url(../fonts/Avenir/Avenir-Book-01.ttf);
 }
 
 @font-face {
   font-family: "Avenir-Black-03.ttf" ;
-  src: url(../fonts/Avenir-Black-03.ttf);
+  src: url(../fonts/Avenir/Avenir-Black-03.ttf);
 }
 
 
 @font-face {
   font-family: "Avenir-Medium-09.ttf";
-  src: url(../fonts/Avenir-Medium-09.ttf);
+  src: url(../fonts/Avenir/Avenir-Medium-09.ttf);
 }
 
 @font-face {
   font-family:"Avenir-Heavy-05.ttf" ;
-  src: url(../fonts/Avenir-Heavy-05.ttf);
+  src: url(../fonts/Avenir/Avenir-Heavy-05.ttf);
 }
 
 
@@ -1001,19 +1001,19 @@ padding: 0 0 10px 0;
   background-color: #830425;
 }
 
-
-
-
-
 #detailevent div.chatbox {
+  max-height: 700px;
+  overflow-y: scroll;
   background-color: #2E2A2A;
   color: #fcfcfc;
   justify-content: space-between;
   padding: 20px;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.247);
+  border-radius: 20px;
   }
 
 
-#detailevent div.chatbox article {
+#detailevent div.chatbox form {
   padding: 20px;
 }
 
@@ -1057,7 +1057,7 @@ padding: 0 0 10px 0;
 
 #detailevent div.chatbox textarea {
   background-color: #2E2A2A;
-  padding: 0 5px 0 5px;
+  padding: 0 20px 0 20px;
   border-radius: 5px;
   border: none;
   width: 100%;
@@ -1074,6 +1074,15 @@ padding: 0 0 10px 0;
 #detailevent div.chatbox .iconsmile {
   width: 24px;
 }
+
+.separateurChat {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: solid 2px rgba(255, 255, 255, 0.261);
+  margin-bottom: 15px;
+}
+
 
 /*FIN CSS EVENT DETAIL */
 

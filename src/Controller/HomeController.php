@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/home')]
+#[Route('/')]
 class HomeController extends AbstractController
 {
     // Redirection vers la page d'accueil

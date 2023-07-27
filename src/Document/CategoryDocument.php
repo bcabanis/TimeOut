@@ -12,21 +12,36 @@ class Category
     private string $id;
 
     #[MongoDB\Field(type: 'string')]
-    private string $categoryName;
+    private string $name = "";
+
+    #[MongoDB\Field(type: 'collection')]
+    private array $subCategories = [];
 
     public function getId(): string
     {
         return $this->id;
     }
 
-    public function getCategoryName(): string
+    public function getName(): string
     {
-        return $this->categoryName;
+        return $this->name;
     }
 
-    public function setCategoryName(string $categoryName): self
+    public function setName(string $name): self
     {
-        $this->categoryName = $categoryName;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSubCategories(): array
+    {
+        return $this->subCategories;
+    }
+
+    public function addSubCategory(string $name): self
+    {
+        $this->subCategories[] = $name;
 
         return $this;
     }

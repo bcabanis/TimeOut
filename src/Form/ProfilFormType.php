@@ -15,19 +15,34 @@ class ProfilFormType extends AbstractType
     {
         $builder
             ->add('lastname', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'attr' => [
+                    'class' => 'inputsub label-margin'
+                ]
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'Prénom'
+                'label' => 'Prénom',
+                'attr' => [
+                    'class' => 'inputsub label-margin'
+                ]
             ])
             ->add('pseudo', TextType::class, [
-                'label' => 'Pseudo'
+                'label' => 'Pseudo',
+                'attr' => [
+                    'class' => 'inputsub label-margin'
+                ]
             ])
             ->add('city', TextType::class, [
-                'label' => 'Ville'
+                'label' => 'Ville',
+                'attr' => [
+                    'class' => 'inputsub label-margin'
+                ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Enregistrer'
+                'label' => 'Enregistrer',
+                'attr' => [
+                    'class' => 'inputsub btninscrire btn-valide colorWhite'
+                ]
             ]);
     }
     

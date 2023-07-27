@@ -3,6 +3,7 @@
 namespace App\Document;
 
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -10,15 +11,14 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 #[MongoDB\Document]
 class Users implements PasswordAuthenticatedUserInterface
 {
-
     #[MongoDB\Id]
     public string $id;
 
     #[MongoDB\Field(type: 'string')]
-    private string $firstName;
+    private string $firstName = '';
 
     #[MongoDB\Field(type: 'string')]
-    private string $lastName;
+    private string $lastName = '';
 
     #[MongoDB\Field(type: 'string')]
     private string $city;
@@ -44,9 +44,16 @@ class Users implements PasswordAuthenticatedUserInterface
 
     #[MongoDB\Field(type: 'string')]
     private string $pseudo;
-    
+
+    #[MongoDB\Field(type: 'collection')]
+    private array $tagsByCategory = [];
+
     #[MongoDB\Field(type: 'boolean')]
     private bool $filled = false;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $userTags;
+
 
     public function getId(): string
     {
@@ -55,17 +62,17 @@ class Users implements PasswordAuthenticatedUserInterface
 
     public function getFirstName(): string
     {
-        return $this->firstName = '';
+        return $this->firstName;
     }
 
     public function getLastName(): string
     {
-        return $this->lastName = '';
+        return $this->lastName;
     }
 
     public function getCity(): string
     {
-        return $this->city = '';
+        return $this->city;
     }
 
     public function getDateNaissance(): ?DateTimeInterface
@@ -100,7 +107,12 @@ class Users implements PasswordAuthenticatedUserInterface
 
     public function getPseudo(): string
     {
-        return $this->pseudo = '';
+        return $this->pseudo;
+    }
+
+    public function getTagsByCategory(): array
+    {
+        return $this->tagsByCategory;
     }
 
     public function setFirstName(string $firstName): Users
@@ -172,6 +184,12 @@ class Users implements PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function setTagsByCategory(array $tagsByCategory): self
+    {
+        $this->tagsByCategory = $tagsByCategory;
+        return $this;
+    }
+
     /**
      * Vérifie si l'utilisateur a rempli les informations de profil.
      *
@@ -189,7 +207,19 @@ class Users implements PasswordAuthenticatedUserInterface
 
         return $this;
     }
-// 
+    // 
+        
+    public function getUserTags(): string
+    {
+        return $this->userTags;
+    }
+
+    public function setUserTags(string $userTags): Users
+    {
+        $this->$userTags = $userTags;
+
+        return $this;
+    }
 }
 
 

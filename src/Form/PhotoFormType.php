@@ -17,7 +17,10 @@ class PhotoFormType extends AbstractType
             // Ajouter les autres champs du formulaire si nécessaire
             // ...
             ->add('photo', FileType::class, [
-                'label' => 'Télécharger une photo',
+                'label' => '',
+                'attr' => [
+                    'class' => 'custom-file-input'
+                ],
                 'mapped' => false,
                 'required' => true,
                 'constraints' => [
@@ -35,7 +38,7 @@ class PhotoFormType extends AbstractType
                             'image/jpeg',
                             'image/png',
                         ],
-                        'mimeTypesMessage' => 'Veuillez télécharger une image JPEG ou PNG valide.',
+                        'mimeTypesMessage' => '',
                     ]),
                 ],
             ]);

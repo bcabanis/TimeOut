@@ -26,17 +26,25 @@ class RegistrationController extends AbstractController
         // Gère la soumission du formulaire
         $form->handleRequest($request);
 
+        // if ($form->isSubmitted()) {
+            
+        // }
+
         // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
             $email = $user->getEmail();
 
+            
             // Vérifier si l'adresse e-mail existe déjà dans la base de données
             $existingUser = $userRepository->findOneBy(['email' => $email]);
             if ($existingUser) {
                 // Si un utilisateur avec l'e-mail existe déjà, afficher une modal d'erreur
-                return $this->render('registration/error.html.twig', [
+                $response = $this->render('registration/error.html.twig', [
                     'message2' => 'Un compte existe déjà avec cette adresse e-mail.',
                 ]);
+                
+                $response->setStatusCode(Response::HTTP_UNAUTHORIZED);
+                return $response;
             }
 
             // L'e-mail est unique, nous pouvons continuer avec l'enregistrement de l'utilisateur
@@ -62,19 +70,19 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/registration-success', name: 'registration_success')]
-    public function register_success(): Response
-    {
-        return $this->render('registration/success.html.twig', [
-            'message' => 'Votre compte a été créé.',
-        ]);
-    }
+    // #[Route('/registration-success', name: 'registration_success')]
+    // public function register_success(): Response
+    // {
+    //     return $this->render('registration/success.html.twig', [
+    //         'message' => 'Votre compte a été créé.',
+    //     ]);
+    // }
 
-    #[Route('/registration-error', name: 'registration_error')]
-    public function register_error(): Response
-    {
-        return $this->render('registration/error.html.twig', [
-            'message2' => 'Un compte existe déjà avec cette adresse mail.',
-        ]);
-    }
+    // #[Route('/registration-error', name: 'registration_error')]
+    // public function register_error(): Response
+    // {
+    //     return $this->render('registration/error.html.twig', [
+    //         'message2' => 'Un compte existe déjà avec cette adresse mail.',
+    //     ]);
+    // }
 }

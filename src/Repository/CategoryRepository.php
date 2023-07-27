@@ -16,6 +16,16 @@ class CategoryRepository extends ServiceDocumentRepository
     }
 
     /**
+     * Récupère toutes les catégories depuis la base de données MongoDB.
+     *
+     * @return Category[] La liste des catégories.
+     */
+    public function findAllCategories(): array
+    {
+        return $this->findAll();
+    }
+
+    /**
      * Sauvegarde l'entité Category dans la base de données MongoDB.
      *
      * @param Category $category L'entité Category à sauvegarder.
