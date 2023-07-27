@@ -76,10 +76,7 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
 </style>
 
 <div class=\"example-wrapper\">
-    <h1>Hello ";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new RuntimeError('Variable "controller_name" does not exist.', 12, $this->source); })()), "html", null, true);
-        echo "! ✅</h1>
+    <h1> ✅</h1>
 
     This friendly message is coming from:
     <ul>
@@ -93,6 +90,17 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
         echo "\">templates/dashboard/index.html.twig</a></code></li>
     </ul>
 </div>
+
+";
+        // line 21
+        echo twig_escape_filter($this->env, twig_var_dump($this->env, $context, ...[0 => twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "user", [], "any", false, false, false, 21)]), "html", null, true);
+        echo "
+<h1>DASHBOARD</h1>
+<br>
+<a href=\"";
+        // line 24
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
+        echo "\">Accueil</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -111,7 +119,7 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
 
     public function getDebugInfo()
     {
-        return array (  92 => 17,  88 => 16,  81 => 12,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  102 => 24,  96 => 21,  89 => 17,  85 => 16,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -127,7 +135,7 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
 </style>
 
 <div class=\"example-wrapper\">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1> ✅</h1>
 
     This friendly message is coming from:
     <ul>
@@ -135,6 +143,11 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
         <li>Your template at <code><a href=\"{{ '/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/GetTogether/templates/dashboard/index.html.twig'|file_link(0) }}\">templates/dashboard/index.html.twig</a></code></li>
     </ul>
 </div>
+
+{{dump(app.user)}}
+<h1>DASHBOARD</h1>
+<br>
+<a href=\"{{ path('app_home') }}\">Accueil</a>
 {% endblock %}
 ", "dashboard/index.html.twig", "/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/templates/dashboard/index.html.twig");
     }

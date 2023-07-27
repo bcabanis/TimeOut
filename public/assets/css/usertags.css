@@ -10,3 +10,7 @@
     margin-right: 13px;
     margin-bottom: 13px;
 }
+
+#mestags button.tag-choice-active:hover {
+    background-color: rgb(0, 85, 0);
+}

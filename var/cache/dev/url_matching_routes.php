@@ -14,6 +14,7 @@ return [
             [['_route' => 'app_event_categories', '_controller' => 'App\\Controller\\EventController::categories'], null, ['GET' => 0], null, false, false, null],
         ],
         '/mestags' => [[['_route' => 'app_dashboard_mestags', '_controller' => 'App\\Controller\\DashboardController::mestags'], null, null, null, false, false, null]],
+        '/mesevents' => [[['_route' => 'app_dashboard_mesevents', '_controller' => 'App\\Controller\\DashboardController::mesevents'], null, null, null, false, false, null]],
         '/event/affichage' => [[['_route' => 'app_event_affichage', '_controller' => 'App\\Controller\\EventController::AfficheEvent'], null, null, null, false, false, null]],
         '/event/mesevents' => [[['_route' => 'app_event_mesevents', '_controller' => 'App\\Controller\\EventController::mesevents'], null, null, null, false, false, null]],
         '/event/to_bdd' => [[['_route' => 'app_event_bdd', '_controller' => 'App\\Controller\\EventController::EventToBDD'], null, null, null, false, false, null]],
@@ -30,16 +31,18 @@ return [
     [ // $regexpList
         0 => '{^(?'
                 .'|/_error/(\\d+)(?:\\.([^/]++))?(*:35)'
+                .'|/mestags/save/([^/]++)(*:64)'
                 .'|/event/([^/]++)(?'
-                    .'|(*:60)'
-                    .'|/post_chat_message(*:85)'
+                    .'|(*:89)'
+                    .'|/post_chat_message(*:114)'
                 .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
         35 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        60 => [[['_route' => 'app_event_show', '_controller' => 'App\\Controller\\EventController::show'], ['eventId'], null, null, false, true, null]],
-        85 => [
+        64 => [[['_route' => 'app_dashboard_mestags_save', '_controller' => 'App\\Controller\\DashboardController::saveTags'], ['jsontags'], null, null, false, true, null]],
+        89 => [[['_route' => 'app_event_show', '_controller' => 'App\\Controller\\EventController::show'], ['eventId'], null, null, false, true, null]],
+        114 => [
             [['_route' => 'app_event_post_chat_message', '_controller' => 'App\\Controller\\EventController::postChatMessage'], ['eventId'], ['GET' => 0, 'POST' => 1], null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],

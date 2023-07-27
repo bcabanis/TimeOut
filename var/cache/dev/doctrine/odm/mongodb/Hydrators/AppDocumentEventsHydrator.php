@@ -42,72 +42,17 @@ class AppDocumentEventsHydrator implements HydratorInterface
             $hydratedData['id'] = $return;
         }
 
-        /** @Field(type="date") */
-        if (isset($data['startDate'])) {
-            $value = $data['startDate'];
-            if ($value === null) { $return = null; } else { $return = \Doctrine\ODM\MongoDB\Types\DateType::getDateTime($value); }
-            $this->class->reflFields['startDate']->setValue($document, clone $return);
-            $hydratedData['startDate'] = $return;
-        }
-
-        /** @Field(type="date") */
-        if (isset($data['endDate'])) {
-            $value = $data['endDate'];
-            if ($value === null) { $return = null; } else { $return = \Doctrine\ODM\MongoDB\Types\DateType::getDateTime($value); }
-            $this->class->reflFields['endDate']->setValue($document, clone $return);
-            $hydratedData['endDate'] = $return;
-        }
-
         /** @Field(type="string") */
-        if (isset($data['description']) || (! empty($this->class->fieldMappings['description']['nullable']) && array_key_exists('description', $data))) {
-            $value = $data['description'];
+        if (isset($data['category']) || (! empty($this->class->fieldMappings['category']['nullable']) && array_key_exists('category', $data))) {
+            $value = $data['category'];
             if ($value !== null) {
-                $typeIdentifier = $this->class->fieldMappings['description']['type'];
+                $typeIdentifier = $this->class->fieldMappings['category']['type'];
                 $return = (string) $value;
             } else {
                 $return = null;
             }
-            $this->class->reflFields['description']->setValue($document, $return);
-            $hydratedData['description'] = $return;
-        }
-
-        /** @Field(type="string") */
-        if (isset($data['picture']) || (! empty($this->class->fieldMappings['picture']['nullable']) && array_key_exists('picture', $data))) {
-            $value = $data['picture'];
-            if ($value !== null) {
-                $typeIdentifier = $this->class->fieldMappings['picture']['type'];
-                $return = (string) $value;
-            } else {
-                $return = null;
-            }
-            $this->class->reflFields['picture']->setValue($document, $return);
-            $hydratedData['picture'] = $return;
-        }
-
-        /** @Field(type="string") */
-        if (isset($data['place']) || (! empty($this->class->fieldMappings['place']['nullable']) && array_key_exists('place', $data))) {
-            $value = $data['place'];
-            if ($value !== null) {
-                $typeIdentifier = $this->class->fieldMappings['place']['type'];
-                $return = (string) $value;
-            } else {
-                $return = null;
-            }
-            $this->class->reflFields['place']->setValue($document, $return);
-            $hydratedData['place'] = $return;
-        }
-
-        /** @Field(type="string") */
-        if (isset($data['planner']) || (! empty($this->class->fieldMappings['planner']['nullable']) && array_key_exists('planner', $data))) {
-            $value = $data['planner'];
-            if ($value !== null) {
-                $typeIdentifier = $this->class->fieldMappings['planner']['type'];
-                $return = (string) $value;
-            } else {
-                $return = null;
-            }
-            $this->class->reflFields['planner']->setValue($document, $return);
-            $hydratedData['planner'] = $return;
+            $this->class->reflFields['category']->setValue($document, $return);
+            $hydratedData['category'] = $return;
         }
 
         /** @Field(type="string") */
@@ -124,6 +69,32 @@ class AppDocumentEventsHydrator implements HydratorInterface
         }
 
         /** @Field(type="string") */
+        if (isset($data['description']) || (! empty($this->class->fieldMappings['description']['nullable']) && array_key_exists('description', $data))) {
+            $value = $data['description'];
+            if ($value !== null) {
+                $typeIdentifier = $this->class->fieldMappings['description']['type'];
+                $return = (string) $value;
+            } else {
+                $return = null;
+            }
+            $this->class->reflFields['description']->setValue($document, $return);
+            $hydratedData['description'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['date']) || (! empty($this->class->fieldMappings['eventDate']['nullable']) && array_key_exists('date', $data))) {
+            $value = $data['date'];
+            if ($value !== null) {
+                $typeIdentifier = $this->class->fieldMappings['eventDate']['type'];
+                $return = (string) $value;
+            } else {
+                $return = null;
+            }
+            $this->class->reflFields['eventDate']->setValue($document, $return);
+            $hydratedData['eventDate'] = $return;
+        }
+
+        /** @Field(type="string") */
         if (isset($data['address']) || (! empty($this->class->fieldMappings['address']['nullable']) && array_key_exists('address', $data))) {
             $value = $data['address'];
             if ($value !== null) {
@@ -134,6 +105,32 @@ class AppDocumentEventsHydrator implements HydratorInterface
             }
             $this->class->reflFields['address']->setValue($document, $return);
             $hydratedData['address'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['image_url']) || (! empty($this->class->fieldMappings['imageUrl']['nullable']) && array_key_exists('image_url', $data))) {
+            $value = $data['image_url'];
+            if ($value !== null) {
+                $typeIdentifier = $this->class->fieldMappings['imageUrl']['type'];
+                $return = (string) $value;
+            } else {
+                $return = null;
+            }
+            $this->class->reflFields['imageUrl']->setValue($document, $return);
+            $hydratedData['imageUrl'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['eventId']) || (! empty($this->class->fieldMappings['eventId']['nullable']) && array_key_exists('eventId', $data))) {
+            $value = $data['eventId'];
+            if ($value !== null) {
+                $typeIdentifier = $this->class->fieldMappings['eventId']['type'];
+                $return = (string) $value;
+            } else {
+                $return = null;
+            }
+            $this->class->reflFields['eventId']->setValue($document, $return);
+            $hydratedData['eventId'] = $return;
         }
         return $hydratedData;
     }

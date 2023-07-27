@@ -103,6 +103,7 @@ class LoginController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Enregistrer les modifications de l'utilisateur dans la base de données
+            $user->fill();
             $userRepository->save($user);
 
             // Rediriger l'utilisateur vers une autre page (par exemple, le dashboard)
