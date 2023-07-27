@@ -2,8 +2,8 @@
 
 namespace App\Document;
 
-use App\Document\Events;
-use App\Document\Users;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 #[MongoDB\Document]
@@ -12,24 +12,36 @@ class ChatMessage
     #[MongoDB\Id]
     private string $id;
 
-    #[MongoDB\Field(type:'string')]
-    private string $content; // Contenu du message
+    #[MongoDB\Field(type: 'string')]
+    private string $content;
 
-    #[MongoDB\ReferenceOne(targetDocument:Events::class)]
-    private ?Events $event; // Référence à l'événement
+    #[MongoDB\ReferenceOne(targetDocument: Events::class)]
+    private ?Events $event = null;
+
 
     #[MongoDB\ReferenceOne(targetDocument: Users::class)]
-    private ?Users $user = null; // Référence à l'utilisateur
+    private ?Users $user = null;
 
-    
+    #[MongoDB\ReferenceOne(targetDocument: ChatMessage::class)]
+    private ?ChatMessage $parentMessage = null;
+
+    #[MongoDB\ReferenceOne(targetDocument: ChatMessage::class)]
+    private ?ChatMessage $replyToMessage = null;
+
+
+
+    #[MongoDB\ReferenceMany(targetDocument: ChatMessage::class, mappedBy: "parentMessage")]
+
+    private Collection $replies;
+
+    public function __construct()
+    {
+        $this->replies = new ArrayCollection();
+    }
+
     public function getId(): string
     {
         return $this->id;
-    }
-
-    public function setId(string $id): void
-    {
-        $this->id = $id;
     }
 
     public function getContent(): string
@@ -62,6 +74,48 @@ class ChatMessage
         $this->user = $user;
     }
 
-    
-}
+    public function getParentMessage(): ?ChatMessage
+    {
+        return $this->parentMessage;
+    }
 
+    public function setParentMessage(?ChatMessage $parentMessage): void
+    {
+        $this->parentMessage = $parentMessage;
+    }
+
+    /**
+     * @return Collection|ChatMessage[]
+     */
+    public function getReplies(): Collection
+    {
+        return $this->replies;
+    }
+
+    public function addReply(ChatMessage $reply): void
+    {
+        if (!$this->replies->contains($reply)) {
+            $this->replies[] = $reply;
+            $reply->setParentMessage($this);
+        }
+    }
+
+    public function removeReply(ChatMessage $reply): void
+    {
+        if ($this->replies->contains($reply)) {
+            $this->replies->removeElement($reply);
+            // Ne pas supprimer la référence parente lors de la suppression de la réponse
+            // pour éviter les suppressions en cascade.
+        }
+    }
+
+    public function getReplyToMessage(): ?ChatMessage
+    {
+        return $this->replyToMessage;
+    }
+
+    public function setReplyToMessage(?ChatMessage $replyToMessage): void
+    {
+        $this->replyToMessage = $replyToMessage;
+    }
+}

@@ -56,14 +56,16 @@
 
 			<div class="welcometext">
 				<h1>{{ event.title }}</h1>
-				<img src="assets/img/concertrockprixlibre2.png" alt="">
+
+				<img src="/assets/img_api/{{ event.imageUrl }}" alt="">
 			</article>
 
 			<div class="row mt-4">
 				<article class="columnleftevent col-md-7 col-sm-12">
 					<h3>Description de l’événement</h3>
 					<p>{{ event.description }}</p>
-					<h3></h3>
+					<h3>Organisateur :
+						{{ event.orga }}</h3>
 					<p>Vous pouvez contacter l’organisateur directement dans le canal de groupe ci-dessous.
 					</p>
 
@@ -71,13 +73,13 @@
 				<div class="columnspacerevent col-md-1 col-12"></div>
 				<div class="columnrightevent col-md-4 col-sm-12">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d34848.14939208129!2d2.3478265000886145!3d48.90537128598759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1689752545704!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-					<p class="iconloc">{{event.eventDate}}</p>
-					<p class="icondate">{{ event.address }}</p>
+					<p class="iconloc">{{ event.address }}</p>
+					<p class="icondate">{{event.eventDate}}</p>
 					<p class="iconcontact">263 de participants</p>
-					<div class="d-flex flex-wrap flex-xxl-nowrap mt-4">
-						<a href="#" class="partager">Partager</a>
-						<a href="#" class="participer">Participer</a>
-					</div>
+					{# <div class="d-flex flex-wrap flex-xxl-nowrap mt-4">
+																																									<a href="#" class="partager">Partager</a>
+																																									<a href="#" class="participer">Participer</a>
+																																								</div> #}
 				</div>
 			</div>
 
@@ -129,8 +131,13 @@
 										<div>
 											<p class="chattext">{{ message.content }}</p>
 										</div>
+										{% if message.parentMessage is null %}
+											{% include '_message.html.twig' with {'message': message, 'event': event} %}
+										{% endif %}
 									</article>
 									<div class="separateurChat"></div>
+									{# ---------------------------------------- #}
+
 								{% else %}
 									<p>
 										<strong>Utilisateur inconnu</strong>:
@@ -157,7 +164,7 @@
 				<div class="container">
 					<div class="logotimeout">
 						<a href="#">
-							<img class="logo" src="assets/img/logo-timeout-white.svg" alt="Logo TimeOut">
+							<img class="logo" src="/assets/img/logo-timeout-white.svg" alt="Logo TimeOut">
 						</a>
 					</div>
 
@@ -251,8 +258,28 @@
 						<a href="#">PLAN DU SITE</a>
 					</p>
 					<p class="mentionslegales">© 2023 Time Out England Limited and affiliated companies owned by Time Out Group
-																																									          Plc. All rights reserved. Time Out is a registered trademark of Time Out Digital Limited.</p>
+																																																																																			          Plc. All rights reserved. Time Out is a registered trademark of Time Out Digital Limited.</p>
 				</div>
 			</footer>
 			<!-- footer end  -->
+			{% block script %}
+				<script>
+					alert('yo');
+const replyButtons = document.querySelectorAll('.reply-button');
+replyButtons.forEach(button => {
+button.addEventListener('click', () => {
+let messageId = button.dataset.messageId;
+console.log(messageId);
+let replyForm = document.getElementById(reply - form - $ {
+messageId
+});
+console.log(replyForm);
+replyForm.style.display = 'block';
+});
+});
+</script>
+			{% endblock %}
+			
+
 		{% endblock %}
+

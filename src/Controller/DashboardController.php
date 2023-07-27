@@ -43,7 +43,7 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('/mestags', name: 'app_event_mestags')]
+    #[Route('/mestags', name: 'app_dashboard_mestags')]
     public function mestags(): Response
     {
         $tags = [

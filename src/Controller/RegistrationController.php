@@ -70,19 +70,4 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    // #[Route('/registration-success', name: 'registration_success')]
-    // public function register_success(): Response
-    // {
-    //     return $this->render('registration/success.html.twig', [
-    //         'message' => 'Votre compte a été créé.',
-    //     ]);
-    // }
-
-    // #[Route('/registration-error', name: 'registration_error')]
-    // public function register_error(): Response
-    // {
-    //     return $this->render('registration/error.html.twig', [
-    //         'message2' => 'Un compte existe déjà avec cette adresse mail.',
-    //     ]);
-    // }
 }

@@ -85,28 +85,28 @@ class LoginController extends AbstractController
         return $this->redirectToRoute('app_login');
     }
 
-    // Redirection vers la personnalisation du profil
     #[Route('/profil', name: 'app_profil')]
-    public function profil(Request $request, UserRepository $userRepository, SessionInterface $session): Response
+    public function profil(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
-        $email = $session->get('email');
+        // Récupère l'email de l'utilisateur connecté depuis la session
+        $email = $sessionInterface->get('email');
 
-        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+        // Récupère l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
         // Créer le formulaire de profil en utilisant ProfilFormType et l'utilisateur récupéré
         $form = $this->createForm(ProfilFormType::class, $user);
 
-        // Gérer la soumission du formulaire
+        // Gère la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Enregistrer les modifications de l'utilisateur dans la base de données
+            // Enregistre les modifications de l'utilisateur dans la base de données
+            $user->fill();
             $userRepository->save($user);
 
-            // Rediriger l'utilisateur vers une autre page (par exemple, le dashboard)
-            return $this->redirectToRoute('app_login_avatar');
+            // Redirige l'utilisateur vers une autre page 
+            return $this->redirectToRoute('app_avatar');
         }
 
         return $this->render('login/profil.html.twig', [
