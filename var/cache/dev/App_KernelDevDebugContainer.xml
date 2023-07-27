@@ -56,6 +56,7 @@
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
     <parameter key="env(MONGODB_URL)"></parameter>
     <parameter key="env(MONGODB_DB)"></parameter>
+    <parameter key="photos_upload_directory">/Users/moussaillon/Desktop/Dossier requesitory symfony/TimeOut/public/uploads/photos</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -291,10 +292,27 @@
         <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\TestController"/>
       </call>
     </service>
+    <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\UserController"/>
+      </call>
+    </service>
     <service id="App\Document\CalendarDocument" class="App\Document\CalendarDocument" autowire="true" autoconfigure="true"/>
     <service id="App\Document\CategoryDocument" class="App\Document\CategoryDocument" autowire="true" autoconfigure="true"/>
+    <service id="App\Document\ChatMessageDocument" class="App\Document\ChatMessageDocument" autowire="true" autoconfigure="true"/>
     <service id="App\Document\EventsDocument" class="App\Document\EventsDocument" autowire="true" autoconfigure="true"/>
     <service id="App\Document\UsersDocument" class="App\Document\UsersDocument" autowire="true" autoconfigure="true"/>
+    <service id="App\Form\LoginFormType" class="App\Form\LoginFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\PhotoFormType" class="App\Form\PhotoFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ProfilFormType" class="App\Form\ProfilFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -306,6 +324,10 @@
       <tag name="doctrine_mongodb.odm.repository_service"/>
       <argument type="service" id="doctrine_mongodb"/>
     </service>
+    <service id="App\Repository\ChatMessageRepository" class="App\Repository\ChatMessageRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine_mongodb.odm.repository_service"/>
+      <argument type="service" id="doctrine_mongodb"/>
+    </service>
     <service id="App\Repository\EventRepository" class="App\Repository\EventRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine_mongodb.odm.repository_service"/>
       <argument type="service" id="doctrine_mongodb"/>
@@ -314,7 +336,7 @@
       <tag name="doctrine_mongodb.odm.repository_service"/>
       <argument type="service" id="doctrine_mongodb"/>
     </service>
-    <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
+    <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" public="true" autowire="true" autoconfigure="true">
       <tag name="doctrine_mongodb.odm.repository_service"/>
       <argument type="service" id="doctrine_mongodb"/>
     </service>
@@ -838,6 +860,9 @@
         <argument>Doctrine\Bundle\MongoDBBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\LoginFormType</argument>
+        <argument>App\Form\PhotoFormType</argument>
+        <argument>App\Form\ProfilFormType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1812,7 +1837,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.QrKkdNp"/>
+      <argument type="service" id=".service_locator.q2WjZbS"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3722,7 +3747,7 @@
       <argument type="collection"/>
     </service>
     <service id="doctrine_mongodb.odm.container_repository_factory" class="Doctrine\Bundle\MongoDBBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.PwmnSl_"/>
+      <argument type="service" id=".service_locator.aGTggGW"/>
     </service>
     <service id="doctrine_mongodb.odm.manager_configurator.abstract" class="Doctrine\Bundle\MongoDBBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3890,18 +3915,29 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TestController" class="App\Controller\TestController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TestController" class="App\Controller\TestController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TestController" class="App\Controller\TestController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoginFormType" class="App\Form\LoginFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\LoginFormType" class="App\Form\LoginFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PhotoFormType" class="App\Form\PhotoFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\PhotoFormType" class="App\Form\PhotoFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProfilFormType" class="App\Form\ProfilFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ProfilFormType" class="App\Form\ProfilFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\CalendarRepository" class="App\Repository\CalendarRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CalendarRepository" class="App\Repository\CalendarRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\ChatMessageRepository" class="App\Repository\ChatMessageRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ChatMessageRepository" class="App\Repository\ChatMessageRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\EventRepository" class="App\Repository\EventRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\EventRepository" class="App\Repository\EventRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\TagsRepository" class="App\Repository\TagsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\TagsRepository" class="App\Repository\TagsRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" public="true" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.gSv9zYw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4282,10 +4318,39 @@
         <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.stp36i_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="callApiService" type="service_closure" id="App\Service\CallApiService"/>
+        <argument key="dm" type="service_closure" id="doctrine_mongodb.odm.default_document_manager"/>
+        <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.37hY7K." class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.9gx2998" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="chatMessageRepository" type="service_closure" id="App\Repository\ChatMessageRepository"/>
+        <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.H2lArlK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
+        <argument key="managerRegistry" type="service_closure" id="doctrine_mongodb"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator..Ae5NXw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.yy.Upc_" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -4295,31 +4360,42 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.IdwyOIE" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.LYy3axL" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="callApiService" type="service_closure" id="App\Service\CallApiService"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.esJg8Ka" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.PzinUwK" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\DashboardController::categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
-        <argument key="App\Controller\EventController::categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
-        <argument key="App\Controller\EventController::index" type="service_closure" id=".service_locator.37hY7K."/>
+        <argument key="App\Controller\EventController::AfficheEvent" type="service_closure" id=".service_locator.stp36i_"/>
+        <argument key="App\Controller\EventController::EventToBDD" type="service_closure" id=".service_locator.37hY7K."/>
+        <argument key="App\Controller\EventController::postChatMessage" type="service_closure" id=".service_locator.9gx2998"/>
+        <argument key="App\Controller\EventController::show" type="service_closure" id=".service_locator.9gx2998"/>
+        <argument key="App\Controller\LoginController::avatar" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\LoginController::login" type="service_closure" id=".service_locator.H2lArlK"/>
+        <argument key="App\Controller\LoginController::profil" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\LoginController::tags" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.yy.Upc_"/>
-        <argument key="App\Controller\RegistrationController::register_success" type="service_closure" id=".service_locator.yy.Upc_"/>
-        <argument key="App\Controller\TestController::index" type="service_closure" id=".service_locator.IdwyOIE"/>
+        <argument key="App\Controller\TestController::index" type="service_closure" id=".service_locator.LYy3axL"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Controller\DashboardController:categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
-        <argument key="App\Controller\EventController:categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
-        <argument key="App\Controller\EventController:index" type="service_closure" id=".service_locator.37hY7K."/>
+        <argument key="App\Controller\EventController:AfficheEvent" type="service_closure" id=".service_locator.stp36i_"/>
+        <argument key="App\Controller\EventController:EventToBDD" type="service_closure" id=".service_locator.37hY7K."/>
+        <argument key="App\Controller\EventController:postChatMessage" type="service_closure" id=".service_locator.9gx2998"/>
+        <argument key="App\Controller\EventController:show" type="service_closure" id=".service_locator.9gx2998"/>
+        <argument key="App\Controller\LoginController:avatar" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\LoginController:login" type="service_closure" id=".service_locator.H2lArlK"/>
+        <argument key="App\Controller\LoginController:profil" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\LoginController:tags" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.yy.Upc_"/>
-        <argument key="App\Controller\RegistrationController:register_success" type="service_closure" id=".service_locator.yy.Upc_"/>
-        <argument key="App\Controller\TestController:index" type="service_closure" id=".service_locator.IdwyOIE"/>
+        <argument key="App\Controller\TestController:index" type="service_closure" id=".service_locator.LYy3axL"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
       </argument>
@@ -4384,9 +4460,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.QrKkdNp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.q2WjZbS" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\LoginFormType" type="service_closure" id="App\Form\LoginFormType"/>
+        <argument key="App\Form\PhotoFormType" type="service_closure" id="App\Form\PhotoFormType"/>
+        <argument key="App\Form\ProfilFormType" type="service_closure" id="App\Form\ProfilFormType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="Doctrine\Bundle\MongoDBBundle\Form\Type\DocumentType" type="service_closure" id="form.type.mongodb_document"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
@@ -4445,11 +4524,12 @@
     <service id="security.ldap_locator" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <argument type="collection"/>
     </service>
-    <service id=".service_locator.PwmnSl_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.aGTggGW" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CalendarRepository" type="service_closure" id="App\Repository\CalendarRepository"/>
         <argument key="App\Repository\CategoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
+        <argument key="App\Repository\ChatMessageRepository" type="service_closure" id="App\Repository\ChatMessageRepository"/>
         <argument key="App\Repository\EventRepository" type="service_closure" id="App\Repository\EventRepository"/>
         <argument key="App\Repository\TagsRepository" type="service_closure" id="App\Repository\TagsRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
@@ -4503,6 +4583,12 @@
     <service id=".service_locator.l1ae.Qz.App\Controller\TestController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\TestController"/>
       <argument>App\Controller\TestController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\UserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\UserController"/>
+      <argument>App\Controller\UserController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.l1ae.Qz" method="withContext"/>
     </service>
@@ -4623,12 +4709,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.esJg8Ka"/>
+      <argument type="service" id=".service_locator.PzinUwK"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.esJg8Ka"/>
+      <argument type="service" id=".service_locator.PzinUwK"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -5233,6 +5319,7 @@
         <argument key="Symfony\Component\Form\FormRenderer" type="service_closure" id="twig.form.renderer"/>
       </argument>
     </service>
+    <service id="Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface" alias="security.encoder_factory.default"/>
     <service id="App\Kernel" alias="kernel" public="true"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface" alias="parameter_bag"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface" alias="parameter_bag"/>
@@ -5342,16 +5429,19 @@
     <service id="doctrine_mongodb.odm.event_manager" alias="doctrine_mongodb.odm.default_connection.event_manager"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.esJg8Ka"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.PzinUwK"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.QZi2MH3" alias=".service_locator.Fq26VWZ"/>
+    <service id=".service_locator.R4J6sDI" alias=".service_locator.stp36i_"/>
+    <service id=".service_locator.ygcmtTJ" alias=".service_locator.9gx2998"/>
+    <service id=".service_locator.lwZBN8d" alias=".service_locator.H2lArlK"/>
     <service id=".service_locator.XveGcE." alias=".service_locator.yy.Upc_"/>
-    <service id=".service_locator.viJ__9i" alias=".service_locator.esJg8Ka"/>
+    <service id=".service_locator.JP8utV_" alias=".service_locator.PzinUwK"/>
     <service id=".service_locator.Naiw5mr" alias=".service_locator.HuqLxd2"/>
-    <service id=".service_locator.6KYmWpU" alias=".service_locator.QrKkdNp"/>
+    <service id=".service_locator.16gU.2P" alias=".service_locator.q2WjZbS"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
     <service id=".service_locator.jkb6XQV" alias=".service_locator.l1ae.Qz"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
@@ -5372,9 +5462,13 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.JBAFp66" alias=".service_locator.KfbR3DY"/>
     <service id=".service_locator.20bj_nQ" alias=".service_locator.Fq26VWZ"/>
+    <service id=".service_locator.YqI0jxx" alias=".service_locator.stp36i_"/>
     <service id=".service_locator.VlzuqH1" alias=".service_locator.37hY7K."/>
+    <service id=".service_locator.pX5z3jV" alias=".service_locator.9gx2998"/>
+    <service id=".service_locator.LfzqtzB" alias=".service_locator.H2lArlK"/>
+    <service id=".service_locator.8PQa8Mp" alias=".service_locator..Ae5NXw"/>
     <service id=".service_locator.jm3BRbB" alias=".service_locator.yy.Upc_"/>
-    <service id=".service_locator.0R1nEew" alias=".service_locator.IdwyOIE"/>
+    <service id=".service_locator.mhV9EzX" alias=".service_locator.LYy3axL"/>
     <service id=".service_locator.ADknlmN" alias=".service_locator.l1ae.Qz"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
     <service id=".service_locator.aa1PbBb" alias=".service_locator.nLgZj7R"/>

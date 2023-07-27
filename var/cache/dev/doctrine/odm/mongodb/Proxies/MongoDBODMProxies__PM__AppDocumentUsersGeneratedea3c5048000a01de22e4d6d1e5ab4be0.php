@@ -51,13 +51,7 @@ class Generatedea3c5048000a01de22e4d6d1e5ab4be0 extends \App\Document\Users impl
         'pseudo' => [
             'App\\Document\\Users' => true,
         ],
-        'tagsByCategory' => [
-            'App\\Document\\Users' => true,
-        ],
         'filled' => [
-            'App\\Document\\Users' => true,
-        ],
-        'userTags' => [
             'App\\Document\\Users' => true,
         ],
     ];
@@ -91,11 +85,8 @@ class Generatedea3c5048000a01de22e4d6d1e5ab4be0 extends \App\Document\Users impl
         static $cacheApp_Document_Users;
 
         $cacheApp_Document_Users ?? $cacheApp_Document_Users = \Closure::bind(static function ($instance) {
-            $instance->firstName = '';
-            $instance->lastName = '';
             $instance->dateNaissance = null;
             $instance->passwordConfirmation = null;
-            $instance->tagsByCategory = [];
             $instance->filled = false;
         }, null, 'App\\Document\\Users');
 
@@ -107,30 +98,29 @@ class Generatedea3c5048000a01de22e4d6d1e5ab4be0 extends \App\Document\Users impl
         $nonReferenceableProperties = new class() {
             public ?string $email;
             public ?string $password;
+            public ?string $firstName_on_App_Document_Users;
+            public ?string $lastName_on_App_Document_Users;
             public ?string $city_on_App_Document_Users;
             public ?string $profilPicture_on_App_Document_Users;
             public ?string $role_on_App_Document_Users;
             public ?string $pseudo_on_App_Document_Users;
-            public ?string $userTags_on_App_Document_Users;
         };
         $properties = [
             'email' => & $nonReferenceableProperties->email,
             'password' => & $nonReferenceableProperties->password,
+            '' . "\0" . 'App\\Document\\Users' . "\0" . 'firstName' => & $nonReferenceableProperties->firstName_on_App_Document_Users,
+            '' . "\0" . 'App\\Document\\Users' . "\0" . 'lastName' => & $nonReferenceableProperties->lastName_on_App_Document_Users,
             '' . "\0" . 'App\\Document\\Users' . "\0" . 'city' => & $nonReferenceableProperties->city_on_App_Document_Users,
             '' . "\0" . 'App\\Document\\Users' . "\0" . 'profilPicture' => & $nonReferenceableProperties->profilPicture_on_App_Document_Users,
             '' . "\0" . 'App\\Document\\Users' . "\0" . 'role' => & $nonReferenceableProperties->role_on_App_Document_Users,
             '' . "\0" . 'App\\Document\\Users' . "\0" . 'pseudo' => & $nonReferenceableProperties->pseudo_on_App_Document_Users,
-            '' . "\0" . 'App\\Document\\Users' . "\0" . 'userTags' => & $nonReferenceableProperties->userTags_on_App_Document_Users,
         ];
 
         static $cacheFetchApp_Document_Users;
 
         $cacheFetchApp_Document_Users ?? $cacheFetchApp_Document_Users = \Closure::bind(function ($instance, array & $properties) {
-            $properties['' . "\0" . 'App\\Document\\Users' . "\0" . 'firstName'] = & $instance->firstName;
-            $properties['' . "\0" . 'App\\Document\\Users' . "\0" . 'lastName'] = & $instance->lastName;
             $properties['' . "\0" . 'App\\Document\\Users' . "\0" . 'dateNaissance'] = & $instance->dateNaissance;
             $properties['' . "\0" . 'App\\Document\\Users' . "\0" . 'passwordConfirmation'] = & $instance->passwordConfirmation;
-            $properties['' . "\0" . 'App\\Document\\Users' . "\0" . 'tagsByCategory'] = & $instance->tagsByCategory;
             $properties['' . "\0" . 'App\\Document\\Users' . "\0" . 'filled'] = & $instance->filled;
         }, null, 'App\\Document\\Users');
 
@@ -142,11 +132,12 @@ class Generatedea3c5048000a01de22e4d6d1e5ab4be0 extends \App\Document\Users impl
         static $cacheAssignApp_Document_Users;
 
         $cacheAssignApp_Document_Users ?? $cacheAssignApp_Document_Users = \Closure::bind(function ($instance, $nonReferenceableProperties) {
+            isset($nonReferenceableProperties->firstName_on_App_Document_Users) && $instance->firstName = $nonReferenceableProperties->firstName_on_App_Document_Users;
+            isset($nonReferenceableProperties->lastName_on_App_Document_Users) && $instance->lastName = $nonReferenceableProperties->lastName_on_App_Document_Users;
             isset($nonReferenceableProperties->city_on_App_Document_Users) && $instance->city = $nonReferenceableProperties->city_on_App_Document_Users;
             isset($nonReferenceableProperties->profilPicture_on_App_Document_Users) && $instance->profilPicture = $nonReferenceableProperties->profilPicture_on_App_Document_Users;
             isset($nonReferenceableProperties->role_on_App_Document_Users) && $instance->role = $nonReferenceableProperties->role_on_App_Document_Users;
             isset($nonReferenceableProperties->pseudo_on_App_Document_Users) && $instance->pseudo = $nonReferenceableProperties->pseudo_on_App_Document_Users;
-            isset($nonReferenceableProperties->userTags_on_App_Document_Users) && $instance->userTags = $nonReferenceableProperties->userTags_on_App_Document_Users;
         }, null, 'App\\Document\\Users');
 
         $cacheAssignApp_Document_Users($this, $nonReferenceableProperties);
@@ -170,7 +161,7 @@ class Generatedea3c5048000a01de22e4d6d1e5ab4be0 extends \App\Document\Users impl
         unset($instance->email, $instance->password);
 
         \Closure::bind(function (\App\Document\Users $instance) {
-            unset($instance->firstName, $instance->lastName, $instance->city, $instance->dateNaissance, $instance->passwordConfirmation, $instance->profilPicture, $instance->role, $instance->pseudo, $instance->tagsByCategory, $instance->filled, $instance->userTags);
+            unset($instance->firstName, $instance->lastName, $instance->city, $instance->dateNaissance, $instance->passwordConfirmation, $instance->profilPicture, $instance->role, $instance->pseudo, $instance->filled);
         }, $instance, 'App\\Document\\Users')->__invoke($instance);
 
         $instance->initializer7fde2 = $initializer;
