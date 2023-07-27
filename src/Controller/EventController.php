@@ -80,4 +80,16 @@ class EventController extends AbstractController
             'TagsData' => $tags,
         ]);
     }
+
+    #[Route('/mesevents', name: 'app_event_mesevents')]
+    public function mesevents(): Response
+    {
+        $events = [
+        ];
+
+        // Passez les données à votre modèle Twig et générez la vue
+        return $this->render('event/mesevents.html.twig', [
+            'EventsData' => $events,
+        ]);
+    }
 }

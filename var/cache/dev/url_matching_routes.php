@@ -12,6 +12,7 @@ return [
         '/mainboard' => [[['_route' => 'app_dashboard_mainboard', '_controller' => 'App\\Controller\\DashboardController::categories'], null, null, null, false, false, null]],
         '/event' => [[['_route' => 'app_event', '_controller' => 'App\\Controller\\EventController::index'], null, null, null, true, false, null]],
         '/event/mestags' => [[['_route' => 'app_event_mestags', '_controller' => 'App\\Controller\\EventController::mestags'], null, null, null, false, false, null]],
+        '/event/mesevents' => [[['_route' => 'app_event_mesevents', '_controller' => 'App\\Controller\\EventController::mesevents'], null, null, null, false, false, null]],
         '/home' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, true, false, null]],
         '/registration' => [[['_route' => 'app_registration', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
