@@ -92,14 +92,15 @@ class LoginController extends AbstractController
     {
         // Récupère l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
-        if(!$email) return $this->redirectToRoute('app_login');
+        if(!$email)
+            return $this->redirectToRoute('app_login');
 
         // Récupère l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
 
         // Créer le formulaire de profil en utilisant ProfilFormType et l'utilisateur récupéré
         $form = $this->createForm(ProfilFormType::class, $user);
-
+        
         // Gère la soumission du formulaire
         $form->handleRequest($request);
 
