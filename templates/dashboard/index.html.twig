@@ -88,21 +88,20 @@
             <img src="/assets/img/placeholderagenda.png" alt="">
           </div>
 
-
+{# PARTIE "MES TAGS #}
 <div class="tags text-center" id="tags-resumey">
     <h3><span>Mes tags</span></h3>
     <div>
 {% for tag in tagsByCategory %}
         <p href="#">{{ tag }}</p>
 {% endfor %}
-
     </div>
     <a href="{{ path('app_dashboard_mestags') }}" class="voirplus"> Voir mes tags</a>
 </div>
-
+{# FIN DE PARTIE "MES TAGS #}
 
           <div class="events">
-            <h3><span>Recommondation d'évent</span></h3>
+            <h3><span>Recommandation d'évent</span></h3>
 
            <div class="d-flex justify-content-start">
               <div class="cardeventsmall"> <!-- CARD event SMALL start  -->

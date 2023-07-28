@@ -154,7 +154,9 @@ function handleCategorySelection() {
       .then(response => {
         
         if (response.status == 200) {
-          //document.location.replace('/route_e_lancer');
+          //document.location.replace('/route_e_lancer'); // Jean-Serge
+          // window.location.href = '/dashboard'; // Romain
+          // Apparemment ça fait quasiment pareil mais ça marche pas
           return response.text();
         }
       })

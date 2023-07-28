@@ -181,8 +181,9 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
             <img src=\"/assets/img/placeholderagenda.png\" alt=\"\">
           </div>
 
-
-<div class=\"tags text-center\" id=\"tags-resumey\">
+";
+        // line 92
+        echo "<div class=\"tags text-center\" id=\"tags-resumey\">
     <h3><span>Mes tags</span></h3>
     <div>
 ";
@@ -200,17 +201,17 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 98
-        echo "
-    </div>
+        echo "    </div>
     <a href=\"";
-        // line 100
+        // line 99
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_dashboard_mestags");
         echo "\" class=\"voirplus\"> Voir mes tags</a>
 </div>
-
-
+";
+        // line 102
+        echo "
           <div class=\"events\">
-            <h3><span>Recommondation d'évent</span></h3>
+            <h3><span>Recommandation d'évent</span></h3>
 
            <div class=\"d-flex justify-content-start\">
               <div class=\"cardeventsmall\"> <!-- CARD event SMALL start  -->
@@ -358,9 +359,9 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
 </footer><!-- footer end  -->
   
   ";
-        // line 252
+        // line 251
         $this->displayBlock('JavaScript', $context, $blocks);
-        // line 256
+        // line 255
         echo "
 </body>
 ";
@@ -369,14 +370,14 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
 
     }
 
-    // line 252
+    // line 251
     public function block_JavaScript($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "JavaScript"));
 
-        // line 253
+        // line 252
         echo "<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz\" crossorigin=\"anonymous\"></script>
 <script src=\"/assets/js/dashboardtags.js\"></script> 
     ";
@@ -392,7 +393,7 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
 
     public function getDebugInfo()
     {
-        return array (  380 => 253,  373 => 252,  364 => 256,  362 => 252,  207 => 100,  203 => 98,  194 => 96,  190 => 95,  123 => 30,  119 => 27,  112 => 26,  101 => 17,  93 => 10,  86 => 9,  73 => 7,  66 => 26,  63 => 25,  59 => 22,  57 => 9,  54 => 8,  52 => 7,  44 => 1,);
+        return array (  381 => 252,  374 => 251,  365 => 255,  363 => 251,  212 => 102,  207 => 99,  204 => 98,  195 => 96,  191 => 95,  186 => 92,  123 => 30,  119 => 27,  112 => 26,  101 => 17,  93 => 10,  86 => 9,  73 => 7,  66 => 26,  63 => 25,  59 => 22,  57 => 9,  54 => 8,  52 => 7,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -487,21 +488,20 @@ class __TwigTemplate_507130f6567316c7ea1707f64991ca24371786b3f2419209c01dd0dffe6
             <img src=\"/assets/img/placeholderagenda.png\" alt=\"\">
           </div>
 
-
+{# PARTIE \"MES TAGS #}
 <div class=\"tags text-center\" id=\"tags-resumey\">
     <h3><span>Mes tags</span></h3>
     <div>
 {% for tag in tagsByCategory %}
         <p href=\"#\">{{ tag }}</p>
 {% endfor %}
-
     </div>
     <a href=\"{{ path('app_dashboard_mestags') }}\" class=\"voirplus\"> Voir mes tags</a>
 </div>
-
+{# FIN DE PARTIE \"MES TAGS #}
 
           <div class=\"events\">
-            <h3><span>Recommondation d'évent</span></h3>
+            <h3><span>Recommandation d'évent</span></h3>
 
            <div class=\"d-flex justify-content-start\">
               <div class=\"cardeventsmall\"> <!-- CARD event SMALL start  -->

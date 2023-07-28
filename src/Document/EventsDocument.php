@@ -33,6 +33,9 @@ class Events
     #[MongoDB\Field(type:"string", name:"eventId")]
     protected $eventId;
 
+    #[MongoDB\Field(type:"string", name:"orga")]
+    protected $orga;
+
     // Add getters and setters for each property
 
     public function getId()
@@ -114,6 +117,17 @@ class Events
     public function seteventId(string $eventId): self
     {
         $this->eventId = $eventId;
+        return $this;
+    }
+    
+    public function GetOrga(): ?string
+    {
+        return $this->orga;
+    }
+
+    public function SetOrga(string $orga): self
+    {
+        $this->orga = $orga;
         return $this;
     }
 }
