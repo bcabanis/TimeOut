@@ -208,6 +208,11 @@ fieldset .inputsub label {
   text-align: center;
 }
 
+.enteteHeight {
+  display: block;
+  max-height: 500px;
+  overflow-y: scroll;
+}
 
 .btninscrire {
   display: flex;
@@ -279,11 +284,7 @@ fieldset .inputsub label {
   padding: 50px 100px 50px 100px;
 }
 
-.uploadPic {
-  content: "";
-  /* height: 100px;
-  width: 100px; */
-}
+
 
 .pEtape {
   text-align: left;
@@ -354,4 +355,10 @@ input[type="file"] {
 
 label {
   padding-bottom: 10px;
+}
+
+.fa-upload {
+  font-size: 35px;
+  margin-top: 50px;
+  color: rgba(0, 0, 0, 0.444);
 }

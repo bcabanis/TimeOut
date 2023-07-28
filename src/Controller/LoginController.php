@@ -6,6 +6,7 @@ use App\Document\Users;
 use App\Form\LoginFormType;
 use App\Form\PhotoFormType;
 use App\Form\ProfilFormType;
+use App\Form\TagsFormType;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -106,7 +107,7 @@ class LoginController extends AbstractController
             $userRepository->save($user);
 
             // Redirige l'utilisateur vers une autre page 
-            return $this->redirectToRoute('app_avatar');
+            return $this->redirectToRoute('app_login_avatar');
         }
 
         return $this->render('login/profil.html.twig', [
@@ -154,7 +155,7 @@ class LoginController extends AbstractController
 
                 // Rediriger ou afficher un message de succès
                 $this->addFlash('success', 'La photo de profil a été téléchargée avec succès !');
-                return $this->redirectToRoute('app_login_avatar');
+                return $this->redirectToRoute('app_login_tags');
             }
         }
 
@@ -164,69 +165,28 @@ class LoginController extends AbstractController
     }
 
     // Redirection vers le choix des tags
-    #[Route('/tags', name: 'app_tags')]
-    public function tags(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface): Response
+    #[Route('/tags/save/{jsontags}', name: 'app_login_tags')]
+    public function tags($jsontags, UserRepository $userRepository, SessionInterface $sessionInterface, TagsFormType $tagsFormType): Response
     {
-        // Récupère l'email de l'utilisateur connecté depuis la session
+        // Récupérer l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
-
-        // Récupère l'utilisateur depuis la base de données en utilisant l'email
+        
+        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
+        // dump($user);
+        // dump($request);
+        // Récupérer les tags de l'utilisateur
+        $tags = json_decode($jsontags);
+        $user->setTagsByCategory($tags);
+        $user->fill();
+        $userRepository->save($user);
 
-        // Récupère les catégories et les tags associés
-        $tagsByCategory = [
-            'Sports' => [
-                'Marche' => 'Marche', 'Cyclisme' => 'Cyclisme', 'Football' => 'Football', 'Basket' => 'Basket', 'Moto' => 'Moto', 'Tennis' => 'Tennis', 'Hockey sur gazon' => 'Hockey sur gazon', 'Golf' => 'Golf', 'Arts Martiaux' => 'Arts Martiaux', 'Body Building' => 'Body Building', 'Yoga' => 'Yoga', 'Boxe Anglaise' => 'Boxe Anglaise'
-            ],
-            'Musique' => [
-                'Folk' => 'Folk', 'Hip-Hop / Rap' => 'Hip-Hop / Rap', 'Latin' => 'Latin', 'Rock' => 'Rock', 'Alternatif' => 'Alternatif', 'Blues' => 'Blues', 'Jazz' => 'Jazz', 'Classique' => 'Classique', 'Dj/Dance' => 'Dj/Dance', 'R&B' => 'R&B', 'Opéra' => 'Opéra', 'Pop' => 'Pop'
-            ],
-            'Arts' => [
-                'Ballet' => 'Ballet', 'Bijoux' => 'Bijoux', 'Chorales' => 'Chorales', 'Comédie' => 'Comédie', 'Design' => 'Design', 'Littérature' => 'Littérature', 'Comédie musicale' => 'Comédie musicale', 'Orchestres' => 'Orchestres', 'Peinture' => 'Peinture', 'Sculpture' => 'Sculpture'
-            ],
-            'Business' => [
-                'Associations' => 'Associations', 'Carrière' => 'Carrière', 'Immobilier' => 'Immobilier', 'Investissement' => 'Investissement', 'Marketing' => 'Marketing', 'Médias' => 'Médias', 'ONG' => 'ONG', 'PME' => 'PME', 'Startups' => 'Startups'
-            ],
-            'Communaute' => [
-                'Bénévolat' => 'Bénévolat', 'Cours Particuliers' => 'Cours Particuliers', 'Histoire' => 'Histoire', 'Langues' => 'Langues', 'Actions locales' => 'Actions locales', 'Nationalité' => 'Nationalité', 'Parrainages' => 'Parrainages', 'Participatif' => 'Participatif', 'Atelier' => 'Atelier'
-            ],
-        ];
-
-        // Créer le formulaire avec les tags de chaque catégorie
-        $form = $this->createForm(TagsFormType::class, $user, [
-            'tagsByCategory' => $tagsByCategory,
-        ]);
-
-        // Gère la soumission du formulaire
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            // Initialise un tableau vide pour stocker les tags sélectionnés
-            $selectedTags = [];
-
-            // Parcourt les catégories pour extraire les tags sélectionnés
-            foreach ($tagsByCategory as $category => $tags) {
-                // Vérifie si la catégorie est présente dans les données soumises
-                if ($form->has($category)) {
-                    // Récupère les tags sélectionnés pour cette catégorie
-                    $selectedTags[$category] = $form->get($category)->getData();
-                }
-            }
-            // Enregistre les tags sélectionnés dans l'entité Users
-            $user->setTagsByCategory($selectedTags);
-
-            // Enregistre les modifications de l'utilisateur dans la base de données
-            $user->fill();
-            $userRepository->save($user);
-
-        // Redirige l'utilisateur vers son dashboard 
-        return $this->redirectToRoute('app_dashboard');
-        }
-
+        // Passez les données à votre modèle Twig et générez la vue
         return $this->render('login/tags.html.twig', [
-            // 'tagsForm' => $form->createView(),
-            'tagsForm' => '$form->createView()',
+            // 'tagsByCategory' => $tagsByCategory,
+            'user' => $user,
         ]);
     }
+
 }
+

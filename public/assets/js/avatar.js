@@ -12,7 +12,7 @@ function addAvatarPicture() {
 }
 
 
-labelFile.innerHTML = '<div class="imgPicture"></div>';
+labelFile.innerHTML = '<div class="imgPicture"><i class="fa-solid fa-upload"></i></div>';
 
 addAvatarPicture();
 

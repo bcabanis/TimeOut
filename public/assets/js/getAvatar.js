@@ -68,25 +68,21 @@ document.addEventListener("DOMContentLoaded", (e) => {
     .getElementById("categories")
     .addEventListener("change", handleCategorySelection);
 
-  // Ajouter un gestionnaire d'événements "input" à la barre de recherche avec l'ID "tagsearch"
-  document.getElementById("tagsearch").addEventListener("input", handleSearch);
-
-  // récupère le bouton "btn-tags-save" (si présent)
-
-  
   function handleSearch() {
     // Récupérer la valeur saisie dans la barre de recherche
-    const searchString = document.getElementById('tagsearch').value.toLowerCase();
+    const searchString = document
+      .getElementById("tagsearch")
+      .value.toLowerCase();
     // Récupérer tous les titres d'article (éléments h2) dans la section mestags
-    const articleTitles = document.querySelectorAll('#mestags article h2');
+    const articleTitles = document.querySelectorAll("#mestags article h2");
     // Parcourir chaque titre d'article
-    articleTitles.forEach(title => {
-      // Récupérer le texte du titre d'article 
+    articleTitles.forEach((title) => {
+      // Récupérer le texte du titre d'article
       const titleText = title.textContent.toLowerCase();
       // Vérifier si le texte du titre d'article contient la chaîne de caractères saisie dans la recherche
       if (titleText.includes(searchString)) {
         // Si le titre d'article contient la chaîne de caractères saisie, afficher l'article parent
-        title.parentElement.style.display = 'block';
+        title.parentElement.style.display = "block";
       } else {
         // Sinon masquer l'article parent
         title.parentElement.style.display = "none";
@@ -95,49 +91,21 @@ document.addEventListener("DOMContentLoaded", (e) => {
   }
 
   // Ajouter un gestionnaire d'événements "input" à la barre de recherche avec l'ID "tagsearch"
-  document.getElementById('tagsearch').addEventListener('input', handleSearch);
+  document.getElementById("tagsearch").addEventListener("input", handleSearch);
 
   // récupère le bouton "btn-tags-save" (si présent)
-  let btnTags = document.getElementById('btn-tags-save');
+  let btnTags = document.getElementById("btn-tags-save");
 
   // si on l'a terouvé
   if (btnTags) {
-
     // ajout de l'évènement click sur le bouton
-    btnTags.addEventListener('click', (e) => {
-
+    btnTags.addEventListener("click", (e) => {
       // console.log(tagsChoices);
       let jsonOutput = JSON.stringify(tagsChoices);
 
-      fetch('/mestags/save/' + jsonOutput)
-      .then(response => {
-
-        if (response.status == 200) {
-          //document.location.replace('/route_e_lancer');
-          return response.text();
-        }
-      })
-      .then(json => {
-        console.log(JSON.parse(json));
-
-      })
-
-
-    });
-
-
-  }
-
-  if (btnTags) {
-    // ajout de l'évènement click sur le bouton
-    btnTags.addEventListener("click", (e) => {
-      
-      let jsonOutput = JSON.stringify(tagsChoices);
-
-      fetch("/tags" + jsonOutput)
+      fetch("/mestags/save/" + jsonOutput)
         .then((response) => {
           if (response.status == 200) {
-            console.log(response);
             //document.location.replace('/route_e_lancer');
             return response.text();
           }
