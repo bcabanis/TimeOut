@@ -18,11 +18,46 @@ class DashboardController extends AbstractController
 
     // Redirection vers le dashboard
     #[Route('/dashboard', name: 'app_dashboard')]
-    public function index(SessionInterface $sessionInterface): Response
+    public function index(SessionInterface $session, UserRepository $userRepo): Response
     {
-        return $this->render('dashboard/index.html.twig', [
-            'user' => 'user',
-        ]);
+    // Récupérer l'email de l'utilisateur connecté depuis la session
+    $email = $session->get('email');
+
+    // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+    $user = $userRepo->findOneBy(['email' => $email]);
+    // dump($user);
+
+    // Récupérer les tags de l'utilisateur
+    $tagsByCategory = $user->getTagsByCategory();
+
+     // Reformater les données pour organiser les tags par catégorie
+     $tagsGroupedByCategory = [];
+     foreach ($tagsByCategory as $tag) {
+         $tagsGroupedByCategory[] = $tag; // Utilise $tag à la fois comme clé et valeur
+        //  dump($tag);
+     }
+
+    // Passez les données à votre modèle Twig et générez la vue
+    return $this->render('dashboard/index.html.twig', [
+        // 'tagsByCategory' => $tagsByCategory,
+        'tagsByCategory' => $tagsGroupedByCategory,
+        'user' => $user,
+    ]);
+    }
+
+    /**
+     * @Route("/get_user_tags", name="get_user_tags", methods={"GET"})
+     */
+    public function getUserTags()
+    {
+        // Récupérer l'utilisateur connecté (tu peux utiliser la méthode getCurrentUser() ou tout autre méthode que tu as implémentée pour récupérer l'utilisateur)
+        $user = $this->getUser();
+
+        // Récupérer les tags de l'utilisateur depuis la propriété tagsByCategory
+        $tagsByCategory = $user->getTagsByCategory();
+
+        // Retourner les tags sous forme de réponse JSON
+        return new JsonResponse(['tagsByCategory' => $tagsByCategory]);
     }
 
     #[Route('/categories', name: 'app_dashboard_categories')]

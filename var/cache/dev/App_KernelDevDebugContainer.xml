@@ -4290,18 +4290,18 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.HtrqSaY" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="userRepo" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.Fq26VWZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="categoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
         <argument key="dm" type="service_closure" id="doctrine_mongodb.odm.default_document_manager"/>
         <argument key="eventRepository" type="service_closure" id="App\Repository\EventRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.HtrqSaY" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="userRepo" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator..Ae5NXw" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -4354,10 +4354,11 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.OLOe0af" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.f8_ubYp" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\DashboardController::categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
+        <argument key="App\Controller\DashboardController::index" type="service_closure" id=".service_locator.HtrqSaY"/>
         <argument key="App\Controller\DashboardController::mestags" type="service_closure" id=".service_locator.HtrqSaY"/>
         <argument key="App\Controller\DashboardController::saveTags" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\EventController::AfficheEvent" type="service_closure" id=".service_locator.stp36i_"/>
@@ -4374,6 +4375,7 @@
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Controller\DashboardController:categories" type="service_closure" id=".service_locator.Fq26VWZ"/>
+        <argument key="App\Controller\DashboardController:index" type="service_closure" id=".service_locator.HtrqSaY"/>
         <argument key="App\Controller\DashboardController:mestags" type="service_closure" id=".service_locator.HtrqSaY"/>
         <argument key="App\Controller\DashboardController:saveTags" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\EventController:AfficheEvent" type="service_closure" id=".service_locator.stp36i_"/>
@@ -4686,12 +4688,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.OLOe0af"/>
+      <argument type="service" id=".service_locator.f8_ubYp"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.OLOe0af"/>
+      <argument type="service" id=".service_locator.f8_ubYp"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -5406,7 +5408,7 @@
     <service id="doctrine_mongodb.odm.event_manager" alias="doctrine_mongodb.odm.default_connection.event_manager"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.OLOe0af"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.f8_ubYp"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -5417,7 +5419,7 @@
     <service id=".service_locator.vDSvk4e" alias=".service_locator..KTwfTE"/>
     <service id=".service_locator.lwZBN8d" alias=".service_locator.H2lArlK"/>
     <service id=".service_locator.XveGcE." alias=".service_locator.yy.Upc_"/>
-    <service id=".service_locator.Nh.56zn" alias=".service_locator.OLOe0af"/>
+    <service id=".service_locator.eut4tS6" alias=".service_locator.f8_ubYp"/>
     <service id=".service_locator.Naiw5mr" alias=".service_locator.HuqLxd2"/>
     <service id=".service_locator.bzaSI.Q" alias=".service_locator.GnP6Ul1"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
@@ -5439,8 +5441,8 @@
     <service id="argument_resolver.not_tagged_controller" alias="debug.argument_resolver.not_tagged_controller"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.JBAFp66" alias=".service_locator.KfbR3DY"/>
-    <service id=".service_locator.20bj_nQ" alias=".service_locator.Fq26VWZ"/>
     <service id=".service_locator.BSPeE9T" alias=".service_locator.HtrqSaY"/>
+    <service id=".service_locator.20bj_nQ" alias=".service_locator.Fq26VWZ"/>
     <service id=".service_locator.8PQa8Mp" alias=".service_locator..Ae5NXw"/>
     <service id=".service_locator.YqI0jxx" alias=".service_locator.stp36i_"/>
     <service id=".service_locator.VlzuqH1" alias=".service_locator.37hY7K."/>

@@ -9,6 +9,7 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/dashboard' => [[['_route' => 'app_dashboard', '_controller' => 'App\\Controller\\DashboardController::index'], null, null, null, false, false, null]],
+        '/get_user_tags' => [[['_route' => 'get_user_tags', '_controller' => 'App\\Controller\\DashboardController::getUserTags'], null, ['GET' => 0], null, false, false, null]],
         '/categories' => [
             [['_route' => 'app_dashboard_categories', '_controller' => 'App\\Controller\\DashboardController::categories'], null, null, null, false, false, null],
             [['_route' => 'app_event_categories', '_controller' => 'App\\Controller\\EventController::categories'], null, ['GET' => 0], null, false, false, null],

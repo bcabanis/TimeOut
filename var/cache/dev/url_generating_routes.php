@@ -5,6 +5,7 @@
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
     'app_dashboard' => [[], ['_controller' => 'App\\Controller\\DashboardController::index'], [], [['text', '/dashboard']], [], [], []],
+    'get_user_tags' => [[], ['_controller' => 'App\\Controller\\DashboardController::getUserTags'], [], [['text', '/get_user_tags']], [], [], []],
     'app_dashboard_categories' => [[], ['_controller' => 'App\\Controller\\DashboardController::categories'], [], [['text', '/categories']], [], [], []],
     'app_dashboard_mestags' => [[], ['_controller' => 'App\\Controller\\DashboardController::mestags'], [], [['text', '/mestags']], [], [], []],
     'app_dashboard_mesevents' => [[], ['_controller' => 'App\\Controller\\DashboardController::mesevents'], [], [['text', '/mesevents']], [], [], []],
