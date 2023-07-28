@@ -1,0 +1,16 @@
+
+#mestags button.tag-choice-active {
+    background-color: green;
+    font-family: "Avenir-Medium-09.ttf";
+    font-size: 0.75rem;
+    border-radius: 5px;
+    padding: 8px;
+    color: #FCFCFC;
+    border: none;
+    margin-right: 13px;
+    margin-bottom: 13px;
+}
+
+#mestags button.tag-choice-active:hover {
+    background-color: rgb(0, 85, 0);
+}

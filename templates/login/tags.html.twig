@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	
+	<link rel="stylesheet" href="/assets/css/mat.css">
+	
+	<link rel="stylesheet" href="/assets/css/17-07-23-style.css">
+    <link rel="stylesheet" href="/assets/css/mathieu.css">
+{% endblock %}
+
+{% block body %}
+
+<main>
+        <!-- <section> -->
+        <div class="containerfluid">
+            <div class="row">
+                <div class="col-12 col-md-5 background">
+                    <a href="#" class="logo"><img src="/assets/img/logo-gettogether-white.svg" alt=""></a>
+
+                    
+                        <article class="etape3">
+                            <div>
+                            <p class="pEtape">Etape 3/3</p>
+                            <img src="/assets/img/barreevolution3-3.svg" alt="">
+                            </div>
+                            <h1 class="h1perso">Choisissez vos tags pour vous proposer des events adaptés à votre profil. </h1>
+                            <p class="h1perso">Vos tags correspondent à vos centres d’intérêts en général. Vous pouvez les sélectionner en recherchant dans la barre de recherche ou en les filtrant. Vous pourrez modifier vos tags par la suite dans votre dashboard.  </p>
+                        </article>
+                    
+                </div>
+
+
+                <div class="col-12 col-md-7" id="mestags">
+                    <div class="entete">
+                        <h1>choix des tags</h1>
+
+                        <form class="form-tags" action="#" method="post">
+                            <select name="categories" id="categories" multiple>
+                                <option value="Arts">Arts</option>
+                                <option value="Business">Business</option>
+                                <option value="Brunch & apéro">Brunch & apéro</option>
+                                <option value="Communauté">Communauté</option>
+                                <option value="Film & médias">Film & médias</option>
+                                <option value="Musique">Musique</option>
+                                <option value="Mode">Mode</option>
+                                <option value="Sports & Fitness">Sports & Fitness</option>
+                                <option value="Santé">Santé</option>
+                            </select>
+
+                            <input type="search" name="tagsearch" id="tagsearch" placeholder="Rechercher par tag">
+                        </form>
+
+                        <article id="Musique">
+                            <h2 class="label-categorie">
+                                <img src="/assets/img/logomusique.svg" alt="picto Musique"> Musique
+                            </h2>
+                            <div class="tag-management">
+                                <button class="tag-choice">Alternatif</button>
+                                <button class="tag-choice">Blues</button>
+                                <button class="tag-choice">Classique</button>
+                                <button class="tag-choice">Dj/Dance</button>
+                                <button class="tag-choice">Concert</button>
+                                <button class="tag-choice">Electro</button>
+                                <button class="tag-choice">Festival</button>
+                                <button class="tag-choice">Folk</button>
+                                <button class="tag-choice">Hip Hop/Rap</button>
+                                <button class="tag-choice">Jazz</button>
+                                <button class="tag-choice">Jam</button>
+                                <button class="tag-choice">Techno</button>
+                                <button class="tag-choice">Reggae</button>
+                                <button class="tag-choice">Live Music</button>
+                            </div>
+                        </article>
+
+                        <!-- <div class="card">
+                                        <div class="titremestags">
+                                           
+                                            <h2 class="header">Musique</h2>
+                                        </div>
+                                        <div class="tags">
+                                            <a href="#" class="tag">Alternative</a>
+                                            <a href="#" class="tag">Blues</a>
+                                            <a href="#" class="tag">Classique</a>
+                                            <a href="#" class="tag">Dj/Dance</a>
+                                            <a href="#" class="tag">Concert</a>
+                                            <a href="#" class="tag">Electro</a>
+                                            <a href="#" class="tag">Festival</a>
+                                            <a href="#" class="tag">Folk</a>
+                                            <a href="#" class="tag">Hip-Hop/Rap</a>
+                                            <a href="#" class="tag">Jazz</a>
+                                            <a href="#" class="tag">Jam</a>
+                                            <a href="#" class="tag">Techno</a>
+                                            <a href="#" class="tag">Reggae</a>
+                                            <a href="#" class="tag">Live Music</a>
+                                        </div>
+                                    </div> -->
+                        <div class="btn-enr">
+
+                            <a class="retourpage" href="#">
+                                Retour à l'étape précédente
+                            </a>
+
+
+                            <a class="btnenregistrer">
+                                <span>Enregistrer et aller sur mon Dashboard</span>
+                            </a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- </section> -->
+
+    </main>
+
+<h1>PAGE DE CHOIX DES TAGS</h1>
+<a href="{{ path('app_dashboard') }}">Page Dashboard</a>
+{% endblock %}

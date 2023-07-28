@@ -1,0 +1,1307 @@
+[{
+  "_id": {
+    "$oid": "64b7e3ffe804e9beed06aeaa"
+  },
+  "description": "<h3>Lectures de conte</h3>\n<p></p>\n<p>Un coin détente duquel profiter en famille en Mezza. La bibliothèque Couronnes nous envoie ses meilleurs talents pour des <strong>lectures à voix douce</strong>.</p>\n<p></p>\n<h3>Les contes du vivant (podcast)</h3>\n<p></p>\n<p>Des fictions sonores pour nourrir la curiosité des plus jeunes pour le vivant.</p>\n<p></p>\n<p>Destinée à un public familial, ces fictions audio révèlent, sous forme d’intrigues fondées sur des informations scientifiques, ce qui se passe dans les microcosmes des vivants non-humains.</p>\n<p></p>\n<p>Conçues comme de <strong>véritables \"dessins animés pour les oreilles\", ces histoires sont là pour ouvrir un dialogue parents-enfants</strong>, nourrir la curiosité et la considération des plus jeunes pour le vivant et, surtout, ouvrir des imaginaires inter-espèces pour grandir dans le respect du vivant et développer une pensée écologique à travers l'enthousiasme et la sensation !</p>\n<p></p>\n<p>Les Contes du Vivant est un podcast entièrement réalisé avec les enfants de l’école maternelle La Baleine, à écouter en famille pour les enfants à partir de 4 ans.</p>\n<p></p>\n<p><em>en partenariat avec la Bibliothèque Couronnes - Naguib Mahfouz (Ville de Paris) &amp; Les Contes du vivant</em></p>",
+  "picture": "https://cibul.s3.amazonaws.com/376de2a1efd84f1c84c0196f49f8cfa5.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "94 rue Jean-Pierre-Timbaud 75011 Paris",
+  "title": "Coin contes en famille",
+  "eventId": "123ccab2a1bfd61539413c8501495a964d43b01d",
+  "place": "",
+  "planner": ""
+},
+{
+  "_id": {
+    "$oid": "64b7e3ffe804e9beed06aeab"
+  },
+  "description": "<p>Lucia Abonizio et Gilberto Pereyra, musiciens argentins, unissent leur talent sur scène en tant que Duo Sud pour offrir une performance passionnée et de qualité, apportant toute l'essence de la musique argentine avec un piano et un bandonéon. Leur CD « Destination Tango » reflète une partie importante de leur travail, mettant en valeur les sonorités de leurs instruments.</p>\n<p></p>\n<p>Le DUO SUD s'est produit dans de nombreux festivals et sur les scènes les plus prestigieuses en France et à l'étranger. Au BARBIZON, restaurant culturel, le duo propose un répertoire dédié à deux compositeurs emblématiques qui ont révolutionné la musique argentine et latino-américaine : Alberto GINASTERA et Astor PIAZZOLLA. Leur collaboration met en valeur la vigueur et l'expressivité de cette musique, qui puise sa force dans une écriture classique et des sonorités jazz.</p>\n<p></p>\n<p>Le BARBIZON, lieu agréable et moderne, propose une expérience unique de dîner-concert avec une carte de qualité. Les pauses sont aménagées pour permettre aux convives d'apprécier pleinement les performances musicales. Il est recommandé de réserver une table pour profiter de la soirée, mais il est également possible d'assister au concert en prenant simplement un verre sans réservation.</p>",
+  "picture": "https://cibul.s3.amazonaws.com/80cd8326c0d0412e82e77e9df0409528.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "141, Rue de Tolbiac",
+  "title": "Duo Sud et la révolution musicale argentine - Récital Piazzolla, Ginastera –",
+  "eventId": "057b66fc698a05d7eefbbceb8d22d56f1ac9e99f",
+  "place": "",
+  "planner": ""
+},
+{
+  "_id": {
+    "$oid": "64b7f2a1c50ba0c582057ff3"
+  },
+  "description": "Message de test",
+  "place": "Paris"
+},
+{
+  "_id": {
+    "$oid": "64b7f3ebe804e9beed06aeac"
+  },
+  "description": "<p>En 1785,un scandale vient ternir la réputation de la reine Marie-Antoinette, déjà fragilisée… C’est l’affaire du collier de la reine. Quelle a été l’origine de cette escroquerie ? Qui en étaient les protagonistes ? quelles en furent les conséquences ? Revenons en détail sur cette enquête mouvementée!<br />en direct sur Youtube : <a href=\"https://youtube.com/live/K-it7usaaz8?feature=share\">https://youtube.com/live/K-it7usaaz8?feature=share</a></p>",
+  "picture": "https://cibul.s3.amazonaws.com/a06c998926aa41ff9131e4fc06614ecf.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "2 rue Wilfrid Laurier 75014",
+  "title": "l'affaire du Collier, annonciatrice de la Révolution française?",
+  "eventId": "26ba2657f9623218a146711262cb5a9896ed806c"
+},
+{
+  "_id": {
+    "$oid": "64b7f646c50ba0c582057ff4"
+  },
+  "description": "Message de test",
+  "place": "Paris"
+},
+{
+  "_id": {
+    "$oid": "64b7f647e804e9beed06aead"
+  },
+  "description": "Inscriptions",
+  "picture": "https://cibul.s3.amazonaws.com/7bb7378ff5094760b838326d619b60ca.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "52 boulevard Lefebvre",
+  "title": "Catéchisme des primaires",
+  "eventId": "9720f1058aaf29ffb3d5e73916bd2eee29d520a2"
+},
+{
+  "_id": {
+    "$oid": "64b7f647e804e9beed06aeae"
+  },
+  "description": "Une série d'expériences pour découvrir ou se familiariser avec ce phénomène qui met en jeu la conduction électrique sans résistance et l'effet Meissner.",
+  "picture": "https://cibul.s3.amazonaws.com/c8ea2e2ccad4413db354cb976e1ff443.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "186 Rue St Charles, 75015 Paris",
+  "title": "Supraconduction",
+  "eventId": "f6d1bc6867b23f6ccd06ece6dc6171e7d16472b9"
+},
+{
+  "_id": {
+    "$oid": "64b7f647e804e9beed06aeaf"
+  },
+  "description": "Les vendredis de consécration au Cœur de Jésus",
+  "picture": "https://cibul.s3.amazonaws.com/62a258b87cb3499a80801add9f3509da.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "35 rue du Chevalier de La Barre, Paris 75018",
+  "title": "Se consacrer au Cœur de Jésus - 6 octobre 2023",
+  "eventId": "aae9a1daed69d29e9c28f965fb157e61c22190b4"
+},
+{
+  "_id": {
+    "$oid": "64b7f648e804e9beed06aeb0"
+  },
+  "description": "dans le cadre de l'opération mon été ma région",
+  "picture": "https://cibul.s3.amazonaws.com/5cec4b5b5f784559a00271dad06ed065.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "4 Rue Eugène Spuller, 75003 Paris",
+  "title": "Atelier Spores Mous x Festival Jogging",
+  "eventId": "b1c1bf5b30551c063eb1f1a877d6c6fb62dc8646"
+},
+{
+  "_id": {
+    "$oid": "64b7f648e804e9beed06aeb1"
+  },
+  "description": "Une formation pour se familiariser à l’ensemble de la chaîne de fabrication d’un court métrage, avec de nombreux·se·s intervenant·e·s professionnel·le·s.",
+  "picture": "https://cibul.s3.amazonaws.com/1dc4d0fdb187499a98469df0117ccfd1.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "Maison du Film",
+  "title": "Formation - Faire un film",
+  "eventId": "fafb684b49ebde0d0ec46fa6fb7402cd4ab1ad15"
+},
+{
+  "_id": {
+    "$oid": "64b7f648e804e9beed06aeb2"
+  },
+  "description": "Une journée pour obtenir les clés principales afin de développer son métier de scénariste et/ou réalisateur.",
+  "picture": "https://cibul.s3.amazonaws.com/ac04d3b2d75c45998db12e4ffc8d22e0.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "Maison du Film",
+  "title": "Atelier - Développer sa carrière d'auteur·e-réalisateur·trice",
+  "eventId": "ca9349ad09c1d2c854a87a76f1e42e03b5c29759"
+},
+{
+  "_id": {
+    "$oid": "64b7f648e804e9beed06aeb3"
+  },
+  "description": "Les personnages entourés de mystère et de poésie vivent au quotidien dans une forme de déni. Par amour ? Par hyperprotection ?  Par peur ?\nFace à Liv, un monde qui se tait vacille…",
+  "picture": "https://cibul.s3.amazonaws.com/390ef10caef94250842e634b84acf150.base.image.jpg",
+  "city": "Paris",
+  "region": "Île-de-France",
+  "adresse": "Route du Champ de Manoeuvre, 75012 Paris",
+  "title": "L’ENFANT DE VERRE",
+  "eventId": "d5a22b92c23f2064145d958dbc3df53ea8549e5a"
+},
+{
+  "_id": {
+    "$oid": "64b938f04c872c232f060fdb"
+  },
+  "eventId": "",
+  "place": "",
+  "planner": ""
+},
+{
+  "_id": {
+    "$oid": "64b94cf904231cd8d88e4f07"
+  },
+  "title": "Pièce de Théâtre Comique",
+  "description": "Venez rire aux éclats avec cette pièce de théâtre comique hilarante.",
+  "startDate": "10 septembre 2023 à 20h00",
+  "adresse": "Théâtre du Rire, 20 Rue du Spectacle, 75012 Paris",
+  "picture": "Insérer_URL_d_image_unique_ici",
+  "eventId": "COM001"
+  },
+  {
+    "title": "Atelier d'Improvisation",
+    "description": "Participez à cet atelier d'improvisation théâtrale pour libérer votre créativité.",
+    "startDate": "28 aout 2023 de 19h00 à 21h00",
+    "adresse": "Salle du Théâtre, 10 Rue des Artistes, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+    "eventId": "COM002"
+  },
+  {
+    "title": "Spectacle de Magie",
+    "description": "Assistez à un spectacle de magie époustouflant qui vous laissera sans voix.",
+    "startDate": "7 septembre 2023 à 19h30",
+    "adresse": "Cabaret Magique, 5 Rue des Illusions, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+    "eventId": "COM003"
+  }
+
+  {
+    "title": "Exposition de Sculptures Contemporaines",
+    "description": "Découvrez les œuvres captivantes des sculpteurs contemporains lors de cette exposition.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Galerie de la Sculpture, 20 Rue des Formes, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+    "eventId": "SCP001"
+  },
+  {
+    "title": "Atelier de Sculpture sur Pierre",
+    "description": "Apprenez les techniques de sculpture sur pierre avec cet atelier encadré par des experts.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Atelier des Sculpteurs, 10 Rue des Blocs, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+    "eventId": "SCP002"
+  },
+  {
+    "title": "Visite Guidée du Musée de la Sculpture",
+    "description": "Participez à une visite guidée passionnante du musée de la sculpture.",
+    "startDate": "22 aout 2023 à 15h00",
+    "adresse": "Musée des Formes, 5 Rue des Œuvres, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SCP003"
+  }
+],
+"Baller": [
+  {
+    "title": "Spectacle de Ballet Classique",
+    "description": "Plongez dans l'univers magique du ballet classique avec ce spectacle envoûtant.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Opéra du Ballet, 20 Rue des Danseurs, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BAL001"
+  },
+  {
+    "title": "Cours de Danse Contemporaine",
+    "description": "Apprenez les mouvements gracieux de la danse contemporaine lors de ces cours.",
+    "startDate": "28 aout 2023 de 18h00 à 20h00",
+    "adresse": "Studio des Ballerines, 10 Rue des Pas, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BAL002"
+  },
+  {
+    "title": "Soirée de Gala de Danse",
+    "description": "Assistez à une soirée de gala mettant en scène des danseurs talentueux de différents styles.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Étoiles, 5 Rue des Élégances, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BAL003"
+  }
+],
+"Peinture": [
+  {
+    "title": "Exposition de Peinture Abstraite",
+    "description": "Découvrez les toiles fascinantes des artistes peintres abstraits lors de cette exposition.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Galerie de la Peinture, 20 Rue des Couleurs, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PEI001"
+  },
+  {
+    "title": "Atelier de Peinture à l'Huile",
+    "description": "Apprenez les techniques de la peinture à l'huile lors de cet atelier créatif.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Atelier des Toiles, 10 Rue des Pinceaux, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PEI002"
+  },
+  {
+    "title": "Conférence sur l'Histoire de la Peinture",
+    "description": "Participez à cette conférence fascinante sur l'évolution de la peinture à travers les siècles.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle des Tableaux, 5 Rue des Toiles, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PEI003"
+  }
+]
+},
+"Catégorie Musique": {
+"Comédie musicale": [
+  {
+    "title": "Spectacle de Comédie Musicale",
+    "description": "Plongez dans l'univers magique de la comédie musicale avec ce spectacle grandiose.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Théâtre Musical, 20 Rue des Émotions, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "COMUS001"
+  },
+  {
+    "title": "Atelier de Chant et Danse",
+    "description": "Apprenez les numéros de chant et danse des comédies musicales lors de cet atelier ludique.",
+    "startDate": "28 aout 2023 de 18h00 à 20h00",
+    "adresse": "Studio des Comédies, 10 Rue des Mélodies, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "COMUS002"
+  },
+  {
+    "title": "Représentation en Plein Air",
+    "description": "Assistez à une représentation en plein air d'une comédie musicale populaire.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Parc des Muses, 5 Rue des Mélodies, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "COMUS003"
+  }
+],
+"Littérature": [
+  {
+    "title": "Rencontre avec un Auteur",
+    "description": "Rencontrez un auteur renommé lors de cette séance de dédicaces et d'échanges littéraires.",
+    "startDate": "15 octobre 2023 à 17h00",
+    "adresse": "Librairie des Mots, 20 Rue des Livres, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "LIT001"
+  },
+  {
+    "title": "Café Littéraire",
+    "description": "Participez à un café littéraire pour discuter de vos lectures préférées autour d'un café.",
+    "startDate": "30 aout 2023 de 15h00 à 17h00",
+    "adresse": "Café des Lettres, 10 Rue des Écrivains, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "LIT002"
+  },
+  {
+    "title": "Atelier d'Écriture Créative",
+    "description": "Développez votre talent d'écrivain avec cet atelier d'écriture créative animé par un professionnel.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle des Écrivains, 5 Rue des Plumes, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "LIT003"
+  }
+],
+"Design": [
+  {
+    "title": "Exposition de Design Contemporain",
+    "description": "Découvrez les créations innovantes des designers contemporains lors de cette exposition.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Galerie du Design, 20 Rue des Créateurs, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DES001"
+  },
+  {
+    "title": "Conférence sur le Design d'Intérieur",
+    "description": "Participez à cette conférence inspirante sur l'évolution du design d'intérieur.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Salle du Design, 10 Rue des Concepts, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DES002"
+  },
+  {
+    "title": "Atelier de Design Créatif",
+    "description": "Exprimez votre créativité avec cet atelier de design où vous pourrez créer vos propres objets.",
+    "startDate": "22 aout 2023 à 15h00",
+    "adresse": "Atelier des Créations, 5 Rue des Innovations, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DES003"
+  }
+],
+"Bijoux": [
+  {
+    "title": "Exposition de Bijoux Artisanaux",
+    "description": "Découvrez les bijoux artisanaux uniques créés par des artisans talentueux lors de cette exposition.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Galerie des Bijoux, 20 Rue des Gemmes, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BIJ001"
+  },
+  {
+    "title": "Atelier de Création de Bijoux",
+    "description": "Apprenez à créer vos propres bijoux lors de cet atelier encadré par des experts.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Atelier des Bijoutiers, 10 Rue des Perles, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BIJ002"
+  },
+  {
+    "title": "Vente aux Enchères de Bijoux de Collection",
+    "description": "Participez à cette vente aux enchères exclusive de bijoux de collection rares et précieux.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle des Enchères, 5 Rue des Diamants, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BIJ003"
+  }
+],
+"Orchestres": [
+  {
+    "title": "Concert de l'Orchestre Symphonique",
+    "description": "Appréciez un concert inoubliable interprété par l'orchestre symphonique de renommée internationale.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Salle Symphonique, 20 Rue des Notes, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ORC001"
+  },
+  {
+    "title": "Concert de Musique de Chambre",
+    "description": "Découvrez la beauté intime de la musique de chambre avec ce concert en petit comité.",
+    "startDate": "28 aout 2023 à 18h00",
+    "adresse": "Salle de Chambre, 10 Rue des Partitions, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ORC002"
+  },
+  {
+    "title": "Concert en Plein Air de l'Orchestre",
+    "description": "Profitez d'un concert en plein air en écoutant les mélodies envoûtantes de l'orchestre.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Parc des Notes, 5 Rue des Mélodies, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ORC003"
+  }
+],
+"Chorales": [
+  {
+    "title": "Concert de la Chorale Classique",
+    "description": "Assistez à un concert envoûtant interprété par la chorale classique renommée.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Église de la Musique, 20 Rue des Voix, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CHO001"
+  },
+  {
+    "title": "Chorale de Gospel",
+    "description": "Venez écouter les chants vibrants de la chorale de gospel lors de cette soirée spirituelle.",
+    "startDate": "28 aout 2023 à 18h00",
+    "adresse": "Église du Gospel, 10 Rue des Âmes, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CHO002"
+  },
+  {
+    "title": "Concert de la Chorale Jeunes Talents",
+    "description": "Découvrez les voix prometteuses de la chorale jeunes talents lors de ce concert émouvant.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Voix, 5 Rue des Harmonies, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CHO003"
+  }
+]
+},
+"Catégorie Business": {
+"Associations": [
+  {
+    "title": "Salon des Associations",
+    "description": "Découvrez les associations locales et trouvez des opportunités pour vous engager.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Palais des Associations, 20 Rue de l'Engagement, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ASS001"
+  },
+  {
+    "title": "Séminaire sur la Gestion d'Associations",
+    "description": "Participez à ce séminaire pour apprendre à gérer efficacement une association.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Salle des Dirigeants, 10 Rue du Dévouement, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ASS002"
+  },
+  {
+    "title": "Atelier de Recrutement de Bénévoles",
+    "description": "Apprenez à recruter et fidéliser des bénévoles lors de cet atelier pratique.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle des Bénévoles, 5 Rue du Don, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ASS003"
+  }
+],
+"ONG": [
+  {
+    "title": "Conférence sur l'Impact des ONG",
+    "description": "Participez à cette conférence pour comprendre l'impact des ONG dans le monde.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Salle des ONG, 20 Rue de l'Aide, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ONG001"
+  },
+  {
+    "title": "Atelier de Financement pour les ONG",
+    "description": "Apprenez à financer vos projets avec cet atelier dédié au financement des ONG.",
+    "startDate": "28 aout 2023 de 18h00 à 20h00",
+    "adresse": "Salle des Financements, 10 Rue de la Solidarité, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ONG002"
+  },
+  {
+    "title": "Rencontre avec les Bénéficiaires des ONG",
+    "description": "Venez rencontrer les bénéficiaires des actions menées par les ONG lors de cette rencontre émouvante.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Centre des Sourires, 5 Rue de l'Espoir, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ONG003"
+  }
+],
+"Marketing": [
+  {
+    "title": "Conférence sur les Nouvelles Tendances du Marketing",
+    "description": "Participez à cette conférence pour découvrir les dernières tendances en marketing.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Salle du Marketing, 20 Rue de la Stratégie, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MRK001"
+  },
+  {
+    "title": "Atelier de Stratégie Marketing",
+    "description": "Apprenez à développer une stratégie marketing efficace lors de cet atelier pratique.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Salle de la Communication, 10 Rue de l'Innovation, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MRK002"
+  },
+  {
+    "title": "Formation en Marketing Digital",
+    "description": "Améliorez vos compétences en marketing digital grâce à cette formation spécialisée.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle du Numérique, 5 Rue du Web, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MRK003"
+  }
+],
+"Investissement": [
+  {
+    "title": "Conférence sur l'Investissement Responsable",
+    "description": "Participez à cette conférence pour découvrir les principes de l'investissement responsable.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Salle de l'Investissement, 20 Rue de la Finance, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "INV001"
+  },
+  {
+    "title": "Atelier sur la Gestion de Portefeuille",
+    "description": "Apprenez à gérer votre portefeuille d'investissement lors de cet atelier pratique.",
+    "startDate": "28 aout 2023 de 18h00 à 20h00",
+    "adresse": "Salle des Investisseurs, 10 Rue de la Bourse, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "INV002"
+  },
+  {
+    "title": "Rencontre avec des Investisseurs à Succès",
+    "description": "Venez rencontrer des investisseurs à succès et bénéficiez de leurs conseils avisés.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Rendements, 5 Rue des Actions, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "INV003"
+  }
+],
+"Immobilier": [
+  {
+    "title": "Salon de l'Immobilier",
+    "description": "Découvrez les dernières tendances du marché immobilier lors de ce salon dédié.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Palais de l'Immobilier, 20 Rue de l'Acquisition, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "IMMO001"
+  },
+  {
+    "title": "Atelier sur l'Investissement Immobilier",
+    "description": "Apprenez à investir dans l'immobilier lors de cet atelier dédié aux investisseurs débutants.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Salle des Investissements Immobiliers, 10 Rue de la Propriété, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "IMMO002"
+  },
+  {
+    "title": "Conférence sur les Nouveaux Projets Immobiliers",
+    "description": "Participez à cette conférence pour découvrir les nouveaux projets immobiliers à Paris.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle de l'Expansion, 5 Rue de la Construction, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "IMMO003"
+  }
+],
+"Startups": [
+  {
+    "title": "Forum des Startups",
+    "description": "Découvrez les dernières innovations des startups lors de ce forum dédié à l'entrepreneuriat.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Palais des Startups, 20 Rue de l'Innovation, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "STP001"
+  },
+  {
+    "title": "Atelier sur le Business Plan",
+    "description": "Apprenez à élaborer un business plan solide pour votre startup lors de cet atelier pratique.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Salle des Business Plans, 10 Rue de la Créativité, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "STP002"
+  },
+  {
+    "title": "Rencontre avec des Entrepreneurs à Succès",
+    "description": "Venez rencontrer des entrepreneurs à succès et bénéficiez de leurs conseils avisés.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle des Entrepreneurs, 5 Rue de l'Excellence, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "STP003"
+  }
+],
+"PME": [
+  {
+    "title": "Conférence sur la Gestion de PME",
+    "description": "Participez à cette conférence pour découvrir les meilleures pratiques de gestion des PME.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Salle des PME, 20 Rue de l'Entreprise, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PME001"
+  },
+  {
+    "title": "Atelier sur l'Innovation en PME",
+    "description": "Apprenez à stimuler l'innovation au sein de votre PME lors de cet atelier dédié.",
+    "startDate": "28 aout 2023 de 18h00 à 20h00",
+    "adresse": "Salle de l'Innovation, 10 Rue de la Création, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PME002"
+  },
+  {
+    "title": "Rencontre avec des Dirigeants de PME",
+    "description": "Venez rencontrer des dirigeants de PME et échangez sur les défis de l'entrepreneuriat.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Leaders, 5 Rue du Succès, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PME003"
+  }
+],
+"Médias": [
+  {
+    "title": "Conférence sur l'Avenir des Médias",
+    "description": "Participez à cette conférence pour découvrir les nouvelles tendances des médias.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Salle des Médias, 20 Rue de la Communication, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MDA001"
+  },
+  {
+    "title": "Atelier sur le Journalisme d'Investigation",
+    "description": "Apprenez les techniques du journalisme d'investigation lors de cet atelier pratique.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Salle des Journalistes, 10 Rue de l'Enquête, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MDA002"
+  },
+  {
+    "title": "Rencontre avec des Journalistes Célèbres",
+    "description": "Venez rencontrer des journalistes célèbres et échangez sur leur expérience professionnelle.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle des Reportages, 5 Rue de l'Actualité, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MDA003"
+  }
+],
+"Carrière": [
+  {
+    "title": "Salon de la Carrière",
+    "description": "Découvrez les opportunités professionnelles lors de ce salon dédié à la carrière.",
+    "startDate": "15 octobre 2023 de 10h00 à 18h00",
+    "adresse": "Palais de la Carrière, 20 Rue de l'Évolution, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CRR001"
+  },
+  {
+    "title": "Atelier sur le Développement Professionnel",
+    "description": "Apprenez à développer vos compétences professionnelles lors de cet atelier pratique.",
+    "startDate": "30 aout 2023 de 14h00 à 16h00",
+    "adresse": "Salle des Compétences, 10 Rue de la Progression, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CRR002"
+  },
+  {
+    "title": "Conférence sur la Gestion de Carrière",
+    "description": "Participez à cette conférence pour recevoir des conseils pour une gestion de carrière réussie.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle des Parcours, 5 Rue de l'Avancement, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CRR003"
+  }
+]
+},
+"Catégorie Communauté": {
+"Langues": [
+  {
+    "title": "Cours de Langue Étrangère",
+    "description": "Apprenez une langue étrangère lors de ces cours conviviaux animés par des locuteurs natifs.",
+    "startDate": "10 septembre 2023 de 19h00 à 21h00",
+    "adresse": "Centre des Langues, 20 Rue des Mots, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "LNG001"
+  },
+  {
+    "title": "Échange Linguistique",
+    "description": "Participez à cet échange linguistique pour pratiquer une langue avec des locuteurs natifs.",
+    "startDate": "28 aout 2023 de 18h00 à 20h00",
+    "adresse": "Café des Langues, 10 Rue des Expressions, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "LNG002"
+  },
+  {
+    "title": "Atelier de Traduction",
+    "description": "Découvrez l'art de la traduction lors de cet atelier animé par des traducteurs expérimentés.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Traductions, 5 Rue des Traducteurs, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "LNG003"
+  }
+],
+"Histoire": [
+  {
+    "title": "Conférence sur l'Histoire de Paris",
+    "description": "Participez à cette conférence pour découvrir l'histoire fascinante de la ville de Paris.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Salle de l'Histoire, 20 Rue du Passé, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "HST001"
+  },
+  {
+    "title": "Visite Guidée des Lieux Historiques",
+    "description": "Partez à la découverte des lieux historiques de Paris lors de cette visite guidée.",
+    "startDate": "28 aout 2023 de 18h00 à 20h00",
+    "adresse": "Point de Rencontre Historique, 10 Rue de la Mémoire, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "HST002"
+  },
+  {
+    "title": "Atelier de Généalogie",
+    "description": "Apprenez à retracer votre histoire familiale lors de cet atelier de généalogie.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Ancêtres, 5 Rue de la Généalogie, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "HST003"
+  }
+],
+"Environnement": [
+  {
+    "title": "Conférence sur la Protection de l'Environnement",
+    "description": "Participez à cette conférence pour en apprendre davantage sur la protection de l'environnement.",
+    "startDate": "15 octobre 2023 à 17h00",
+    "adresse": "Salle de l'Environnement, 20 Rue de la Nature, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ENV001"
+  },
+  {
+    "title": "Atelier de Recyclage Créatif",
+    "description": "Participez à cet atelier créatif où vous apprendrez à créer des objets à partir de matériaux recyclés.",
+    "startDate": "30 aout 2023 de 15h00 à 17h00",
+    "adresse": "Salle du Recyclage, 10 Rue de l'Écologie, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ENV002"
+  },
+  {
+    "title": "Journée de Nettoyage de Parc",
+    "description": "Participez à cette journée de nettoyage de parc pour préserver la beauté de la nature.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Parc Écologique, 5 Rue de la Biodiversité, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ENV003"
+  }
+],
+"Bénévolat": [
+  {
+    "title": "Journée de Bénévolat",
+    "description": "Participez à cette journée de bénévolat pour soutenir des actions caritatives.",
+    "startDate": "15 octobre 2023 de 9h00 à 17h00",
+    "adresse": "Point de Rendez-vous Solidaire, 20 Rue de l'Engagement, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BNV001"
+  },
+  {
+    "title": "Atelier de Cuisine Solidaire",
+    "description": "Préparez des repas pour les personnes dans le besoin lors de cet atelier de cuisine solidaire.",
+    "startDate": "30 aout 2023 de 10h00 à 12h00",
+    "adresse": "Cuisine Solidaire, 10 Rue du Partage, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BNV002"
+  },
+  {
+    "title": "Visite aux Personnes Âgées",
+    "description": "Faites une visite amicale aux personnes âgées dans les maisons de retraite lors de cette journée solidaire.",
+    "startDate": "22 aout 2023 à 14h00",
+    "adresse": "Maison du Sourire, 5 Rue du Réconfort, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BNV003"
+  }
+],
+"Éducation": [
+  {
+    "title": "Conférence sur l'Éducation Inclusive",
+    "description": "Participez à cette conférence pour découvrir les enjeux de l'éducation inclusive.",
+    "startDate": "15 octobre 2023 à 17h00",
+    "adresse": "Salle de l'Inclusion, 20 Rue de la Tolérance, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "EDU001"
+  },
+  {
+    "title": "Atelier de Soutien Scolaire",
+    "description": "Aidez les élèves en difficulté lors de cet atelier de soutien scolaire.",
+    "startDate": "30 aout 2023 de 15h00 à 17h00",
+    "adresse": "Salle du Savoir, 10 Rue de la Connaissance, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "EDU002"
+  },
+  {
+    "title": "Journée d'Orientation Professionnelle",
+    "description": "Accompagnez les jeunes dans leur orientation professionnelle lors de cette journée dédiée.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Centre de l'Orientation, 5 Rue de l'Avenir, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "EDU003"
+  }
+],
+"Droit et Justice": [
+  {
+    "title": "Conférence sur les Droits de l'Homme",
+    "description": "Participez à cette conférence pour en apprendre davantage sur les droits de l'homme.",
+    "startDate": "15 octobre 2023 à 17h00",
+    "adresse": "Salle des Droits Humains, 20 Rue de la Liberté, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DJT001"
+  },
+  {
+    "title": "Atelier sur les Mécanismes Judiciaires",
+    "description": "Découvrez le fonctionnement du système judiciaire lors de cet atelier dédié.",
+    "startDate": "30 aout 2023 de 15h00 à 17h00",
+    "adresse": "Salle des Mécanismes Judiciaires, 10 Rue de la Justice, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DJT002"
+  },
+  {
+    "title": "Rencontre avec des Avocats",
+    "description": "Venez rencontrer des avocats et échangez sur leur rôle dans le système judiciaire.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Palais de la Justice, 5 Rue de l'Équité, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DJT003"
+  }
+],
+"Social": [
+  {
+    "title": "Conférence sur l'Impact Social",
+    "description": "Participez à cette conférence pour découvrir l'impact des initiatives sociales.",
+    "startDate": "15 octobre 2023 à 17h00",
+    "adresse": "Salle de l'Impact Social, 20 Rue de la Solidarité, 75010 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SOC001"
+  },
+  {
+    "title": "Atelier de Création d'Entreprise Sociale",
+    "description": "Apprenez à créer une entreprise sociale ayant un impact positif lors de cet atelier dédié.",
+    "startDate": "30 aout 2023 de 15h00 à 17h00",
+    "adresse": "Salle de l'Entrepreneuriat Social, 10 Rue de l'Engagement Solidaire, 75013 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SOC002"
+  },
+  {
+    "title": "Rencontre avec des Entrepreneurs Sociaux",
+    "description": "Venez rencontrer des entrepreneurs sociaux inspirants et échangez sur leurs projets.",
+    "startDate": "22 aout 2023 à 18h30",
+    "adresse": "Salle de l'Inspiration, 5 Rue de l'Égalité, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SOC003"
+  }
+]
+},
+"Catégorie Sports & Fitness": {
+"Sports Collectifs": [
+  {
+    "title": "Match de Football Amical",
+    "description": "Assistez à un match amical entre deux équipes de football locales.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Stade du Football, 20 Rue des Buts, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "FTB001"
+  },
+  {
+    "title": "Tournoi de Basketball",
+    "description": "Participez à un tournoi de basketball en équipe et montrez vos compétences.",
+    "startDate": "28 aout 2023 de 18h00 à 22h00",
+    "adresse": "Gymnase du Basketball, 10 Rue des Paniers, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BSK001"
+  },
+  {
+    "title": "Match de Volleyball en Plein Air",
+    "description": "Profitez d'un match de volleyball en plein air avec des équipes locales.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Plage du Volleyball, 5 Rue des Services, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "VLB001"
+  }
+],
+"Sports Individuels": [
+  {
+    "title": "Séance de Course à Pied",
+    "description": "Participez à une séance de course à pied en groupe pour tous les niveaux.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Parc de la Course, 20 Rue des Runners, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CRS001"
+  },
+  {
+    "title": "Tournoi d'Échecs",
+    "description": "Affrontez d'autres joueurs lors d'un tournoi d'échecs passionnant.",
+    "startDate": "28 aout 2023 de 18h00 à 22h00",
+    "adresse": "Café des Échecs, 10 Rue des Coups, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ECH001"
+  },
+  {
+    "title": "Séance de Yoga en Plein Air",
+    "description": "Détendez-vous lors d'une séance de yoga paisible en plein air.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Parc du Yoga, 5 Rue des Postures, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "YGA001"
+  }
+],
+"Sports Extrêmes": [
+  {
+    "title": "Session de Skateboard",
+    "description": "Relevez des défis lors d'une session de skateboard dans un skatepark.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Skatepark de l'Adrénaline, 20 Rue des Tricks, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SKT001"
+  },
+  {
+    "title": "Randonnée à Vélo",
+    "description": "Partez à l'aventure lors d'une randonnée à vélo à travers la ville.",
+    "startDate": "28 aout 2023 de 18h00 à 22h00",
+    "adresse": "Point de Départ à Vélo, 10 Rue des Cyclistes, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "VL001"
+  },
+  {
+    "title": "Saut en Parachute",
+    "description": "Vivez une expérience inoubliable lors d'un saut en parachute au-dessus de Paris.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Aérodrome de l'Aventure, 5 Rue de l'Émotion, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SUT001"
+  }
+],
+"Fitness": [
+  {
+    "title": "Séance de Fitness en Plein Air",
+    "description": "Rejoignez une séance de fitness en plein air pour vous entraîner en groupe.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Parc de la Forme, 20 Rue de l'Endurance, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "FTN001"
+  },
+  {
+    "title": "Cours de Danse",
+    "description": "Apprenez à danser lors de cours de danse amusants et dynamiques.",
+    "startDate": "28 aout 2023 de 18h00 à 22h00",
+    "adresse": "Studio de Danse, 10 Rue des Mouvements, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DAN001"
+  },
+  {
+    "title": "Séance de Pilates",
+    "description": "Améliorez votre force et votre souplesse lors d'une séance de Pilates.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Studio de Pilates, 5 Rue de l'Équilibre, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PLT001"
+  }
+],
+"Sports Aquatiques": [
+  {
+    "title": "Séance de Natation",
+    "description": "Rejoignez une séance de natation pour améliorer vos compétences dans l'eau.",
+    "startDate": "10 septembre 2023 à 19h00",
+    "adresse": "Piscine de la Nage, 20 Rue des Plongeons, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "NTT001"
+  },
+  {
+    "title": "Cours de Plongée Sous-Marine",
+    "description": "Apprenez les bases de la plongée sous-marine lors de ce cours encadré par des instructeurs.",
+    "startDate": "28 aout 2023 de 18h00 à 22h00",
+    "adresse": "Centre de Plongée, 10 Rue des Profondeurs, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PLG001"
+  },
+  {
+    "title": "Séance de Surf",
+    "description": "Surfez sur les vagues de l'océan lors d'une séance de surf inoubliable.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Plage du Surf, 5 Rue des Vagues, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SRF001"
+  }
+]
+},
+"Catégorie Nourriture & Boisson": {
+"Cuisine Internationale": [
+  {
+    "title": "Festival de Cuisine Asiatique",
+    "description": "Dégustez des plats délicieux de toute l'Asie lors de ce festival culinaire.",
+    "startDate": "10 septembre 2023 de 18h00 à 22h00",
+    "adresse": "Rue de la Gastronomie Asiatique, 20 Rue des Saveurs, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ASN001"
+  },
+  {
+    "title": "Soirée Gastronomique Méditerranéenne",
+    "description": "Voyagez au cœur de la Méditerranée grâce à cette soirée gastronomique.",
+    "startDate": "28 aout 2023 de 19h00 à 23h00",
+    "adresse": "Restaurant de la Méditerranée, 10 Rue des Délices, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MDT001"
+  },
+  {
+    "title": "Saveurs d'Afrique",
+    "description": "Découvrez les saveurs exotiques de l'Afrique lors de cette expérience culinaire unique.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Rue des Délices Africains, 5 Rue des Saveurs Exotiques, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "AFR001"
+  }
+],
+"Cuisine Locale": [
+  {
+    "title": "Festival de la Gastronomie Française",
+    "description": "Dégustez les délices de la cuisine française lors de ce festival culinaire.",
+    "startDate": "10 septembre 2023 de 18h00 à 22h00",
+    "adresse": "Rue de la Cuisine Française, 20 Rue des Saveurs Authentiques, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "FRN001"
+  },
+  {
+    "title": "Soirée Vins et Fromages",
+    "description": "Découvrez les meilleurs accords vins et fromages lors de cette soirée conviviale.",
+    "startDate": "28 aout 2023 de 19h00 à 23h00",
+    "adresse": "Cave à Vin, 10 Rue des Terroirs, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "VIN001"
+  },
+  {
+    "title": "Marché des Producteurs",
+    "description": "Rencontrez les producteurs locaux et découvrez des produits frais de saison.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Place des Saveurs, 5 Rue des Agriculteurs, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PRD001"
+  }
+],
+"Cuisine Végétarienne et Végane": [
+  {
+    "title": "Festival de la Cuisine Végétarienne",
+    "description": "Découvrez les saveurs créatives de la cuisine végétarienne lors de ce festival.",
+    "startDate": "10 septembre 2023 de 18h00 à 22h00",
+    "adresse": "Rue des Saveurs Végétariennes, 20 Rue des Plantes, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "VGT001"
+  },
+  {
+    "title": "Soirée Gastronomique Végane",
+    "description": "Plongez dans un univers culinaire végane raffiné lors de cette soirée.",
+    "startDate": "28 aout 2023 de 19h00 à 23h00",
+    "adresse": "Restaurant Végane, 10 Rue des Alternatives, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "VGN001"
+  },
+  {
+    "title": "Atelier de Cuisine Végétale",
+    "description": "Apprenez à cuisiner des plats végétaux délicieux lors de cet atelier pratique.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle Végétale, 5 Rue des Recettes, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "VGT002"
+  }
+],
+"Pâtisserie et Desserts": [
+  {
+    "title": "Atelier de Pâtisserie",
+    "description": "Apprenez à confectionner de délicieuses pâtisseries lors de cet atelier.",
+    "startDate": "10 septembre 2023 de 18h00 à 22h00",
+    "adresse": "École de Pâtisserie, 20 Rue des Sucreries, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PTS001"
+  },
+  {
+    "title": "Dégustation de Chocolat",
+    "description": "Découvrez les subtilités du chocolat lors de cette dégustation gourmande.",
+    "startDate": "28 aout 2023 de 19h00 à 23h00",
+    "adresse": "Chocolaterie, 10 Rue du Chocolat, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CHC001"
+  },
+  {
+    "title": "Concours de Desserts",
+    "description": "Participez à un concours de desserts et montrez vos talents de pâtissier.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Gourmandises, 5 Rue des Douceurs, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DSS001"
+  }
+],
+"Boissons Artisanales": [
+  {
+    "title": "Festival des Bières Artisanales",
+    "description": "Découvrez une sélection de bières artisanales lors de ce festival brassicole.",
+    "startDate": "10 septembre 2023 de 18h00 à 22h00",
+    "adresse": "Bar des Bières, 20 Rue des Houblons, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BR001"
+  },
+  {
+    "title": "Soirée Œnologie",
+    "description": "Initiez-vous à l'œnologie avec des dégustations de vins fins et de qualité.",
+    "startDate": "28 aout 2023 de 19h00 à 23h00",
+    "adresse": "Cave Œnologique, 10 Rue des Vignobles, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "OEN001"
+  },
+  {
+    "title": "Salon des Spiritueux",
+    "description": "Découvrez une variété de spiritueux artisanaux lors de ce salon dédié.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Espace des Spiritueux, 5 Rue des Distilleries, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SPT001"
+  }
+],
+"Cuisine Gourmet": [
+  {
+    "title": "Dîner Gastronomique",
+    "description": "Offrez-vous une expérience culinaire inoubliable avec ce dîner gastronomique.",
+    "startDate": "10 septembre 2023 de 18h00 à 22h00",
+    "adresse": "Restaurant Gastronomique, 20 Rue des Saveurs Raffinées, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "GST001"
+  },
+  {
+    "title": "Cours de Cuisine avec un Chef",
+    "description": "Apprenez les techniques de cuisine avec un chef étoilé lors de ce cours exclusif.",
+    "startDate": "28 aout 2023 de 19h00 à 23h00",
+    "adresse": "École de Cuisine, 10 Rue des Chefs, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CCH001"
+  },
+  {
+    "title": "Soirée Dégustation Gourmet",
+    "description": "Dégustez des mets raffinés lors d'une soirée dédiée aux plaisirs gustatifs.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle des Saveurs, 5 Rue des Gourmets, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DGT001"
+  }
+]
+},
+"Catégorie Mode": {
+"Défilé de Mode": [
+  {
+    "title": "Défilé de Mode Printemps/Été",
+    "description": "Assistez à un défilé de mode présentant les dernières tendances printemps/été.",
+    "startDate": "10 septembre 2023 à 18h00",
+    "adresse": "Salle des Défilés, 20 Rue de la Mode, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DM001"
+  },
+  {
+    "title": "Défilé de Mode Automne/Hiver",
+    "description": "Découvrez les collections automne/hiver lors de ce défilé de mode.",
+    "startDate": "28 aout 2023 à 19h00",
+    "adresse": "Salle des Tendances, 10 Rue des Créateurs, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DM002"
+  },
+  {
+    "title": "Défilé de Mode Durabilité",
+    "description": "Explorez les créations de mode durables lors de ce défilé engagé.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle de l'Éco-Mode, 5 Rue des Matières, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "DM003"
+  }
+],
+"Atelier de Création": [
+  {
+    "title": "Atelier de Création de Bijoux",
+    "description": "Apprenez à créer vos propres bijoux lors de cet atelier créatif.",
+    "startDate": "10 septembre 2023 de 18h00 à 20h00",
+    "adresse": "Atelier des Bijoux, 20 Rue des Créations, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BJX001"
+  },
+  {
+    "title": "Atelier de Couture",
+    "description": "Maîtrisez les techniques de couture lors de cet atelier animé par des experts.",
+    "startDate": "28 aout 2023 de 19h00 à 21h00",
+    "adresse": "Atelier des Coutures, 10 Rue des Aiguilles, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "CTR001"
+  },
+  {
+    "title": "Atelier de Personnalisation",
+    "description": "Personnalisez vos vêtements et accessoires lors de cet atelier créatif.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Atelier des Personnalités, 5 Rue des Styles, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PRZ001"
+  }
+],
+"Événements Mode": [
+  {
+    "title": "Vide-Dressing",
+    "description": "Vendez et achetez des articles de mode d'occasion lors de ce vide-dressing.",
+    "startDate": "10 septembre 2023 de 18h00 à 20h00",
+    "adresse": "Salle des Bonnes Affaires, 20 Rue des Bonnes Occasions, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "VD001"
+  },
+  {
+    "title": "Salon de la Mode",
+    "description": "Rencontrez des créateurs et découvrez leurs nouvelles collections lors de ce salon.",
+    "startDate": "28 aout 2023 de 19h00 à 21h00",
+    "adresse": "Espace Mode, 10 Rue des Créateurs, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SDM001"
+  },
+  {
+    "title": "Conférence sur la Mode Éthique",
+    "description": "Participez à cette conférence sur les enjeux de la mode éthique et responsable.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle de l'Éthique, 5 Rue des Engagements, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "ETH001"
+  }
+],
+"Beauté et Bien-Être": [
+  {
+    "title": "Atelier de Maquillage",
+    "description": "Apprenez les techniques de maquillage professionnel lors de cet atelier.",
+    "startDate": "10 septembre 2023 de 18h00 à 20h00",
+    "adresse": "Salle de Beauté, 20 Rue des Pinceaux, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MKP001"
+  },
+  {
+    "title": "Soirée Spa et Détente",
+    "description": "Détendez-vous lors d'une soirée spa avec massages et soins relaxants.",
+    "startDate": "28 aout 2023 de 19h00 à 21h00",
+    "adresse": "Espace Bien-Être, 10 Rue des Soins, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SPS001"
+  },
+  {
+    "title": "Conférence sur le Bien-Être Intérieur",
+    "description": "Participez à cette conférence pour en apprendre davantage sur le bien-être intérieur.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle du Bien-Être, 5 Rue de l'Harmonie, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "BET001"
+  }
+]
+},
+"Catégorie Spiritualité": {
+"Méditation et Pleine Conscience": [
+  {
+    "title": "Séance de Méditation Guidée",
+    "description": "Rejoignez une séance de méditation guidée pour trouver la paix intérieure.",
+    "startDate": "10 septembre 2023 de 18h00 à 19h30",
+    "adresse": "Centre de Méditation, 20 Rue de la Sérénité, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MDT001"
+  },
+  {
+    "title": "Retraite de Pleine Conscience",
+    "description": "Participez à une retraite de pleine conscience pour vous reconnecter à l'instant présent.",
+    "startDate": "28 aout 2023 de 9h00 à 17h00",
+    "adresse": "Centre de Pleine Conscience, 10 Rue de l'Instant Présent, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PLC001"
+  },
+  {
+    "title": "Atelier sur la Gestion du Stress",
+    "description": "Apprenez des techniques de gestion du stress lors de cet atelier apaisant.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle de la Sérénité, 5 Rue de l'Équilibre Intérieur, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "GS001"
+  }
+],
+"Conférences Inspirantes": [
+  {
+    "title": "Conférence sur la Sagesse Ancienne",
+    "description": "Explorez les enseignements de la sagesse ancienne lors de cette conférence inspirante.",
+    "startDate": "10 septembre 2023 de 18h00 à 19h30",
+    "adresse": "Salle des Sages, 20 Rue de la Connaissance Ancienne, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "SAG001"
+  },
+  {
+    "title": "Rencontre avec un Maître Spirituel",
+    "description": "Rencontrez un maître spirituel et découvrez ses enseignements éclairants.",
+    "startDate": "28 aout 2023 de 9h00 à 17h00",
+    "adresse": "Centre Spirituel, 10 Rue de l'Illumination, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "MSP001"
+  },
+  {
+    "title": "Conférence sur l'Éveil Intérieur",
+    "description": "Participez à cette conférence pour explorer le chemin de l'éveil intérieur.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Salle de l'Éveil, 5 Rue de la Conscience, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "EVL001"
+  }
+],
+"Pratiques Spirituelles": [
+  {
+    "title": "Atelier de Yoga et Méditation",
+    "description": "Rejoignez un atelier combinant yoga et méditation pour un bien-être complet.",
+    "startDate": "10 septembre 2023 de 18h00 à 19h30",
+    "adresse": "Salle du Yoga, 20 Rue de l'Harmonie Intérieure, 75012 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "YGM001"
+  },
+  {
+    "title": "Cercle de Prière et Chants Sacrés",
+    "description": "Participez à un cercle de prière avec des chants sacrés pour une expérience spirituelle.",
+    "startDate": "28 aout 2023 de 9h00 à 17h00",
+    "adresse": "Espace Spirituel, 10 Rue des Prières, 75014 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "PRS001"
+  },
+  {
+    "title": "Retraite Spirituelle",
+    "description": "Vivez une retraite spirituelle enrichissante pour vous connecter à votre être intérieur.",
+    "startDate": "7 septembre 2023 à 20h30",
+    "adresse": "Centre de Retraite, 5 Rue de la Tranquillité, 75016 Paris",
+    "picture": "Insérer_URL_d_image_unique_ici",
+      "eventId": "RTS001"
+  }
+]
+}
+}]
