@@ -22,7 +22,7 @@ class Events
     protected $description;
 
     #[MongoDB\Field(type:"string", name:"date")]
-    protected $eventDate;
+    protected $date;
 
     #[MongoDB\Field(type:"string")]
     protected $address;
@@ -111,12 +111,12 @@ class Events
 
     public function getEventDate(): ?string
     {
-        return $this->eventDate;
+        return $this->date;
     }
 
-    public function setEventDate(string $eventDate): self
+    public function setEventDate(string $date): self
     {
-        $this->eventDate = $eventDate;
+        $this->date = $date;
         return $this;
     }
 

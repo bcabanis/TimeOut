@@ -28,6 +28,8 @@ replyForm.style.display = 'block';
 
 {% block body %}
 
+{% block header %}{% endblock %}
+
 	<header>
 		<div
 			class="container">
@@ -149,9 +151,7 @@ replyForm.style.display = 'block';
 										<div>
 											<p class="chattext">{{ message.content }}</p>
 										</div>
-										{% if message.parentMessage is null %}
-											{% include '_message.html.twig' with {'message': message, 'event': event} %}
-										{% endif %}
+
 									</article>
 									<div class="separateurChat"></div>
 									{# ---------------------------------------- #}
@@ -280,6 +280,6 @@ replyForm.style.display = 'block';
 				</div>
 			</footer>
 			<!-- footer end  -->
-
+	{% block footer %}{% endblock %}
 
 		{% endblock %}

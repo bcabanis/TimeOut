@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       // console.log(tagsChoices);
       let jsonOutput = JSON.stringify(tagsChoices);
 
-      fetch("/mestags/save/" + jsonOutput)
+      fetch("/tags/save/" + jsonOutput)
         .then((response) => {
           if (response.status == 200) {
             //document.location.replace('/route_e_lancer');

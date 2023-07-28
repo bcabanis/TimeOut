@@ -10,6 +10,7 @@ use App\Form\TagsFormType;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -91,6 +92,7 @@ class LoginController extends AbstractController
     {
         // Récupère l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
+        if(!$email) return $this->redirectToRoute('app_login');
 
         // Récupère l'utilisateur depuis la base de données en utilisant l'email
         $user = $userRepository->findOneBy(['email' => $email]);
@@ -165,28 +167,51 @@ class LoginController extends AbstractController
     }
 
     // Redirection vers le choix des tags
-    #[Route('/tags/save/{jsontags}', name: 'app_login_tags')]
-    public function tags($jsontags, UserRepository $userRepository, SessionInterface $sessionInterface, TagsFormType $tagsFormType): Response
+    #[Route('/tags', name: 'app_login_tags')]
+    public function tags(Request $request, UserRepository $userRepository, SessionInterface $sessionInterface, TagsFormType $tagsFormType): Response
     {
-        // Récupérer l'email de l'utilisateur connecté depuis la session
+        // Récupère l'email de l'utilisateur connecté depuis la session
         $email = $sessionInterface->get('email');
-        
-        // Récupérer l'utilisateur depuis la base de données en utilisant l'email
-        $user = $userRepository->findOneBy(['email' => $email]);
-        // dump($user);
-        // dump($request);
-        // Récupérer les tags de l'utilisateur
-        $tags = json_decode($jsontags);
-        $user->setTagsByCategory($tags);
-        $user->fill();
-        $userRepository->save($user);
 
-        // Passez les données à votre modèle Twig et générez la vue
+        // Récupère l'utilisateur depuis la base de données en utilisant l'email
+        $user = $userRepository->findOneBy(['email' => $email]);
+
+
+
         return $this->render('login/tags.html.twig', [
-            // 'tagsByCategory' => $tagsByCategory,
-            'user' => $user,
+            // 'tagsForm' => $form->createView(),
+            'tagsForm' => '$form->createView()',
         ]);
     }
 
-}
+    // #[Route('/tags/save/{jsontags}', name: 'app_login_tags_save')]
+    // /**
+    //  * Route de sauvegarde de la lsite des tags du user
+    //  *
+    //  * @param [type] $jsontags
+    //  * @param UserRepository $userRepo
+    //  * @return JsonResponse
+    //  */
+    // public function saveTags($jsontags, UserRepository $userRepository, SessionInterface $sessionInterface): JsonResponse
+    // {
 
+    //     // Récupérer l'email de l'utilisateur connecté depuis la session
+    //     $email = $sessionInterface->get('email');
+
+    //     // Récupérer l'utilisateur depuis la base de données en utilisant l'email
+    //     $user = $userRepository->findOneBy(['email' => $email]);
+
+    //     // récupère la liste complète des tags de l'utilisateur
+    //     $tags = json_decode($jsontags);
+
+    //     // Mettre à jour la propriété tagsByCategory de l'utilisateur avec les tags sélectionnés
+    //     $user->setTagsByCategory($tags);
+    //     $user->fill();
+
+    //     // faire ici l'ajout à la bdd
+    //     $userRepository->save($user);
+    //     // renvoie la réponse
+    //     return new JsonResponse(['ok']);
+    // }
+
+}

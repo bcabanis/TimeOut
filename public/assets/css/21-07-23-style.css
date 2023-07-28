@@ -671,6 +671,9 @@ padding: 0 0 10px 0;
 
 #detailevent .wholescreen h2 span, 
 #mesevents .wholescreen h2 span {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   background-color: #fff;
   display: inline-block;
   margin: -6px 0 0 0;
@@ -684,7 +687,6 @@ padding: 0 0 10px 0;
 #mesevents .cardeventbig {
   width: 100%;
   border-radius: 5px !important;
-  background-image: url('../img/unsplash_i0WO_RzeB2Y.jpg'); 
   margin-top: 30px;
 }
   
