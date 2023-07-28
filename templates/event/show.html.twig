@@ -3,6 +3,24 @@
 {% block title %}Hello EventController!
 {% endblock %}
 
+{# {% block head %}
+	<script>
+		alert('yo');
+const replyButtons = document.querySelectorAll('.reply-button');
+replyButtons.forEach(button => {
+button.addEventListener('click', () => {
+let messageId = button.dataset.messageId;
+console.log(messageId);
+let replyForm = document.getElementById(reply - form - $ {
+messageId
+});
+console.log(replyForm);
+replyForm.style.display = 'block';
+});
+});
+	</script>
+{% endblock %} #}
+
 {% block stylesheets %}
 	<link rel="stylesheet" href="./assets/css/21-07-23-style.css">
 	<link rel="stylesheet" href="/assets/css/mathieu.css">
@@ -77,9 +95,9 @@
 					<p class="icondate">{{event.eventDate}}</p>
 					<p class="iconcontact">263 de participants</p>
 					{# <div class="d-flex flex-wrap flex-xxl-nowrap mt-4">
-																																									<a href="#" class="partager">Partager</a>
-																																									<a href="#" class="participer">Participer</a>
-																																								</div> #}
+																																														<a href="#" class="partager">Partager</a>
+																																														<a href="#" class="participer">Participer</a>
+																																													</div> #}
 				</div>
 			</div>
 
@@ -258,28 +276,10 @@
 						<a href="#">PLAN DU SITE</a>
 					</p>
 					<p class="mentionslegales">© 2023 Time Out England Limited and affiliated companies owned by Time Out Group
-																																																																																			          Plc. All rights reserved. Time Out is a registered trademark of Time Out Digital Limited.</p>
+																																																																																									          Plc. All rights reserved. Time Out is a registered trademark of Time Out Digital Limited.</p>
 				</div>
 			</footer>
 			<!-- footer end  -->
-			{% block script %}
-				<script>
-					alert('yo');
-const replyButtons = document.querySelectorAll('.reply-button');
-replyButtons.forEach(button => {
-button.addEventListener('click', () => {
-let messageId = button.dataset.messageId;
-console.log(messageId);
-let replyForm = document.getElementById(reply - form - $ {
-messageId
-});
-console.log(replyForm);
-replyForm.style.display = 'block';
-});
-});
-</script>
-			{% endblock %}
-			
+
 
 		{% endblock %}
-
