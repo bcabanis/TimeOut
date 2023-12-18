@@ -2,35 +2,57 @@
 
 namespace App\Document;
 
-use App\Repository\UserRepository;
+use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[MongoDB\Document]
-class Users
+class Users implements PasswordAuthenticatedUserInterface
 {
     #[MongoDB\Id]
-    private string $id;
+    public string $id;
 
     #[MongoDB\Field(type: 'string')]
-    private string $firstName;
+    private string $firstName = '';
 
     #[MongoDB\Field(type: 'string')]
-    private string $lastName;
+    private string $lastName = '';
 
     #[MongoDB\Field(type: 'string')]
-    private string $dateNaissance;
+    private string $city;
+
+    #[MongoDB\Field(type: 'date')]
+    private ?DateTimeInterface $dateNaissance;
 
     #[MongoDB\Field(type: 'string')]
-    private string $email;
+    public string $email;
 
     #[MongoDB\Field(type: 'string')]
-    private string $password;
+    public string $password;
+
+    #[MongoDB\Field(type: 'string')]
+    #[Assert\EqualTo(propertyPath: 'password', message: 'Les mots de passe ne correspondent pas.')]
+    private ?string $passwordConfirmation;
 
     #[MongoDB\Field(type: 'string')]
     private string $profilPicture;
 
     #[MongoDB\Field(type: 'string')]
     private string $role;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $pseudo;
+
+    #[MongoDB\Field(type: 'collection')]
+    private array $tagsByCategory = [];
+
+    #[MongoDB\Field(type: 'boolean')]
+    private bool $filled = false;
+
+    #[MongoDB\Field(type: 'string')]
+    private string $userTags;
 
 
     public function getId(): string
@@ -48,7 +70,12 @@ class Users
         return $this->lastName;
     }
 
-    public function getDateNaissance(): string
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    public function getDateNaissance(): ?DateTimeInterface
     {
         return $this->dateNaissance;
     }
@@ -63,6 +90,11 @@ class Users
         return $this->password;
     }
 
+    public function getPasswordConfirmation(): ?string
+    {
+        return $this->passwordConfirmation;
+    }
+
     public function getProfilPicture(): string
     {
         return $this->profilPicture;
@@ -71,6 +103,16 @@ class Users
     public function getRole(): string
     {
         return $this->role;
+    }
+
+    public function getPseudo(): string
+    {
+        return $this->pseudo;
+    }
+
+    public function getTagsByCategory(): array
+    {
+        return $this->tagsByCategory;
     }
 
     public function setFirstName(string $firstName): Users
@@ -87,7 +129,14 @@ class Users
         return $this;
     }
 
-    public function setDateNaissance(string $dateNaissance): Users
+    public function setCity(string $city): Users
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function setDateNaissance(DateTimeInterface $dateNaissance): Users
     {
         $this->dateNaissance = $dateNaissance;
 
@@ -108,6 +157,13 @@ class Users
         return $this;
     }
 
+    public function setPasswordConfirmation(?string $passwordConfirmation): self
+    {
+        $this->passwordConfirmation = $passwordConfirmation;
+
+        return $this;
+    }
+
     public function setProfilPicture(string $profilPicture): Users
     {
         $this->profilPicture = $profilPicture;
@@ -121,7 +177,49 @@ class Users
 
         return $this;
     }
-// 
+    public function setPseudo(string $pseudo): Users
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function setTagsByCategory(array $tagsByCategory): self
+    {
+        $this->tagsByCategory = $tagsByCategory;
+        return $this;
+    }
+
+    /**
+     * Vérifie si l'utilisateur a rempli les informations de profil.
+     *
+     * @return bool True si les informations sont remplies, False sinon.
+     */
+    public function hasFilledProfile(): bool
+    {
+        // Vérifie si les champs de profil sont remplis
+        return $this->filled;
+    }
+
+    public function fill(): Users
+    {
+        $this->filled = true;
+
+        return $this;
+    }
+    // 
+        
+    public function getUserTags(): string
+    {
+        return $this->userTags;
+    }
+
+    public function setUserTags(string $userTags): Users
+    {
+        $this->$userTags = $userTags;
+
+        return $this;
+    }
 }
 
 
